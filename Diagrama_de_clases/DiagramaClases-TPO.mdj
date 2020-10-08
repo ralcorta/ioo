@@ -12458,6 +12458,113 @@
 									"width": 225,
 									"height": 57,
 									"text": "Sumar importes, hara la sumatoria de todos los importes multiplicado por el porcentaje de comision"
+								},
+								{
+									"_type": "UMLCombinedFragmentView",
+									"_id": "AAAAAAF1BY/FuCJklwI=",
+									"_parent": {
+										"$ref": "AAAAAAF1BXEJSKzWni8="
+									},
+									"model": {
+										"$ref": "AAAAAAF1BY/FuCJiWz4="
+									},
+									"subViews": [
+										{
+											"_type": "LabelView",
+											"_id": "AAAAAAF1BY/FuCJlB5Q=",
+											"_parent": {
+												"$ref": "AAAAAAF1BY/FuCJklwI="
+											},
+											"fillColor": "#00b799",
+											"font": "Arial;13;0",
+											"left": 333.07177734375,
+											"top": 245,
+											"width": 109.392578125,
+											"height": 13,
+											"text": "si esta monetizado"
+										},
+										{
+											"_type": "LabelView",
+											"_id": "AAAAAAF1BY/FuCJmRMc=",
+											"_parent": {
+												"$ref": "AAAAAAF1BY/FuCJklwI="
+											},
+											"fillColor": "#00b799",
+											"font": "Arial;13;1",
+											"left": 309,
+											"top": 245,
+											"width": 19.07177734375,
+											"height": 13,
+											"text": "opt"
+										},
+										{
+											"_type": "UMLInteractionOperandCompartmentView",
+											"_id": "AAAAAAF1BY/FuCJnzPA=",
+											"_parent": {
+												"$ref": "AAAAAAF1BY/FuCJklwI="
+											},
+											"model": {
+												"$ref": "AAAAAAF1BY/FuCJiWz4="
+											},
+											"subViews": [
+												{
+													"_type": "UMLInteractionOperandView",
+													"_id": "AAAAAAF1BY/F1iJzvtE=",
+													"_parent": {
+														"$ref": "AAAAAAF1BY/FuCJnzPA="
+													},
+													"model": {
+														"$ref": "AAAAAAF1BY/FuCJjZtI="
+													},
+													"subViews": [
+														{
+															"_type": "LabelView",
+															"_id": "AAAAAAF1BY/F1iJ0eGE=",
+															"_parent": {
+																"$ref": "AAAAAAF1BY/F1iJzvtE="
+															},
+															"visible": false,
+															"fillColor": "#00b799",
+															"font": "Arial;13;0",
+															"left": 324,
+															"top": 278,
+															"height": 13
+														}
+													],
+													"fillColor": "#00b799",
+													"font": "Arial;13;0",
+													"left": 304,
+													"top": 263,
+													"width": 592,
+													"height": 43,
+													"guardLabel": {
+														"$ref": "AAAAAAF1BY/F1iJ0eGE="
+													}
+												}
+											],
+											"fillColor": "#00b799",
+											"font": "Arial;13;0",
+											"left": 304,
+											"top": 263,
+											"width": 592,
+											"height": 43
+										}
+									],
+									"fillColor": "#00b799",
+									"font": "Arial;13;0",
+									"left": 304,
+									"top": 240,
+									"width": 592,
+									"height": 208,
+									"nameLabel": {
+										"$ref": "AAAAAAF1BY/FuCJlB5Q="
+									},
+									"frameTypeLabel": {
+										"$ref": "AAAAAAF1BY/FuCJmRMc="
+									},
+									"operandCompartment": {
+										"$ref": "AAAAAAF1BY/FuCJnzPA="
+									}
 								}
 							]
 						}
@@ -12707,6 +12814,25 @@
 									"_id": "AAAAAAF1BXqILPQV3wY=",
 									"_parent": {
 										"$ref": "AAAAAAF1BXqILPQUH+4="
+									},
+									"name": "Operand1"
+								}
+							]
+						},
+						{
+							"_type": "UMLCombinedFragment",
+							"_id": "AAAAAAF1BY/FuCJiWz4=",
+							"_parent": {
+								"$ref": "AAAAAAF1BXEJSKzVT4g="
+							},
+							"name": "si esta monetizado",
+							"interactionOperator": "opt",
+							"operands": [
+								{
+									"_type": "UMLInteractionOperand",
+									"_id": "AAAAAAF1BY/FuCJjZtI=",
+									"_parent": {
+										"$ref": "AAAAAAF1BY/FuCJiWz4="
 									},
 									"name": "Operand1"
 								}
