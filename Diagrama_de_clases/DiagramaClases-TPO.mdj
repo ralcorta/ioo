@@ -13593,14 +13593,14 @@
 											"left": 368,
 											"top": 80,
 											"width": 1,
-											"height": 513
+											"height": 529
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 264,
 									"top": 40,
 									"width": 207.08447265625,
-									"height": 553,
+									"height": 569,
 									"nameCompartment": {
 										"$ref": "AAAAAAF1BZiiiq7Z0AI="
 									},
@@ -13706,14 +13706,14 @@
 											"left": 664,
 											"top": 80,
 											"width": 1,
-											"height": 513
+											"height": 529
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 576,
 									"top": 40,
 									"width": 176.7490234375,
-									"height": 553,
+									"height": 569,
 									"nameCompartment": {
 										"$ref": "AAAAAAF1BZkH1678RG4="
 									},
@@ -14033,7 +14033,7 @@
 									"left": 360,
 									"top": 120,
 									"width": 296,
-									"height": 305,
+									"height": 241,
 									"nameLabel": {
 										"$ref": "AAAAAAF1BaMl8r/n6D8="
 									},
@@ -14479,6 +14479,118 @@
 									"operandCompartment": {
 										"$ref": "AAAAAAF1Bak6q9Kj+dk="
 									}
+								},
+								{
+									"_type": "UMLSeqMessageView",
+									"_id": "AAAAAAF1BatqdNK/2k4=",
+									"_parent": {
+										"$ref": "AAAAAAF1BZKTGyKDLp0="
+									},
+									"model": {
+										"$ref": "AAAAAAF1BatqdNK+VTg="
+									},
+									"subViews": [
+										{
+											"_type": "EdgeLabelView",
+											"_id": "AAAAAAF1BatqdNLA5GA=",
+											"_parent": {
+												"$ref": "AAAAAAF1BatqdNK/2k4="
+											},
+											"model": {
+												"$ref": "AAAAAAF1BatqdNK+VTg="
+											},
+											"font": "Arial;13;0",
+											"left": 110,
+											"top": 372,
+											"width": 218.97509765625,
+											"height": 13,
+											"alpha": 1.5707963267948966,
+											"distance": 10,
+											"hostEdge": {
+												"$ref": "AAAAAAF1BatqdNK/2k4="
+											},
+											"edgePosition": 1,
+											"text": "6 : operaciones del socio en x periodo"
+										},
+										{
+											"_type": "EdgeLabelView",
+											"_id": "AAAAAAF1BatqdNLB1ps=",
+											"_parent": {
+												"$ref": "AAAAAAF1BatqdNK/2k4="
+											},
+											"model": {
+												"$ref": "AAAAAAF1BatqdNK+VTg="
+											},
+											"visible": false,
+											"font": "Arial;13;0",
+											"left": 219,
+											"top": 387,
+											"height": 13,
+											"alpha": 1.5707963267948966,
+											"distance": 25,
+											"hostEdge": {
+												"$ref": "AAAAAAF1BatqdNK/2k4="
+											},
+											"edgePosition": 1
+										},
+										{
+											"_type": "EdgeLabelView",
+											"_id": "AAAAAAF1BatqdNLCrTg=",
+											"_parent": {
+												"$ref": "AAAAAAF1BatqdNK/2k4="
+											},
+											"model": {
+												"$ref": "AAAAAAF1BatqdNK+VTg="
+											},
+											"visible": false,
+											"font": "Arial;13;0",
+											"left": 220,
+											"top": 352,
+											"height": 13,
+											"alpha": -1.5707963267948966,
+											"distance": 10,
+											"hostEdge": {
+												"$ref": "AAAAAAF1BatqdNK/2k4="
+											},
+											"edgePosition": 1
+										},
+										{
+											"_type": "UMLActivationView",
+											"_id": "AAAAAAF1BatqdNLDXPc=",
+											"_parent": {
+												"$ref": "AAAAAAF1BatqdNK/2k4="
+											},
+											"model": {
+												"$ref": "AAAAAAF1BatqdNK+VTg="
+											},
+											"visible": false,
+											"font": "Arial;13;0",
+											"left": 72,
+											"top": 368,
+											"width": 14,
+											"height": 25
+										}
+									],
+									"font": "Arial;13;0",
+									"head": {
+										"$ref": "AAAAAAF1BZhv2K67u+0="
+									},
+									"tail": {
+										"$ref": "AAAAAAF1BZiiiq7eUu4="
+									},
+									"points": "368:368;72:368",
+									"nameLabel": {
+										"$ref": "AAAAAAF1BatqdNLA5GA="
+									},
+									"stereotypeLabel": {
+										"$ref": "AAAAAAF1BatqdNLB1ps="
+									},
+									"propertyLabel": {
+										"$ref": "AAAAAAF1BatqdNLCrTg="
+									},
+									"activation": {
+										"$ref": "AAAAAAF1BatqdNLDXPc="
+									}
 								}
 							]
 						}
@@ -14562,6 +14674,21 @@
 							},
 							"target": {
 								"$ref": "AAAAAAF1BZiiiq7X+PE="
+							},
+							"messageSort": "reply"
+						},
+						{
+							"_type": "UMLMessage",
+							"_id": "AAAAAAF1BatqdNK+VTg=",
+							"_parent": {
+								"$ref": "AAAAAAF1BZKTGyKC9ds="
+							},
+							"name": "operaciones del socio en x periodo",
+							"source": {
+								"$ref": "AAAAAAF1BZiiiq7X+PE="
+							},
+							"target": {
+								"$ref": "AAAAAAF1BZhv2K603RM="
 							},
 							"messageSort": "reply"
 						}
