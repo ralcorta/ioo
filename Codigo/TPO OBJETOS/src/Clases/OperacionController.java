@@ -15,7 +15,7 @@ public class OperacionController{
     }
 
     public void crearOperacion(int idOperacion, String tipoDeOperacion, String subtipoOperacion, String estado, Date fechaCambioEstado, String estadoAnterior, String usuarioModificador, String garantia, Currency importe, Date fechaCreacionOperacion, Date fechaVencimiento, int cuotasPagadas, int cantidadTotalCuotas, float importeUtilizado){
-        Operacion operacion = new Operacion(idOperacion, tipoDeOperacion, subtipoOperacion, estado, fechaCambioEstado, estado, estadoAnterior, usuarioModificador, garantia, importe, fechaCreacionOperacion, fechaVencimiento, cuotasPagadas, cantidadTotalCuotas, importeUtilizado);
+        Operacion operacion = new Operacion(idOperacion, tipoDeOperacion, subtipoOperacion, estado, fechaCambioEstado, estadoAnterior, usuarioModificador, garantia, importe, fechaCreacionOperacion, fechaVencimiento, cuotasPagadas, cantidadTotalCuotas, importeUtilizado);
         operaciones.add(operacion);
     }
 

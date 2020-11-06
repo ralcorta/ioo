@@ -144,6 +144,6 @@ public class SocioProtector{
 
     public void reclamarAporte(Currency monto, Date fechaActual){
         Aportes aporte = new Aportes (monto, fechaActual);
-        this.aporte = aporte;
+        listaDeAportes.add(aporte);
     }
 }

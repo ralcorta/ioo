@@ -57,7 +57,7 @@ public class Comision
     }
 
     public void emitirFactura(int idFactura, Date fechaDeEmision, Currency importe, String usuarioModificador, Date fechaVencimiento){
-        Factura factura = new Facutra(idFactura, fechaDeEmision, importe, usuarioModificador, fechaVencimiento);
+        Factura factura = new Factura(idFactura, fechaDeEmision, importe, usuarioModificador, fechaVencimiento);
         facturas.add(factura);
     }
 }
