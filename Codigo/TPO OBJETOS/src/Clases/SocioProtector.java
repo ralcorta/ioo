@@ -1,5 +1,4 @@
 package Clases;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Currency;
 import java.util.Date;
@@ -20,6 +19,8 @@ public class SocioProtector{
     private String usuarioDocumentacion;
     ArrayList<Aportes> listaDeAportes = new ArrayList<Aportes>();
     ArrayList<Accionistas> listaDeAccionistas = new ArrayList<Accionistas>();
+    ArrayList<Accion> listaDeAcciones = new ArrayList<Accion>();
+    ArrayList<Accion> accionesSuscritas = new ArrayList<Accion>();
     SociosController controlador;
 
     public SocioProtector(int cuit, String razonSocial, Date fechaInicioActividades, String tipo, String actividadPrincipal, String direccion, String telefono, String correoElectronico, boolean esPleno, String documentacion, String fechaDocumentacion, String estadoDocumentacion, String usuarioDocumentacion) {
@@ -142,8 +143,30 @@ public class SocioProtector{
         this.usuarioDocumentacion = usuarioDocumentacion;
     }
 
-    public void reclamarAporte(Currency monto, Date fechaActual){
-        Aportes aporte = new Aportes (monto, fechaActual);
+    public void realizarAporte(Currency monto, Date fechaActual, int idAporte){
+        Aportes aporte = new Aportes (monto, fechaActual, idAporte);
         listaDeAportes.add(aporte);
+    }
+
+    public String reclamarAporte(int idAporte){
+        String mensaje;
+        for (Aportes a : listaDeAportes) {
+            if(a.getIdAporte() == idAporte){
+                listaDeAportes.remove(a);
+                return mensaje = "aporte removido con exito";
+            }
+        }
+        return mensaje = "aporte no encontrado";
+    }
+
+    public String suscribirAccion(int idAccion){
+        String mensaje;
+        for (Accion a: listaDeAcciones) {
+            if (a.getIdAccion() == idAccion){
+                accionesSuscritas.add(a);
+                return mensaje = "accion suscrita con exito";
+            }
+        }
+        return mensaje = "accion no encontrada";
     }
 }

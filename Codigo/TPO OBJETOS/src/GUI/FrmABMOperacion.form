@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="GUI.FrmABMOperacion">
+  <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="500" height="738"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="17ae9" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font size="22"/>
+          <text value="Label"/>
+        </properties>
+      </component>
+      <grid id="7cc23" layout-manager="GridLayoutManager" row-count="20" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="eb483" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="81" height="16"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="ID OPERACION"/>
+            </properties>
+          </component>
+          <component id="5ebb7" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="217" height="16"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="Tipo de operacion"/>
+            </properties>
+          </component>
+          <component id="9eef1" class="javax.swing.JTextField" binding="textTipoOperacion">
+            <constraints>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="788ed" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="217" height="16"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="Estado"/>
+            </properties>
+          </component>
+          <component id="2077f" class="javax.swing.JTextField" binding="textEstado">
+            <constraints>
+              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="2297a" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="217" height="16"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="ID CERTIFCADO DE GARANTIA:"/>
+            </properties>
+          </component>
+          <component id="23ee0" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="217" height="16"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="Importe"/>
+            </properties>
+          </component>
+          <component id="39c10" class="javax.swing.JTextField" binding="textImporte">
+            <constraints>
+              <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="2c15d" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="217" height="16"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="Fecha de creacion de la op."/>
+            </properties>
+          </component>
+          <component id="c3176" class="javax.swing.JTextField" binding="textFechaCreacOp">
+            <constraints>
+              <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="d6038" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="217" height="16"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="Fecha de vencimiento"/>
+            </properties>
+          </component>
+          <component id="bf686" class="javax.swing.JTextField" binding="textFechaVenc">
+            <constraints>
+              <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="68f11" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="217" height="16"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="Banco (cheque)"/>
+            </properties>
+          </component>
+          <component id="633a6" class="javax.swing.JTextField" binding="textBancoCheque">
+            <constraints>
+              <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="7f20e" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="217" height="16"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="Numero del cheque"/>
+            </properties>
+          </component>
+          <component id="8078d" class="javax.swing.JTextField" binding="textNumCheque">
+            <constraints>
+              <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="e14fb" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="217" height="16"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="Fecha de venc. (cheque)"/>
+            </properties>
+          </component>
+          <component id="2c401" class="javax.swing.JTextField" binding="textFechaVencCheque">
+            <constraints>
+              <grid row="9" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="a98c1" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="217" height="16"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="CUIT (cheque)"/>
+            </properties>
+          </component>
+          <component id="74241" class="javax.swing.JTextField" binding="textCuitCheque">
+            <constraints>
+              <grid row="10" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="107c8" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="11" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="217" height="16"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="Tasa descuento (cheque)"/>
+            </properties>
+          </component>
+          <component id="2084" class="javax.swing.JTextField" binding="textTasaDescuentoCheque">
+            <constraints>
+              <grid row="11" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="5bd3a" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="217" height="16"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="Empresa (cuenta corriente)"/>
+            </properties>
+          </component>
+          <component id="250d6" class="javax.swing.JTextField" binding="textEmpresaCheque">
+            <constraints>
+              <grid row="12" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="497d3" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="13" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="217" height="16"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="Fecha de venc. (cuenta c)"/>
+            </properties>
+          </component>
+          <component id="f6658" class="javax.swing.JTextField" binding="textFechaVencCuenta">
+            <constraints>
+              <grid row="13" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="d8e03" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="14" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="217" height="16"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="Banco (prestamo)"/>
+            </properties>
+          </component>
+          <component id="d7084" class="javax.swing.JTextField" binding="textBancoPrestamo">
+            <constraints>
+              <grid row="14" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="1ab28" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="15" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="217" height="16"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="Tasa interes (prestamo)"/>
+            </properties>
+          </component>
+          <component id="657ad" class="javax.swing.JTextField" binding="textTasaInteresPrestamo">
+            <constraints>
+              <grid row="15" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="caa8b" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="16" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="217" height="16"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="Fecha de acreditacion (prestamo)"/>
+            </properties>
+          </component>
+          <component id="d9b1f" class="javax.swing.JTextField" binding="textFechaAcrdPrestamo">
+            <constraints>
+              <grid row="16" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="a7e8e" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="17" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="217" height="16"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="Cantidad de cuotas (prestamo)"/>
+            </properties>
+          </component>
+          <component id="b77ad" class="javax.swing.JTextField" binding="textCantCuotasPrestamo">
+            <constraints>
+              <grid row="17" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="23816" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="18" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="217" height="16"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="Sistema bancario (prestamo)"/>
+            </properties>
+          </component>
+          <component id="42edf" class="javax.swing.JTextField" binding="textSistemaBancarioPrestamo">
+            <constraints>
+              <grid row="18" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="12352" class="javax.swing.JButton" binding="GUARDAROPERACIONButton" default-binding="true">
+            <constraints>
+              <grid row="19" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="GUARDAR OPERACION"/>
+            </properties>
+          </component>
+          <component id="8e71b" class="javax.swing.JButton" binding="CANCELAROPERACIONButton" default-binding="true">
+            <constraints>
+              <grid row="19" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="217" height="30"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="CANCELAR OPERACION"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>

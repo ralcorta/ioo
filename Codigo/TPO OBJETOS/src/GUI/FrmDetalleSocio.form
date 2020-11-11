@@ -54,7 +54,7 @@
               <text value="CUIT"/>
             </properties>
           </component>
-          <component id="cc1f2" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+          <component id="cc1f2" class="javax.swing.JTextField" binding="textCuitSocio">
             <constraints>
               <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -63,7 +63,7 @@
             </constraints>
             <properties/>
           </component>
-          <component id="acc7d" class="javax.swing.JTextField" binding="textField2" default-binding="true">
+          <component id="acc7d" class="javax.swing.JTextField" binding="textRazonSocial">
             <constraints>
               <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -90,7 +90,7 @@
               <text value="Fecha de inicio de actividades"/>
             </properties>
           </component>
-          <component id="d4b56" class="javax.swing.JTextField" binding="textField3" default-binding="true">
+          <component id="d4b56" class="javax.swing.JTextField" binding="textFechaInicioAct">
             <constraints>
               <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -108,7 +108,7 @@
               <text value="Tipo de socio"/>
             </properties>
           </component>
-          <component id="deece" class="javax.swing.JTextField" binding="textField4" default-binding="true">
+          <component id="deece" class="javax.swing.JTextField" binding="textTipoSocio">
             <constraints>
               <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -126,7 +126,7 @@
               <text value="Actividad principal"/>
             </properties>
           </component>
-          <component id="319e3" class="javax.swing.JTextField" binding="textField5" default-binding="true">
+          <component id="319e3" class="javax.swing.JTextField" binding="textActPrincipal">
             <constraints>
               <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -144,7 +144,7 @@
               <text value="Direccion"/>
             </properties>
           </component>
-          <component id="73643" class="javax.swing.JTextField" binding="textField6" default-binding="true">
+          <component id="73643" class="javax.swing.JTextField" binding="textDireccion">
             <constraints>
               <grid row="10" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -162,7 +162,7 @@
               <text value="Telefono"/>
             </properties>
           </component>
-          <component id="ac848" class="javax.swing.JTextField" binding="textField7" default-binding="true">
+          <component id="ac848" class="javax.swing.JTextField" binding="textTelefono">
             <constraints>
               <grid row="12" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -180,7 +180,7 @@
               <text value="Correo electronico"/>
             </properties>
           </component>
-          <component id="1eb29" class="javax.swing.JTextField" binding="textField8" default-binding="true">
+          <component id="1eb29" class="javax.swing.JTextField" binding="textEmail">
             <constraints>
               <grid row="14" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -207,7 +207,7 @@
               <text value="Documentacion"/>
             </properties>
           </component>
-          <component id="d2e23" class="javax.swing.JTextField" binding="textField10" default-binding="true">
+          <component id="d2e23" class="javax.swing.JTextField" binding="textDocumentacion">
             <constraints>
               <grid row="18" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -225,7 +225,7 @@
               <text value="Fecha de documentacion"/>
             </properties>
           </component>
-          <component id="cd2a7" class="javax.swing.JTextField" binding="textField11" default-binding="true">
+          <component id="cd2a7" class="javax.swing.JTextField" binding="textFechaDocumentacion">
             <constraints>
               <grid row="20" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -243,7 +243,7 @@
               <text value="Estado de documentacion"/>
             </properties>
           </component>
-          <component id="6ba7a" class="javax.swing.JTextField" binding="textField12" default-binding="true">
+          <component id="6ba7a" class="javax.swing.JTextField" binding="textEstadoDocumentacion">
             <constraints>
               <grid row="22" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -261,7 +261,7 @@
               <text value="Usuario que ingreso documentacion"/>
             </properties>
           </component>
-          <component id="58fa2" class="javax.swing.JTextField" binding="textField13" default-binding="true">
+          <component id="58fa2" class="javax.swing.JTextField" binding="textUsuarioDeIngreso">
             <constraints>
               <grid row="24" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -270,7 +270,7 @@
             </constraints>
             <properties/>
           </component>
-          <component id="9d7ca" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
+          <component id="9d7ca" class="javax.swing.JComboBox" binding="comboBoxSocioPleno">
             <constraints>
               <grid row="16" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
               <forms/>
