@@ -15,15 +15,32 @@ public class SocioProtector{
     private boolean esPleno;
     private String documentacion;
     private String fechaDocumentacion;
-    private String estadoDocumentacion;
+    private Boolean estadoDocumentacion;
     private String usuarioDocumentacion;
     ArrayList<Aportes> listaDeAportes = new ArrayList<Aportes>();
     ArrayList<Accionistas> listaDeAccionistas = new ArrayList<Accionistas>();
+
+    public ArrayList<Aportes> getListaDeAportes() {
+        return listaDeAportes;
+    }
+
+    public ArrayList<Accionistas> getListaDeAccionistas() {
+        return listaDeAccionistas;
+    }
+
+    public ArrayList<Accion> getListaDeAcciones() {
+        return listaDeAcciones;
+    }
+
+    public ArrayList<Accion> getAccionesSuscritas() {
+        return accionesSuscritas;
+    }
+
     ArrayList<Accion> listaDeAcciones = new ArrayList<Accion>();
     ArrayList<Accion> accionesSuscritas = new ArrayList<Accion>();
     SociosController controlador;
 
-    public SocioProtector(int cuit, String razonSocial, Date fechaInicioActividades, String tipo, String actividadPrincipal, String direccion, String telefono, String correoElectronico, boolean esPleno, String documentacion, String fechaDocumentacion, String estadoDocumentacion, String usuarioDocumentacion) {
+    public SocioProtector(int cuit, String razonSocial, Date fechaInicioActividades, String tipo, String actividadPrincipal, String direccion, String telefono, String correoElectronico, boolean esPleno, String documentacion, String fechaDocumentacion, Boolean estadoDocumentacion, String usuarioDocumentacion) {
         this.cuit = cuit;
         this.razonSocial = razonSocial;
         this.fechaInicioActividades = fechaInicioActividades;
@@ -127,11 +144,11 @@ public class SocioProtector{
         this.fechaDocumentacion = fechaDocumentacion;
     }
 
-    public String getEstadoDocumentacion() {
+    public Boolean getEstadoDocumentacion() {
         return estadoDocumentacion;
     }
 
-    public void setEstadoDocumentacion(String estadoDocumentacion) {
+    public void setEstadoDocumentacion(Boolean estadoDocumentacion) {
         this.estadoDocumentacion = estadoDocumentacion;
     }
 
@@ -149,24 +166,36 @@ public class SocioProtector{
     }
 
     public String reclamarAporte(int idAporte){
-        String mensaje;
         for (Aportes a : listaDeAportes) {
             if(a.getIdAporte() == idAporte){
                 listaDeAportes.remove(a);
-                return mensaje = "aporte removido con exito";
+                return "aporte removido con exito";
             }
         }
-        return mensaje = "aporte no encontrado";
+        return"aporte no encontrado";
     }
 
     public String suscribirAccion(int idAccion){
-        String mensaje;
         for (Accion a: listaDeAcciones) {
-            if (a.getIdAccion() == idAccion){
+            if (a.getIdAccion() == idAccion && a.getTipo() == "B"){
                 accionesSuscritas.add(a);
-                return mensaje = "accion suscrita con exito";
+                return "accion suscrita con exito";
+            }
+            else{
+                return "los socios protectores solamente suscriben acciones tipo B";
             }
         }
-        return mensaje = "accion no encontrada";
+        return "accion no encontrada";
+    }
+
+    public String crearAccion (int idAccion, String tipo){
+        for (Accion a : listaDeAcciones){
+            if(a.getIdAccion() == idAccion){
+                return "la accion ya existe";
+            }
+        }
+        Accion nuevaAccion = new Accion(idAccion, tipo);
+        listaDeAcciones.add(nuevaAccion);
+        return "accion creada con exito";
     }
 }

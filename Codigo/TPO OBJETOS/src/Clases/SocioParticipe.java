@@ -1,5 +1,6 @@
 package Clases;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class SocioParticipe
@@ -15,8 +16,28 @@ public class SocioParticipe
     private boolean esPleno;
     private String documentacion;
     private Date fechaDocumentacion;
-    private String estadoDocumentacion;
+    private Boolean estadoDocumentacion;
     private String usuarioDocumentacion;
+    ArrayList<Accionistas> listaDeAccionistas = new ArrayList<Accionistas>();
+
+    public ArrayList<Accionistas> getListaDeAccionistas() {
+        return listaDeAccionistas;
+    }
+
+    public ArrayList<Accion> getListaDeAcciones() {
+        return listaDeAcciones;
+    }
+
+    public ArrayList<Accion> getAccionesSuscritas() {
+        return accionesSuscritas;
+    }
+
+    public LineaDeCredito getLinea() {
+        return linea;
+    }
+
+    ArrayList<Accion> listaDeAcciones = new ArrayList<Accion>();
+    ArrayList<Accion> accionesSuscritas = new ArrayList<Accion>();
     SociosController controlador;
     LineaDeCredito linea;
 
@@ -108,11 +129,11 @@ public class SocioParticipe
         this.fechaDocumentacion = fechaDocumentacion;
     }
 
-    public String getEstadoDocumentacion() {
+    public Boolean getEstadoDocumentacion() {
         return estadoDocumentacion;
     }
 
-    public void setEstadoDocumentacion(String estadoDocumentacion) {
+    public void setEstadoDocumentacion(Boolean estadoDocumentacion) {
         this.estadoDocumentacion = estadoDocumentacion;
     }
 
@@ -124,7 +145,31 @@ public class SocioParticipe
         this.usuarioDocumentacion = usuarioDocumentacion;
     }
 
-    public SocioParticipe(int cuit, String razonSocial, Date fechaInicioActividades, String tipo, String actividadPrincipal, String direccion, String telefono, String correoElectronico, boolean esPleno, String documentacion, Date fechaDocumentacion, String estadoDocumentacion, String usuarioDocumentacion) {
+    public String crearAccion (int idAccion, String tipo){
+        for (Accion a : listaDeAcciones){
+            if(a.getIdAccion() == idAccion){
+                return "la accion ya existe";
+            }
+        }
+        Accion nuevaAccion = new Accion(idAccion, tipo);
+        listaDeAcciones.add(nuevaAccion);
+        return "accion creada con exito";
+    }
+
+    public String suscribirAccion(int idAccion){
+        for (Accion a: listaDeAcciones) {
+            if (a.getIdAccion() == idAccion && a.getTipo() == "A"){
+                accionesSuscritas.add(a);
+                return "accion suscrita con exito";
+            }
+            else{
+                return "los socios participes solamente suscriben acciones tipo A";
+            }
+        }
+        return "accion no encontrada";
+    }
+
+    public SocioParticipe(int cuit, String razonSocial, Date fechaInicioActividades, String tipo, String actividadPrincipal, String direccion, String telefono, String correoElectronico, boolean esPleno, String documentacion, Date fechaDocumentacion, Boolean estadoDocumentacion, String usuarioDocumentacion) {
         this.cuit = cuit;
         this.razonSocial = razonSocial;
         this.fechaInicioActividades = fechaInicioActividades;

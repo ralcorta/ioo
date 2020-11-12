@@ -3830,6 +3830,7 @@
 											"model": {
 												"$ref": "AAAAAAF0O3ZFR1U/9m8="
 											},
+											"visible": false,
 											"font": "Arial;13;0",
 											"left": 1173,
 											"top": 844,
@@ -3849,7 +3850,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1173,
-											"top": 859,
+											"top": 844,
 											"width": 210.6279296875,
 											"height": 13,
 											"text": "-estado: String",
@@ -3866,7 +3867,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1173,
-											"top": 874,
+											"top": 859,
 											"width": 210.6279296875,
 											"height": 13,
 											"text": "-fechaCambioEstado: Date",
@@ -3883,7 +3884,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1173,
-											"top": 889,
+											"top": 874,
 											"width": 210.6279296875,
 											"height": 13,
 											"text": "-estadoAnterior: String",
@@ -3900,7 +3901,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1173,
-											"top": 904,
+											"top": 889,
 											"width": 210.6279296875,
 											"height": 13,
 											"text": "-usuarioModificador: String",
@@ -3915,9 +3916,10 @@
 											"model": {
 												"$ref": "AAAAAAF0dTvucTLi0lg="
 											},
+											"visible": false,
 											"font": "Arial;13;0",
 											"left": 1173,
-											"top": 919,
+											"top": 904,
 											"width": 210.6279296875,
 											"height": 13,
 											"text": "-garantia: String",
@@ -3934,7 +3936,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1173,
-											"top": 934,
+											"top": 904,
 											"width": 210.6279296875,
 											"height": 13,
 											"text": "-importe: Currency",
@@ -3951,7 +3953,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1173,
-											"top": 949,
+											"top": 919,
 											"width": 210.6279296875,
 											"height": 13,
 											"text": "-fechaCreacionOperacion: datetime",
@@ -3968,7 +3970,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1173,
-											"top": 964,
+											"top": 934,
 											"width": 210.6279296875,
 											"height": 13,
 											"text": "-fechaVencimiento: datetime",
@@ -3985,7 +3987,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1173,
-											"top": 979,
+											"top": 949,
 											"width": 210.6279296875,
 											"height": 13,
 											"text": "-cuotasPagadas: int",
@@ -4002,7 +4004,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1173,
-											"top": 994,
+											"top": 964,
 											"width": 210.6279296875,
 											"height": 13,
 											"text": "+cantidadTotalCuotas: int",
@@ -4019,7 +4021,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1173,
-											"top": 1009,
+											"top": 979,
 											"width": 210.6279296875,
 											"height": 13,
 											"text": "+importeUtilizado: float",
@@ -4030,7 +4032,7 @@
 									"left": 1168,
 									"top": 809,
 									"width": 220.6279296875,
-									"height": 218
+									"height": 188
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -4053,7 +4055,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1173,
-											"top": 1032,
+											"top": 1002,
 											"width": 210.6279296875,
 											"height": 13,
 											"text": "+modificarEstado(estado: String): int",
@@ -4070,7 +4072,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1173,
-											"top": 1047,
+											"top": 1017,
 											"width": 210.6279296875,
 											"height": 13,
 											"text": "+getTipoOperacion()",
@@ -4087,7 +4089,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1173,
-											"top": 1062,
+											"top": 1032,
 											"width": 210.6279296875,
 											"height": 13,
 											"text": "+getImporte()",
@@ -4104,7 +4106,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1173,
-											"top": 1077,
+											"top": 1047,
 											"width": 210.6279296875,
 											"height": 13,
 											"text": "+getPorcentajeComision()",
@@ -4121,7 +4123,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1173,
-											"top": 1092,
+											"top": 1062,
 											"width": 210.6279296875,
 											"height": 13,
 											"text": "+getTipoSocio()",
@@ -4138,7 +4140,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1173,
-											"top": 1107,
+											"top": 1077,
 											"width": 210.6279296875,
 											"height": 13,
 											"text": "+getFechaCreacion()",
@@ -4155,7 +4157,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1173,
-											"top": 1122,
+											"top": 1092,
 											"width": 210.6279296875,
 											"height": 13,
 											"text": "+getTasaDescuentoCheque()",
@@ -4172,7 +4174,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1173,
-											"top": 1137,
+											"top": 1107,
 											"width": 210.6279296875,
 											"height": 13,
 											"text": "+getMontoCheque()",
@@ -4189,7 +4191,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1173,
-											"top": 1152,
+											"top": 1122,
 											"width": 210.6279296875,
 											"height": 13,
 											"text": "+getComision()",
@@ -4206,7 +4208,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1173,
-											"top": 1167,
+											"top": 1137,
 											"width": 210.6279296875,
 											"height": 13,
 											"text": "+getEstado()",
@@ -4223,7 +4225,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1173,
-											"top": 1182,
+											"top": 1152,
 											"width": 210.6279296875,
 											"height": 13,
 											"text": "+getFechaVencimiento()",
@@ -4240,7 +4242,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1173,
-											"top": 1197,
+											"top": 1167,
 											"width": 210.6279296875,
 											"height": 13,
 											"text": "+getImporteUtilizado()",
@@ -4257,7 +4259,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1173,
-											"top": 1212,
+											"top": 1182,
 											"width": 210.6279296875,
 											"height": 13,
 											"text": "+getCuotasImpagas()",
@@ -4266,7 +4268,7 @@
 									],
 									"font": "Arial;13;0",
 									"left": 1168,
-									"top": 1027,
+									"top": 997,
 									"width": 220.6279296875,
 									"height": 203
 								},
@@ -12271,7 +12273,8 @@
 									"_parent": {
 										"$ref": "AAAAAAF0LSjUFJepWdA="
 									},
-									"name": "int monto"
+									"name": "int monto",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -12288,7 +12291,8 @@
 									"_parent": {
 										"$ref": "AAAAAAF0LSjUFJepWdA="
 									},
-									"name": "datetime fechaActual"
+									"name": "datetime fechaActual",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -12364,7 +12368,8 @@
 									"_parent": {
 										"$ref": "AAAAAAF1cXJivGOUdv0="
 									},
-									"name": "int id"
+									"name": "int id",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -14980,9 +14985,9 @@
 												"$ref": "AAAAAAF1BXEJSKzXrF4="
 											},
 											"font": "Arial;13;0",
-											"left": 75.97900390625,
+											"left": 71.58642578125,
 											"top": 5,
-											"width": 115.9052734375,
+											"width": 102.791015625,
 											"height": 13,
 											"text": "SequenceDiagram1"
 										},
@@ -14995,7 +15000,7 @@
 											"font": "Arial;13;1",
 											"left": 10,
 											"top": 5,
-											"width": 60.97900390625,
+											"width": 56.58642578125,
 											"height": 13,
 											"text": "interaction"
 										}
@@ -15828,9 +15833,9 @@
 											},
 											"fillColor": "#ffff00",
 											"font": "Arial;13;0",
-											"left": 283.578125,
+											"left": 282.11181640625,
 											"top": 149,
-											"width": 112.2998046875,
+											"width": 99.89013671875,
 											"height": 13,
 											"text": "por cada operacion"
 										},
@@ -15844,7 +15849,7 @@
 											"font": "Arial;13;1",
 											"left": 253,
 											"top": 149,
-											"width": 25.578125,
+											"width": 24.11181640625,
 											"height": 13,
 											"text": "loop"
 										},
@@ -15935,9 +15940,9 @@
 											},
 											"fillColor": "#00ffd4",
 											"font": "Arial;13;0",
-											"left": 309.07177734375,
+											"left": 307.61181640625,
 											"top": 269,
-											"width": 73.99169921875,
+											"width": 63.81005859375,
 											"height": 13,
 											"text": "si es cheque"
 										},
@@ -15951,7 +15956,7 @@
 											"font": "Arial;13;1",
 											"left": 285,
 											"top": 269,
-											"width": 19.07177734375,
+											"width": 17.61181640625,
 											"height": 13,
 											"text": "opt"
 										},
@@ -16836,9 +16841,9 @@
 											},
 											"fillColor": "#00ffd4",
 											"font": "Arial;13;0",
-											"left": 325.07177734375,
+											"left": 323.61181640625,
 											"top": 317,
-											"width": 109.392578125,
+											"width": 97.02734375,
 											"height": 13,
 											"text": "si esta monetizado"
 										},
@@ -16852,7 +16857,7 @@
 											"font": "Arial;13;1",
 											"left": 301,
 											"top": 317,
-											"width": 19.07177734375,
+											"width": 17.61181640625,
 											"height": 13,
 											"text": "opt"
 										},
@@ -17306,9 +17311,9 @@
 											},
 											"fillColor": "#ffff00",
 											"font": "Arial;13;0",
-											"left": 267.578125,
+											"left": 266.11181640625,
 											"top": 181,
-											"width": 120.970703125,
+											"width": 108.1865234375,
 											"height": 13,
 											"text": "cada linea de credito"
 										},
@@ -17322,7 +17327,7 @@
 											"font": "Arial;13;1",
 											"left": 237,
 											"top": 181,
-											"width": 25.578125,
+											"width": 24.11181640625,
 											"height": 13,
 											"text": "loop"
 										},
@@ -17412,9 +17417,9 @@
 												"$ref": "AAAAAAF1BZKTGyKE5ZE="
 											},
 											"font": "Arial;13;0",
-											"left": 70.97900390625,
+											"left": 66.58642578125,
 											"top": 5,
-											"width": 115.9052734375,
+											"width": 102.791015625,
 											"height": 13,
 											"text": "SequenceDiagram1"
 										},
@@ -17427,7 +17432,7 @@
 											"font": "Arial;13;1",
 											"left": 5,
 											"top": 5,
-											"width": 60.97900390625,
+											"width": 56.58642578125,
 											"height": 13,
 											"text": "interaction"
 										}
@@ -18705,9 +18710,9 @@
 											},
 											"fillColor": "#49ffe0",
 											"font": "Arial;13;0",
-											"left": 293.07177734375,
+											"left": 291.61181640625,
 											"top": 309,
-											"width": 136.8525390625,
+											"width": 125.19189453125,
 											"height": 13,
 											"text": "cuit es igual a cuitSocio"
 										},
@@ -18721,7 +18726,7 @@
 											"font": "Arial;13;1",
 											"left": 269,
 											"top": 309,
-											"width": 19.07177734375,
+											"width": 17.61181640625,
 											"height": 13,
 											"text": "opt"
 										},
@@ -19036,9 +19041,9 @@
 											},
 											"fillColor": "#ffff00",
 											"font": "Arial;13;0",
-											"left": 331.578125,
+											"left": 330.11181640625,
 											"top": 421,
-											"width": 89.89892578125,
+											"width": 79.31103515625,
 											"height": 13,
 											"text": "cada operacion"
 										},
@@ -19052,7 +19057,7 @@
 											"font": "Arial;13;1",
 											"left": 301,
 											"top": 421,
-											"width": 25.578125,
+											"width": 24.11181640625,
 											"height": 13,
 											"text": "loop"
 										},
@@ -19255,9 +19260,9 @@
 											},
 											"fillColor": "#49ffe0",
 											"font": "Arial;13;0",
-											"left": 349.07177734375,
+											"left": 347.61181640625,
 											"top": 605,
-											"width": 572.6064453125,
+											"width": 509.19970703125,
 											"height": 13,
 											"text": "si estadoOperacion es Monetizado y fechaCreacionOperacion esta entre fechaDesde y fechaHasta"
 										},
@@ -19271,7 +19276,7 @@
 											"font": "Arial;13;1",
 											"left": 325,
 											"top": 605,
-											"width": 19.07177734375,
+											"width": 17.61181640625,
 											"height": 13,
 											"text": "opt"
 										},
@@ -20267,9 +20272,9 @@
 												"$ref": "AAAAAAF1cUDu/UE4n/Y="
 											},
 											"font": "Arial;13;0",
-											"left": 70.97900390625,
+											"left": 66.58642578125,
 											"top": 5,
-											"width": 115.9052734375,
+											"width": 102.791015625,
 											"height": 13,
 											"text": "SequenceDiagram1"
 										},
@@ -20282,7 +20287,7 @@
 											"font": "Arial;13;1",
 											"left": 5,
 											"top": 5,
-											"width": 60.97900390625,
+											"width": 56.58642578125,
 											"height": 13,
 											"text": "interaction"
 										}
@@ -21574,9 +21579,9 @@
 											},
 											"fillColor": "#ffff00",
 											"font": "Arial;13;0",
-											"left": 307.578125,
+											"left": 306.11181640625,
 											"top": 181,
-											"width": 112.2998046875,
+											"width": 99.89013671875,
 											"height": 13,
 											"text": "por cada operacion"
 										},
@@ -21590,7 +21595,7 @@
 											"font": "Arial;13;1",
 											"left": 277,
 											"top": 181,
-											"width": 25.578125,
+											"width": 24.11181640625,
 											"height": 13,
 											"text": "loop"
 										},
@@ -21681,9 +21686,9 @@
 											},
 											"fillColor": "#00ffd4",
 											"font": "Arial;13;0",
-											"left": 341.07177734375,
+											"left": 339.61181640625,
 											"top": 429,
-											"width": 490.22021484375,
+											"width": 439.19775390625,
 											"height": 13,
 											"text": "tipoSocio es igual a tipoDeEmpresa y fechaCreacion entre fechaDesde y fechaHasta"
 										},
@@ -21697,7 +21702,7 @@
 											"font": "Arial;13;1",
 											"left": 317,
 											"top": 429,
-											"width": 19.07177734375,
+											"width": 17.61181640625,
 											"height": 13,
 											"text": "opt"
 										},
@@ -22012,9 +22017,9 @@
 											},
 											"fillColor": "#ffff00",
 											"font": "Arial;13;0",
-											"left": 387.578125,
+											"left": 386.11181640625,
 											"top": 477,
-											"width": 105.08251953125,
+											"width": 90.4892578125,
 											"height": 13,
 											"text": "para cada cheque"
 										},
@@ -22028,7 +22033,7 @@
 											"font": "Arial;13;1",
 											"left": 357,
 											"top": 477,
-											"width": 25.578125,
+											"width": 24.11181640625,
 											"height": 13,
 											"text": "loop"
 										},
@@ -24125,9 +24130,9 @@
 											},
 											"fillColor": "#ffff00",
 											"font": "Arial;13;0",
-											"left": 211.578125,
+											"left": 210.11181640625,
 											"top": 157,
-											"width": 92.78076171875,
+											"width": 81.1201171875,
 											"height": 13,
 											"text": "para cada socio"
 										},
@@ -24141,7 +24146,7 @@
 											"font": "Arial;13;1",
 											"left": 181,
 											"top": 157,
-											"width": 25.578125,
+											"width": 24.11181640625,
 											"height": 13,
 											"text": "loop"
 										},
@@ -24231,9 +24236,9 @@
 												"$ref": "AAAAAAF1ccXtHMYjsm4="
 											},
 											"font": "Arial;13;0",
-											"left": 70.97900390625,
+											"left": 66.58642578125,
 											"top": 5,
-											"width": 115.9052734375,
+											"width": 102.791015625,
 											"height": 13,
 											"text": "SequenceDiagram1"
 										},
@@ -24246,7 +24251,7 @@
 											"font": "Arial;13;1",
 											"left": 5,
 											"top": 5,
-											"width": 60.97900390625,
+											"width": 56.58642578125,
 											"height": 13,
 											"text": "interaction"
 										}
@@ -24977,9 +24982,9 @@
 											},
 											"fillColor": "#00ffd4",
 											"font": "Arial;13;0",
-											"left": 245.07177734375,
+											"left": 243.61181640625,
 											"top": 261,
-											"width": 138.29345703125,
+											"width": 126.27099609375,
 											"height": 13,
 											"text": "cuit es igual a cuit socio"
 										},
@@ -24993,7 +24998,7 @@
 											"font": "Arial;13;1",
 											"left": 221,
 											"top": 261,
-											"width": 19.07177734375,
+											"width": 17.61181640625,
 											"height": 13,
 											"text": "opt"
 										},
@@ -25645,9 +25650,9 @@
 											},
 											"fillColor": "#ffff00",
 											"font": "Arial;13;0",
-											"left": 283.578125,
+											"left": 282.11181640625,
 											"top": 309,
-											"width": 105.05712890625,
+											"width": 93.751953125,
 											"height": 13,
 											"text": "iterar operaciones"
 										},
@@ -25661,7 +25666,7 @@
 											"font": "Arial;13;1",
 											"left": 253,
 											"top": 309,
-											"width": 25.578125,
+											"width": 24.11181640625,
 											"height": 13,
 											"text": "loop"
 										},
@@ -26199,9 +26204,9 @@
 											},
 											"fillColor": "#00ffd4",
 											"font": "Arial;13;0",
-											"left": 309.07177734375,
+											"left": 307.61181640625,
 											"top": 509,
-											"width": 225.75146484375,
+											"width": 205.318359375,
 											"height": 13,
 											"text": "tipoOperacion es igual a tipoOperacion"
 										},
@@ -26215,7 +26220,7 @@
 											"font": "Arial;13;1",
 											"left": 285,
 											"top": 509,
-											"width": 19.07177734375,
+											"width": 17.61181640625,
 											"height": 13,
 											"text": "opt"
 										},
@@ -27982,9 +27987,9 @@
 												"$ref": "AAAAAAF1ce30NulLlN4="
 											},
 											"font": "Arial;13;0",
-											"left": 70.97900390625,
+											"left": 66.58642578125,
 											"top": 5,
-											"width": 115.9052734375,
+											"width": 102.791015625,
 											"height": 13,
 											"text": "SequenceDiagram1"
 										},
@@ -27997,7 +28002,7 @@
 											"font": "Arial;13;1",
 											"left": 5,
 											"top": 5,
-											"width": 60.97900390625,
+											"width": 56.58642578125,
 											"height": 13,
 											"text": "interaction"
 										}
@@ -28948,9 +28953,9 @@
 											},
 											"fillColor": "#ffff00",
 											"font": "Arial;13;0",
-											"left": 235.578125,
+											"left": 234.11181640625,
 											"top": 173,
-											"width": 71.078125,
+											"width": 64.171875,
 											"height": 13,
 											"text": "iterar socios"
 										},
@@ -28964,7 +28969,7 @@
 											"font": "Arial;13;1",
 											"left": 205,
 											"top": 173,
-											"width": 25.578125,
+											"width": 24.11181640625,
 											"height": 13,
 											"text": "loop"
 										},
@@ -29388,9 +29393,9 @@
 											},
 											"fillColor": "#ffff00",
 											"font": "Arial;13;0",
-											"left": 755.578125,
+											"left": 754.11181640625,
 											"top": 365,
-											"width": 157.1015625,
+											"width": 137.0810546875,
 											"height": 13,
 											"text": "para todas las operaciones"
 										},
@@ -29404,7 +29409,7 @@
 											"font": "Arial;13;1",
 											"left": 725,
 											"top": 365,
-											"width": 25.578125,
+											"width": 24.11181640625,
 											"height": 13,
 											"text": "loop"
 										},
@@ -29607,9 +29612,9 @@
 											},
 											"fillColor": "#00ffd4",
 											"font": "Arial;13;0",
-											"left": 789.07177734375,
+											"left": 787.61181640625,
 											"top": 557,
-											"width": 336.30224609375,
+											"width": 304.20849609375,
 											"height": 13,
 											"text": "estado monetizado y fechaVencimiento mayor a fechaHoy"
 										},
@@ -29623,7 +29628,7 @@
 											"font": "Arial;13;1",
 											"left": 765,
 											"top": 557,
-											"width": 19.07177734375,
+											"width": 17.61181640625,
 											"height": 13,
 											"text": "opt"
 										},
@@ -30271,9 +30276,9 @@
 											},
 											"fillColor": "#00ffd4",
 											"font": "Arial;13;0",
-											"left": 813.07177734375,
+											"left": 811.61181640625,
 											"top": 677,
-											"width": 155.66064453125,
+											"width": 143.60009765625,
 											"height": 13,
 											"text": "tipoOperacion igual a tipo1"
 										},
@@ -30287,7 +30292,7 @@
 											"font": "Arial;13;1",
 											"left": 789,
 											"top": 677,
-											"width": 19.07177734375,
+											"width": 17.61181640625,
 											"height": 13,
 											"text": "opt"
 										},
@@ -30490,9 +30495,9 @@
 											},
 											"fillColor": "#00ffd4",
 											"font": "Arial;13;0",
-											"left": 813.07177734375,
+											"left": 811.61181640625,
 											"top": 837,
-											"width": 155.66064453125,
+											"width": 143.60009765625,
 											"height": 13,
 											"text": "tipoOperacion igual a tipo2"
 										},
@@ -30506,7 +30511,7 @@
 											"font": "Arial;13;1",
 											"left": 789,
 											"top": 837,
-											"width": 19.07177734375,
+											"width": 17.61181640625,
 											"height": 13,
 											"text": "opt"
 										},
@@ -30820,9 +30825,9 @@
 											},
 											"fillColor": "#00ffd4",
 											"font": "Arial;13;0",
-											"left": 813.07177734375,
+											"left": 811.61181640625,
 											"top": 989,
-											"width": 155.66064453125,
+											"width": 143.60009765625,
 											"height": 13,
 											"text": "tipoOperacion igual a tipo3"
 										},
@@ -30836,7 +30841,7 @@
 											"font": "Arial;13;1",
 											"left": 789,
 											"top": 989,
-											"width": 19.07177734375,
+											"width": 17.61181640625,
 											"height": 13,
 											"text": "opt"
 										},
@@ -31595,9 +31600,9 @@
 											},
 											"fillColor": "#00ffd4",
 											"font": "Arial;13;0",
-											"left": 789.07177734375,
+											"left": 787.61181640625,
 											"top": 1405,
-											"width": 282.099609375,
+											"width": 258.3974609375,
 											"height": 13,
 											"text": "estadoOperacion igual a Con Certificado Emitido"
 										},
@@ -31611,7 +31616,7 @@
 											"font": "Arial;13;1",
 											"left": 765,
 											"top": 1405,
-											"width": 19.07177734375,
+											"width": 17.61181640625,
 											"height": 13,
 											"text": "opt"
 										},
