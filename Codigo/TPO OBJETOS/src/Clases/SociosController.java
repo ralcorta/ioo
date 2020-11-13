@@ -21,12 +21,13 @@ public class SociosController
 
     public void calcularComisionSocio(String tipoOperacion, int cuit){
 
-    }
+    }*/
 
     public void calcularMoraSocio(int cuit) {
 
     }
 
+    /*
     public void consultarRiesgo(int cuit) {
 
     }*/

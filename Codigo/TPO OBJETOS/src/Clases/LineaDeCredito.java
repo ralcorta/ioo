@@ -5,6 +5,7 @@ import java.util.Currency;
 import java.util.Date;
 
 public class LineaDeCredito {
+    private int idLineaCredito;
     private Currency importeMaximo;
     private Date fechaDeVigencia;
     private boolean estadoAprobacion;
@@ -15,13 +16,22 @@ public class LineaDeCredito {
     ArrayList<Operacion> operaciones = new ArrayList<Operacion>();
 
 
-    public LineaDeCredito(Currency importeMaximo, Date fechaDeVigencia, boolean estadoAprobacion, Date fechaCambioEstado, String estadoAnterior, String usuarioModificador) {
+    public LineaDeCredito(int idLineaCredito, Currency importeMaximo, Date fechaDeVigencia, boolean estadoAprobacion, Date fechaCambioEstado, String estadoAnterior, String usuarioModificador) {
+        this.idLineaCredito = idLineaCredito;
         this.importeMaximo = importeMaximo;
         this.fechaDeVigencia = fechaDeVigencia;
         this.estadoAprobacion = estadoAprobacion;
         this.fechaCambioEstado = fechaCambioEstado;
         this.estadoAnterior = estadoAnterior;
         this.usuarioModificador = usuarioModificador;
+    }
+
+    public int getIdLineaCredito() {
+        return idLineaCredito;
+    }
+
+    public void setIdLineaCredito(int idLineaCredito) {
+        this.idLineaCredito = idLineaCredito;
     }
 
     public Currency getImporteMaximo() {
@@ -71,4 +81,7 @@ public class LineaDeCredito {
     public void setUsuarioModificador(String usuarioModificador) {
         this.usuarioModificador = usuarioModificador;
     }
+
+
+
 }
