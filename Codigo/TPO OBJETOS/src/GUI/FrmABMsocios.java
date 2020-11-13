@@ -8,22 +8,37 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class FrmABMsocios extends JDialog{
+    private FrmABMsocios self;
     private JButton nuevoSocioButton;
-    private JTable tblSocios;
     private JPanel panelSocios;
+    private JPanel panelTituloSocios;
+    private JPanel panelTablaSocios;
+    private JTable sociosTable;
 
     public FrmABMsocios(Window owner) {
-        super(owner, "Demo de listas");
+        super(owner, "Socios");
 
         this.setContentPane(panelSocios);
         this.setSize(300, 300);
 
-        //No permite volver a la pantalla anterior HASTA cerrar esta
         this.setModal(true);
-        //Establezco el comportamiento a la hora de cerrarse
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        //Que la pantalla inicie CENTRADA
+
         this.setLocationRelativeTo(null);
+        this.eventos();
+
+        this.self = this;
+    }
+
+    private void eventos()
+    {
+        nuevoSocioButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                FrmDetalleSocio frame = new FrmDetalleSocio(self);
+                frame.setVisible(true);
+            }
+        });
     }
 }
 

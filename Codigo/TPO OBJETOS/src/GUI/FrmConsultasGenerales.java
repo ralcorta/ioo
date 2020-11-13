@@ -17,13 +17,12 @@ public class FrmConsultasGenerales extends JDialog{
         super(owner, "Demo de listas");
 
         this.setContentPane(frmConsultasGenerales);
-        this.setSize(300, 300);
+        //this.setSize(300, 300);
 
-        //No permite volver a la pantalla anterior HASTA cerrar esta
+        this.pack();
+
         this.setModal(true);
-        //Establezco el comportamiento a la hora de cerrarse
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        //Que la pantalla inicie CENTRADA
         this.setLocationRelativeTo(null);
     }
 }

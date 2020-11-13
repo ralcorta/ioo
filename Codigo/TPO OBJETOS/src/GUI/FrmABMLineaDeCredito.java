@@ -3,11 +3,11 @@ package GUI;
 import javax.swing.*;
 import java.awt.*;
 
-public class FrmLineaDeCredito extends JDialog {
+public class FrmABMLineaDeCredito extends JDialog {
     private JPanel frmLineaDeCredito;
     private JTable tblSociosPartPlenos;
 
-    public FrmLineaDeCredito(Window owner) {
+    public FrmABMLineaDeCredito(Window owner) {
         super(owner, "Demo de listas");
 
         this.setContentPane(frmLineaDeCredito);

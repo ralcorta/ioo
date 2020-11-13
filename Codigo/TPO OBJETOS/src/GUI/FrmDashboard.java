@@ -64,7 +64,7 @@ public class FrmDashboard extends JFrame{
         LINEASDECRÉDITOButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                FrmLineaDeCredito frame = new FrmLineaDeCredito(self);
+                FrmABMLineaDeCredito frame = new FrmABMLineaDeCredito(self);
                 frame.setVisible(true);
             }
         });
@@ -72,7 +72,7 @@ public class FrmDashboard extends JFrame{
         OPERACIONESButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                FrmOperaciones frame = new FrmOperaciones(self);
+                FrmABMOperaciones frame = new FrmABMOperaciones(self);
                 frame.setVisible(true);
             }
         });
