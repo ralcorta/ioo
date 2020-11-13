@@ -1,6 +1,8 @@
 package GUI;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class FrmDashboard extends JFrame{
     private FrmDashboard self;
@@ -16,8 +18,6 @@ public class FrmDashboard extends JFrame{
     {
         super(titulo);
 
-
-
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException e) {
@@ -31,16 +31,55 @@ public class FrmDashboard extends JFrame{
         }
 
         this.setContentPane(panelPrincipal);
+        this.setSize(600, 600);
+
         //Establezco el comportamiento a la hora de cerrarse
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         //Que la pantalla inicie CENTRADA
         this.setLocationRelativeTo(null);
 
+        this.eventos();
+
         this.self = this;
     }
 
+    private void eventos()
+    {
+        ABMSOCIOSButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                FrmABMsocios frame = new FrmABMsocios(self);
+                frame.setVisible(true);
+            }
+        });
+
+        CONSULTASButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                FrmConsultasGenerales frame = new FrmConsultasGenerales(self);
+                frame.setVisible(true);
+            }
+        });
+
+        LINEASDECRÉDITOButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                FrmLineaDeCredito frame = new FrmLineaDeCredito(self);
+                frame.setVisible(true);
+            }
+        });
+
+        OPERACIONESButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                FrmOperaciones frame = new FrmOperaciones(self);
+                frame.setVisible(true);
+            }
+        });
+    }
+
     public static void main(String[] args) {
-        FrmDashboard frame = new FrmDashboard("Pija");
+        FrmDashboard frame = new FrmDashboard("SGR");
         frame.setVisible(true);
     }
 

@@ -8,5 +8,5 @@ public class FrmDetalleLineaDeCredito {
     private JTextField textField3;
     private JButton guardarButton;
     private JButton cancelarButton;
-    private JSpinner.DateEditor spinner$DateEditor2;
+    private JTextField fechaVigenciaField;
 }

@@ -1,18 +1,29 @@
 package GUI;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class FrmABMsocios extends JFrame{
+public class FrmABMsocios extends JDialog{
     private JButton nuevoSocioButton;
     private JTable tblSocios;
     private JPanel panelSocios;
 
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
-    }
-    public static void main(String[] args) {
-        FrmABMsocios frame = new FrmABMsocios();
-        frame.setVisible(true);
+    public FrmABMsocios(Window owner) {
+        super(owner, "Demo de listas");
+
+        this.setContentPane(panelSocios);
+        this.setSize(300, 300);
+
+        //No permite volver a la pantalla anterior HASTA cerrar esta
+        this.setModal(true);
+        //Establezco el comportamiento a la hora de cerrarse
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        //Que la pantalla inicie CENTRADA
+        this.setLocationRelativeTo(null);
     }
 }
 

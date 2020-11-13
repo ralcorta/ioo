@@ -2,7 +2,7 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="GUI.FrmDashboard">
   <grid id="27dc6" binding="panelPrincipal" layout-manager="BorderLayout" hgap="0" vgap="0">
     <constraints>
-      <xy x="20" y="20" width="610" height="558"/>
+      <xy x="20" y="20" width="529" height="438"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -18,11 +18,11 @@
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <background color="-4742344"/>
+              <background color="-15660001"/>
               <enabled value="true"/>
-              <font size="28"/>
-              <foreground color="-4475634"/>
-              <text value="DASHBOARD"/>
+              <font name="JetBrains Mono" size="28" style="1"/>
+              <foreground color="-15660001"/>
+              <text value="Sistema de Gestión SGR"/>
             </properties>
           </component>
           <hspacer id="48688">
@@ -48,7 +48,9 @@
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="ABM SOCIOS"/>
+              <font name="Calibri" size="22"/>
+              <hideActionText value="false"/>
+              <text value="SOCIOS"/>
             </properties>
           </component>
           <component id="c7503" class="javax.swing.JButton" binding="OPERACIONESButton" default-binding="true">
@@ -56,15 +58,8 @@
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <font name="Calibri" size="22"/>
               <text value="OPERACIONES"/>
-            </properties>
-          </component>
-          <component id="fdbbb" class="javax.swing.JButton" binding="LINEASDECRÉDITOButton" default-binding="true">
-            <constraints>
-              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value="LINEAS DE CRÉDITO"/>
             </properties>
           </component>
           <component id="b5081" class="javax.swing.JButton" binding="CONSULTASButton" default-binding="true">
@@ -72,7 +67,17 @@
               <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <font name="Calibri" size="22"/>
               <text value="CONSULTAS"/>
+            </properties>
+          </component>
+          <component id="fdbbb" class="javax.swing.JButton" binding="LINEASDECRÉDITOButton" default-binding="true">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="Calibri" size="22"/>
+              <text value="LINEAS DE CRÉDITO"/>
             </properties>
           </component>
         </children>
