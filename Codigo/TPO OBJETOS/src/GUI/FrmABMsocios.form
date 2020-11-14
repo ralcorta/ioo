@@ -47,18 +47,25 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="60d90" class="javax.swing.JTable" binding="sociosTable">
+          <scrollpane id="55cd6">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                <preferred-size width="150" height="50"/>
-              </grid>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <autoCreateRowSorter value="false"/>
               <background color="-990521"/>
-              <font/>
             </properties>
-          </component>
+            <border type="none"/>
+            <children>
+              <component id="60d90" class="javax.swing.JTable" binding="sociosTable">
+                <constraints/>
+                <properties>
+                  <autoCreateRowSorter value="false"/>
+                  <background color="-990521"/>
+                  <font/>
+                </properties>
+              </component>
+            </children>
+          </scrollpane>
         </children>
       </grid>
     </children>

@@ -1,5 +1,7 @@
 package GUI;
 
+import Clases.SociosController;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -34,12 +36,8 @@ public class FrmDashboard extends JFrame{
         //this.setSize(600, 600);
 
         LINEASDECRÉDITOButton.setText("<html><center>"+"Linea de"+"<br>"+"Credito"+"</center></html>");
-
         this.pack();
-
-        //Establezco el comportamiento a la hora de cerrarse
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        //Que la pantalla inicie CENTRADA
         this.setLocationRelativeTo(null);
 
         this.eventos();

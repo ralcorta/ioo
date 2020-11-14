@@ -1,11 +1,13 @@
 package GUI;
 
+import Clases.SociosController;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class FrmDetalleSocio extends JDialog{
+public class FrmDetalleSocio extends JDialog {
     private FrmDetalleSocio self;
     private JPanel panelTituloDetalleSocio;
     private JTextField textCuitSocio;
@@ -49,5 +51,6 @@ public class FrmDetalleSocio extends JDialog{
                 dispose();
             }
         });
+
     }
 }
