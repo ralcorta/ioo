@@ -31,7 +31,11 @@ public class FrmDashboard extends JFrame{
         }
 
         this.setContentPane(panelPrincipal);
-        this.setSize(600, 600);
+        //this.setSize(600, 600);
+
+        LINEASDECRÉDITOButton.setText("<html><center>"+"Linea de"+"<br>"+"Credito"+"</center></html>");
+
+        this.pack();
 
         //Establezco el comportamiento a la hora de cerrarse
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

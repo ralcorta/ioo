@@ -19,7 +19,7 @@ public class FrmABMsocios extends JDialog{
         super(owner, "Socios");
 
         this.setContentPane(panelSocios);
-        this.setSize(300, 300);
+        this.setSize(400, 600);
 
         this.setModal(true);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

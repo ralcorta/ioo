@@ -6,18 +6,17 @@ import java.awt.*;
 public class FrmABMLineaDeCredito extends JDialog {
     private JPanel frmLineaDeCredito;
     private JTable tblSociosPartPlenos;
+    private JPanel pnlTabla;
 
     public FrmABMLineaDeCredito(Window owner) {
-        super(owner, "Demo de listas");
+        super(owner, "Lineas de Credito");
 
         this.setContentPane(frmLineaDeCredito);
-        this.setSize(300, 300);
+        this.setSize(400, 600);
 
-        //No permite volver a la pantalla anterior HASTA cerrar esta
+
         this.setModal(true);
-        //Establezco el comportamiento a la hora de cerrarse
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        //Que la pantalla inicie CENTRADA
         this.setLocationRelativeTo(null);
     }
 }

@@ -2,20 +2,32 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="GUI.FrmDashboard">
   <grid id="27dc6" binding="panelPrincipal" layout-manager="BorderLayout" hgap="0" vgap="0">
     <constraints>
-      <xy x="20" y="20" width="529" height="438"/>
+      <xy x="20" y="20" width="529" height="500"/>
     </constraints>
-    <properties/>
+    <properties>
+      <maximumSize width="500" height="410"/>
+      <minimumSize width="500" height="410"/>
+      <opaque value="true"/>
+      <preferredSize width="500" height="410"/>
+    </properties>
+    <clientProperties>
+      <html.disable class="java.lang.Boolean" value="false"/>
+    </clientProperties>
     <border type="none"/>
     <children>
-      <grid id="551b3" binding="panelTitulo" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="551b3" binding="panelTitulo" layout-manager="GridLayoutManager" row-count="5" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints border-constraint="North"/>
-        <properties/>
+        <properties>
+          <background color="-990999"/>
+          <doubleBuffered value="true"/>
+          <foreground color="-8805513"/>
+        </properties>
         <border type="none"/>
         <children>
           <component id="cd928" class="javax.swing.JLabel">
             <constraints>
-              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <background color="-15660001"/>
@@ -27,56 +39,128 @@
           </component>
           <hspacer id="48688">
             <constraints>
-              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
           </hspacer>
           <hspacer id="dbf60">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
           </hspacer>
+          <grid id="e92e4" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children/>
+          </grid>
+          <grid id="c52d1" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children/>
+          </grid>
+          <grid id="d0af0" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children/>
+          </grid>
+          <grid id="563e" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children/>
+          </grid>
         </children>
       </grid>
       <grid id="dbf07" binding="panelBotones" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints border-constraint="Center"/>
-        <properties/>
+        <properties>
+          <background color="-990999"/>
+          <maximumSize width="514" height="365"/>
+        </properties>
         <border type="none"/>
         <children>
           <component id="ca73" class="javax.swing.JButton" binding="ABMSOCIOSButton" default-binding="true">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="230" height="170"/>
+                <preferred-size width="230" height="170"/>
+                <maximum-size width="230" height="170"/>
+              </grid>
             </constraints>
             <properties>
+              <autoscrolls value="false"/>
+              <background color="-990521"/>
+              <doubleBuffered value="true"/>
+              <focusCycleRoot value="false"/>
+              <focusPainted value="false"/>
               <font name="Calibri" size="22"/>
               <hideActionText value="false"/>
-              <text value="SOCIOS"/>
+              <icon value="resource/socio.png"/>
+              <text value="Socios"/>
             </properties>
           </component>
           <component id="c7503" class="javax.swing.JButton" binding="OPERACIONESButton" default-binding="true">
             <constraints>
-              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="230" height="170"/>
+                <preferred-size width="230" height="170"/>
+                <maximum-size width="230" height="170"/>
+              </grid>
             </constraints>
             <properties>
+              <background color="-990521"/>
+              <focusPainted value="false"/>
               <font name="Calibri" size="22"/>
-              <text value="OPERACIONES"/>
+              <icon value="resource/operaciones.png"/>
+              <text value="Operaciones"/>
             </properties>
           </component>
           <component id="b5081" class="javax.swing.JButton" binding="CONSULTASButton" default-binding="true">
             <constraints>
-              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="230" height="170"/>
+                <preferred-size width="230" height="170"/>
+                <maximum-size width="230" height="170"/>
+              </grid>
             </constraints>
             <properties>
+              <background color="-990521"/>
+              <defaultCapable value="true"/>
+              <focusPainted value="false"/>
               <font name="Calibri" size="22"/>
-              <text value="CONSULTAS"/>
+              <icon value="resource/consulta.png"/>
+              <text value="Consultas"/>
             </properties>
           </component>
           <component id="fdbbb" class="javax.swing.JButton" binding="LINEASDECRÉDITOButton" default-binding="true">
             <constraints>
-              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="230" height="170"/>
+                <preferred-size width="230" height="170"/>
+                <maximum-size width="230" height="170"/>
+              </grid>
             </constraints>
             <properties>
+              <autoscrolls value="true"/>
+              <background color="-990521"/>
+              <focusPainted value="false"/>
               <font name="Calibri" size="22"/>
+              <icon value="resource/lineadecredito.png"/>
               <text value="LINEAS DE CRÉDITO"/>
             </properties>
           </component>

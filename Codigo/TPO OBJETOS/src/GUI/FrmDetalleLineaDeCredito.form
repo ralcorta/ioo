@@ -10,10 +10,10 @@
       <component id="f603e" class="javax.swing.JLabel">
         <constraints border-constraint="North"/>
         <properties>
-          <font size="22"/>
+          <font name="JetBrains Mono" size="22"/>
           <horizontalAlignment value="0"/>
           <horizontalTextPosition value="0"/>
-          <text value="DETALLE LINEA DE CREDITO"/>
+          <text value="Detalle de Linea de Credito"/>
         </properties>
       </component>
       <component id="7f495" class="javax.swing.JLabel">

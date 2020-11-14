@@ -2,6 +2,8 @@ package GUI;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class FrmDetalleOperacion extends JDialog {
     private JPanel pnlPrincipal;
@@ -22,8 +24,8 @@ public class FrmDetalleOperacion extends JDialog {
     private JTextField textFechaAcrdPrestamo;
     private JTextField textCantCuotasPrestamo;
     private JTextField textSistemaBancarioPrestamo;
-    private JButton GUARDAROPERACIONButton;
-    private JButton CANCELAROPERACIONButton;
+    private JButton guardarButton;
+    private JButton cancelarButton;
 
     public FrmDetalleOperacion(Window owner) {
         super(owner, "Detalle de Operación");
@@ -36,5 +38,17 @@ public class FrmDetalleOperacion extends JDialog {
         this.setModal(true);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
+
+        this.eventos();
+    }
+
+    private void eventos()
+    {
+        cancelarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                dispose();
+            }
+        });
     }
 }

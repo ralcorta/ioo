@@ -17,7 +17,7 @@ public class FrmABMOperaciones extends JDialog{
         super(owner, "Operaciones");
 
         this.setContentPane(panelOperaciones);
-        this.setSize(300, 300);
+        this.setSize(400, 600);
 
         this.setModal(true);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
