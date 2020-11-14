@@ -6,7 +6,7 @@ import java.util.Date;
 public class SociosController
 {
     ArrayList <SocioProtector> listaDeSociosProtectores = new ArrayList<SocioProtector>();
-    ArrayList <SocioParticipe> listaDeSociosParticipes = new ArrayList <SocioParticipe>();
+    public ArrayList <SocioParticipe> listaDeSociosParticipes = new ArrayList <SocioParticipe>();
     ArrayList <Accionistas> listaDeAccionistas = new ArrayList<Accionistas>();
     OperacionController controladorOperaciones;
 

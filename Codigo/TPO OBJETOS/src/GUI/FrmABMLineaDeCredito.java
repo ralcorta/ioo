@@ -7,6 +7,7 @@ public class FrmABMLineaDeCredito extends JDialog {
     private JPanel frmLineaDeCredito;
     private JTable tblSociosPartPlenos;
     private JPanel pnlTabla;
+    private JButton renovarLineaDeCreditoButton;
 
     public FrmABMLineaDeCredito(Window owner) {
         super(owner, "Lineas de Credito");

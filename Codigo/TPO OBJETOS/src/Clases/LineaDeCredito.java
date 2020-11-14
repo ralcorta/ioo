@@ -12,10 +12,13 @@ public class LineaDeCredito {
     private Date fechaCambioEstado;
     private String estadoAnterior;
     private String usuarioModificador;
-    SocioParticipe socio;
+    private SocioParticipe socio;
     ArrayList<Operacion> operaciones = new ArrayList<Operacion>();
 
 
+    public SocioParticipe getSocio() {
+        return socio;
+    }
     public LineaDeCredito(int idLineaCredito, Currency importeMaximo, Date fechaDeVigencia, boolean estadoAprobacion, Date fechaCambioEstado, String estadoAnterior, String usuarioModificador) {
         this.idLineaCredito = idLineaCredito;
         this.importeMaximo = importeMaximo;

@@ -19,14 +19,15 @@ public class Operacion {
     private int cuotasPagadas;
     private int cantidadTotalCuotas;
     private float importeUtilizado;
-    LineaDeCredito linea;
+    private LineaDeCredito linea;
     Comision comision;
     CertificadoDeGarantia certificadoGarantia;
     ArrayList <Cheque> cheques = new ArrayList<Cheque>();
     ArrayList <Prestamo> prestamos = new ArrayList<Prestamo>();
     ArrayList <CuentaCorriente> cuentasCorrientes = new ArrayList<CuentaCorriente>();
 
-    public Operacion(int idOperacion, String tipoDeOperacion, String subtipoOperacion, String estado, Date fechaCambioEstado, String estadoAnterior, String usuarioModificador, String garantia, Currency importe, Date fechaCreacionOperacion, Date fechaVencimiento, int cuotasPagadas, int cantidadTotalCuotas, float importeUtilizado) {
+    public Operacion(LineaDeCredito linea, int idOperacion, String tipoDeOperacion, String subtipoOperacion, String estado, Date fechaCambioEstado, String estadoAnterior, String usuarioModificador, String garantia, Currency importe, Date fechaCreacionOperacion, Date fechaVencimiento, int cuotasPagadas, int cantidadTotalCuotas, float importeUtilizado) {
+        this.linea = linea;
         this.idOperacion = idOperacion;
         this.tipoDeOperacion = tipoDeOperacion;
         this.subtipoOperacion = subtipoOperacion;
@@ -149,6 +150,10 @@ public class Operacion {
 
     public float getImporteUtilizado() {
         return importeUtilizado;
+    }
+
+    public LineaDeCredito getLinea() {
+        return linea;
     }
 
     public void setImporteUtilizado(float importeUtilizado) {

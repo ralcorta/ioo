@@ -1,11 +1,16 @@
 package GUI;
 
+import Clases.SocioParticipe;
+import Clases.SociosController;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
-public class FrmDetalleOperacion extends JDialog {
+public class FrmDetalleOperacion extends JDialog{
+    private FrmDetalleOperacion self;
     private JPanel pnlPrincipal;
     private JTextField textTipoOperacion;
     private JTextField textEstado;
@@ -26,8 +31,13 @@ public class FrmDetalleOperacion extends JDialog {
     private JTextField textSistemaBancarioPrestamo;
     private JButton guardarButton;
     private JButton cancelarButton;
+    private JTextField textField1;
+    private JButton buttonLupa;
+    private JPanel panelDetalle;
+    private SociosController controlador;
+    private ArrayList<SocioParticipe> sociosParticipes = controlador.listaDeSociosParticipes;
 
-    public FrmDetalleOperacion(Window owner) {
+    public FrmDetalleOperacion(Window owner, SociosController controlador) {
         super(owner, "Detalle de Operación");
 
         this.setContentPane(pnlPrincipal);
@@ -40,10 +50,27 @@ public class FrmDetalleOperacion extends JDialog {
         this.setLocationRelativeTo(null);
 
         this.eventos();
+        this.self = this;
     }
 
     private void eventos()
     {
+
+        buttonLupa.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String cuit = JOptionPane.showInputDialog(self,"Ingrese el CUIT del Socio:");
+                if(!cuit.matches("[0-9]+")){
+                    // JOptionPane.showMessageDialog(null,"","",JOptionPane.ERROR_MESSAGE);
+                }
+                for (SocioParticipe s : sociosParticipes) {
+                    if (s.getCuit() == Integer.parseInt(cuit)){
+
+                    }
+                }
+            }
+        });
+
         cancelarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {

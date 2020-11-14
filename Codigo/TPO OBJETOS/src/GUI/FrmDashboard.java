@@ -16,7 +16,7 @@ public class FrmDashboard extends JFrame{
     private JPanel panelTitulo;
     private JPanel panelBotones;
 
-    public FrmDashboard(String titulo)
+    public FrmDashboard(String titulo, SociosController controlador)
     {
         super(titulo);
 
@@ -41,7 +41,6 @@ public class FrmDashboard extends JFrame{
         this.setLocationRelativeTo(null);
 
         this.eventos();
-
         this.self = this;
     }
 
@@ -81,8 +80,10 @@ public class FrmDashboard extends JFrame{
     }
 
     public static void main(String[] args) {
-        FrmDashboard frame = new FrmDashboard("SGR");
+        SociosController controlador = new SociosController();
+        FrmDashboard frame = new FrmDashboard("SGR", controlador);
         frame.setVisible(true);
+
     }
 
 }

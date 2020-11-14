@@ -1,5 +1,7 @@
 package GUI;
 
+import Clases.SociosController;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -15,7 +17,7 @@ public class FrmDetalleAccionista extends JDialog {
     private JButton cancelarButton;
     private JTextField textCUITSocio;
 
-    public FrmDetalleAccionista(Window owner) {
+    public FrmDetalleAccionista(Window owner, SociosController controlador) {
         super(owner, "Detalle de Accionista");
         this.setContentPane(panelCreacionAccionista);
         //this.setSize(300, 300);

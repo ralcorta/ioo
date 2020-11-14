@@ -9,4 +9,5 @@ public class FrmDetalleLineaDeCredito {
     private JButton guardarButton;
     private JButton cancelarButton;
     private JTextField fechaVigenciaField;
+    private JPanel panelDetalleLinea;
 }

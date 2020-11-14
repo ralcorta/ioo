@@ -22,7 +22,7 @@
           <text value="NOMBRE Y CUIT DEL SOCIO QUE ESTA SIENDO MODIFICADO"/>
         </properties>
       </component>
-      <grid id="5095" layout-manager="FormLayout">
+      <grid id="5095" binding="panelDetalleLinea" layout-manager="FormLayout">
         <rowspec value="center:d:noGrow"/>
         <rowspec value="top:4dlu:noGrow"/>
         <rowspec value="center:max(d;4px):noGrow"/>
