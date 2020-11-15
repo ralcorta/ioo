@@ -12,7 +12,17 @@ public class OperacionController{
 
     public void crearLineaDeCredito(int idLineaCredito, String importeMaximo, Date fechaDeVigencia, boolean estadoAprobacion, SocioParticipe socio){
         LineaDeCredito lineaNueva = new LineaDeCredito(idLineaCredito, importeMaximo, fechaDeVigencia, estadoAprobacion, socio);
+        socio.setLinea(lineaNueva);
         lineasDeCredito.add(lineaNueva);
+    }
+
+    public void updateLineaDeCredito(String importeMaximo, SocioParticipe socio){
+        for(LineaDeCredito ldc : lineasDeCredito) {
+            if (ldc.getSocio().getCuit().equals(socio.getCuit())) {
+                ldc.setImporteMaximo(importeMaximo);
+                socio.setLinea(ldc);
+            }
+        }
     }
 
     public void cargarOperacion(LineaDeCredito lc,int idOperacion, String tipoDeOperacion, String subtipoOperacion, String estado, Date fechaCambioEstado, String estadoAnterior, String usuarioModificador, String garantia, Currency importe, Date fechaCreacionOperacion, Date fechaVencimiento, int cuotasPagadas, int cantidadTotalCuotas, float importeUtilizado){
@@ -37,7 +47,7 @@ public class OperacionController{
         }
     }
 
-    public void renovarLineaDeCredito(String cuit){
+    public int renovarLineaDeCredito(String cuit){
         boolean encontrado=false;
         Date todayDate = Calendar.getInstance().getTime();
         LineaDeCredito auxLinea = null;
@@ -52,8 +62,11 @@ public class OperacionController{
             if(auxLinea.getFechaDeVigencia().before(todayDate)){
                 todayDate.setYear(todayDate.getYear()+1);
                 auxLinea.setFechaDeVigencia(todayDate);
+                return 0; // Se renovo 1 año correctamente
             }
+            return 1; // La linea de credito no se encuentra vencida
         }
+        return -1; // No existe la linea de credito
     }
 
     public ArrayList<LineaDeCredito> getLineasDeCredito(){

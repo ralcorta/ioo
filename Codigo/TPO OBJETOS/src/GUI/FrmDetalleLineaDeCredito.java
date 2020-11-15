@@ -3,17 +3,13 @@ package GUI;
 import Clases.LineaDeCredito;
 import Clases.OperacionController;
 import Clases.SocioParticipe;
-import Clases.SociosController;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class FrmDetalleLineaDeCredito extends JDialog {
     private FrmDetalleLineaDeCredito self;
@@ -27,11 +23,12 @@ public class FrmDetalleLineaDeCredito extends JDialog {
     private JLabel txtNombreSocio;
     private JComboBox comboEstado;
 
-    public FrmDetalleLineaDeCredito(Window owner, OperacionController controladorOperaciones, SocioParticipe socio) {
+    private String operation;
+
+    public FrmDetalleLineaDeCredito(Window owner, OperacionController controladorOperaciones, SocioParticipe socio, String operation) {
         super(owner, "Detalle de Operación");
 
         this.setContentPane(panelTituloDetalleLDC);
-        //this.setSize(300, 300);
 
         this.pack();
 
@@ -42,6 +39,19 @@ public class FrmDetalleLineaDeCredito extends JDialog {
         comboEstado.addItem("Activo");
         comboEstado.addItem("Inactivo");
 
+        this.operation = operation;
+
+        if(operation.equals("Update")) {
+            if(socio.getLinea().isEstadoAprobacion()){
+                comboEstado.getModel().setSelectedItem("Activo");
+            } else {
+                comboEstado.getModel().setSelectedItem("Inactivo");
+            }
+            comboEstado.setEnabled(false);
+            txtImporte.setText(socio.getLinea().getImporteMaximo());
+            txtFechaVigencia.setText(new SimpleDateFormat("dd/MM/yyyy").format(socio.getLinea().getFechaDeVigencia()));
+            txtFechaVigencia.setEnabled(false);
+        }
 
         txtNombreSocio.setText(socio.getCuit() + " - " + socio.getRazonSocial());
 
@@ -55,10 +65,8 @@ public class FrmDetalleLineaDeCredito extends JDialog {
         guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int auxId = 0;
-                for (LineaDeCredito lc : controladorOperaciones.getLineasDeCredito()) {
-                    auxId++;
-                }
+                int auxId = controladorOperaciones.getLineasDeCredito().size()+1;
+
                 try {
                     boolean estadoAux;
                     if (comboEstado.getSelectedItem().toString().equals("Activo")) {
@@ -67,13 +75,25 @@ public class FrmDetalleLineaDeCredito extends JDialog {
                         estadoAux = false;
                     }
 
-                    controladorOperaciones.crearLineaDeCredito(auxId, txtImporte.getText(), new SimpleDateFormat("dd/MM/yyyy").parse(txtFechaVigencia.getText()), estadoAux, socio);
-                    JOptionPane.showMessageDialog(self, "Se creo correctamente la linea de credito con monto " + txtImporte.getText() + " para el socio con CUIT " + socio.getCuit());
+                    if(operation.equals("Create")){
+                        controladorOperaciones.crearLineaDeCredito(auxId, txtImporte.getText(), new SimpleDateFormat("dd/MM/yyyy").parse(txtFechaVigencia.getText()), estadoAux, socio);
+                        JOptionPane.showMessageDialog(self, "Se creo correctamente la linea de credito con monto " + txtImporte.getText() + "$ para el socio con CUIT " + socio.getCuit(), "Operacion generada correctamente", JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        controladorOperaciones.updateLineaDeCredito(txtImporte.getText(), socio);
+                        JOptionPane.showMessageDialog(self, "La linea de credito ha sido modificada, su nuevo monto es " + txtImporte.getText() + "$", "Operacion generada correctamente", JOptionPane.INFORMATION_MESSAGE);
+                    }
                     dispose();
                 } catch (ParseException parseException) {
                     parseException.printStackTrace();
                     dispose();
                 }
+            }
+        });
+
+        cancelarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
             }
         });
     }

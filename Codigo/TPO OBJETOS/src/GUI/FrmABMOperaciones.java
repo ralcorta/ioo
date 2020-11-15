@@ -15,6 +15,7 @@ public class FrmABMOperaciones extends JDialog{
     private JPanel panelBotonesOperaciones;
     private JTable tablaDeCuits;
     private JButton nuevaOperaciónButton;
+    private JButton btnRefresh;
 
     public FrmABMOperaciones(Window owner, SociosController controladorSocios, OperacionController controladorOperacion) {
         super(owner, "Operaciones");

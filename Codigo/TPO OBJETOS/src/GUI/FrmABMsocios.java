@@ -41,11 +41,11 @@ public class FrmABMsocios extends JDialog{
         model.addColumn("Razon Social");
 
         for (SocioParticipe socio : cSocios.listaDeSociosParticipes) {
-            model.addRow(new Object[] {socio.getCuit(), socio.getRazonSocial()});
+            model.addRow(new Object[]{socio.getCuit(), socio.getRazonSocial()});
         }
 
         for (SocioProtector socio : cSocios.listaDeSociosProtectores) {
-            model.addRow(new Object[] {socio.getCuit(), socio.getRazonSocial()});
+            model.addRow(new Object[]{socio.getCuit(), socio.getRazonSocial()});
         }
 
         model.fireTableDataChanged();

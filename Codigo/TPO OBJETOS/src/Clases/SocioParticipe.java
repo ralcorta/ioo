@@ -37,9 +37,9 @@ public class SocioParticipe
         return accionesSuscritas;
     }
 
-    public LineaDeCredito getLinea() {
-        return linea;
-    }
+    public LineaDeCredito getLinea() { return linea; }
+
+    public void setLinea(LineaDeCredito linea) { this.linea = linea; }
 
     public String getCuit() {
         return cuit;

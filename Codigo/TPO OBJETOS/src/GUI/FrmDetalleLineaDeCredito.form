@@ -4,7 +4,9 @@
     <constraints>
       <xy x="20" y="20" width="457" height="211"/>
     </constraints>
-    <properties/>
+    <properties>
+      <background color="-990521"/>
+    </properties>
     <border type="none"/>
     <children>
       <component id="f603e" class="javax.swing.JLabel">
@@ -19,13 +21,18 @@
       <component id="7f495" class="javax.swing.JLabel" binding="txtNombreSocio">
         <constraints border-constraint="Center"/>
         <properties>
+          <horizontalAlignment value="0"/>
+          <horizontalTextPosition value="0"/>
           <text value="NOMBRE Y CUIT DEL SOCIO QUE ESTA SIENDO MODIFICADO"/>
         </properties>
       </component>
       <grid id="5095" binding="panelDetalleLinea" layout-manager="GridLayoutManager" row-count="4" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints border-constraint="South"/>
-        <properties/>
+        <properties>
+          <background color="-990521"/>
+          <enabled value="false"/>
+        </properties>
         <border type="none"/>
         <children>
           <component id="9d58b" class="javax.swing.JLabel">

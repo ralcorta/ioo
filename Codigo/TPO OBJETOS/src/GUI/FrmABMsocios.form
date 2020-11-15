@@ -72,7 +72,9 @@
                   <autoCreateRowSorter value="false"/>
                   <background color="-990521"/>
                   <enabled value="true"/>
+                  <focusable value="true"/>
                   <font/>
+                  <updateSelectionOnSort value="true"/>
                 </properties>
               </component>
             </children>
