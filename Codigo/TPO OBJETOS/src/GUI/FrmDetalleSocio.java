@@ -176,20 +176,8 @@ public class FrmDetalleSocio extends JDialog {
         guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                boolean isPleno;
-                boolean isDocumentacion;
-
-                if(comboBoxSocioPleno.getSelectedItem().equals("Si")){
-                    isPleno = true;
-                } else {
-                    isPleno = false;
-                }
-
-                if(comboEstadoDocumentacion.getSelectedItem().equals("Controlado")){
-                    isDocumentacion = true;
-                } else {
-                    isDocumentacion = false;
-                }
+                boolean isPleno = comboBoxSocioPleno.getSelectedItem().equals("Si");
+                boolean isDocumentacion = comboEstadoDocumentacion.getSelectedItem().equals("Controlado");
 
                 if(socioCombo.getSelectedItem().toString().equals("Participe")){
                     try {

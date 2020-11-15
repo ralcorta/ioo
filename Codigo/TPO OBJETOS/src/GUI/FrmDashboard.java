@@ -6,6 +6,7 @@ import Clases.SociosController;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 
 public class FrmDashboard extends JFrame{
     private FrmDashboard self;
@@ -80,7 +81,7 @@ public class FrmDashboard extends JFrame{
         });
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
         OperacionController controladorOperacion = new OperacionController();
         SociosController controladorSocios = new SociosController(controladorOperacion);
         FrmDashboard frame = new FrmDashboard("SGR", controladorSocios, controladorOperacion);
