@@ -4,7 +4,7 @@ import java.util.Currency;
 import java.util.Date;
 
 public class SocioProtector{
-    private int cuit;
+    private String cuit;
     private String razonSocial;
     private Date fechaInicioActividades;
     private String tipo;
@@ -14,7 +14,7 @@ public class SocioProtector{
     private String correoElectronico;
     private boolean esPleno;
     private String documentacion;
-    private String fechaDocumentacion;
+    private Date fechaDocumentacion;
     private Boolean estadoDocumentacion;
     private String usuarioDocumentacion;
     ArrayList<Aportes> listaDeAportes = new ArrayList<Aportes>();
@@ -40,7 +40,7 @@ public class SocioProtector{
     ArrayList<Accion> accionesSuscritas = new ArrayList<Accion>();
     SociosController controlador;
 
-    public SocioProtector(int cuit, String razonSocial, Date fechaInicioActividades, String tipo, String actividadPrincipal, String direccion, String telefono, String correoElectronico, boolean esPleno, String documentacion, String fechaDocumentacion, Boolean estadoDocumentacion, String usuarioDocumentacion) {
+    public SocioProtector(String cuit, String razonSocial, Date fechaInicioActividades, String tipo, String actividadPrincipal, String direccion, String telefono, String correoElectronico, boolean esPleno, String documentacion, Date fechaDocumentacion, Boolean estadoDocumentacion, String usuarioDocumentacion) {
         this.cuit = cuit;
         this.razonSocial = razonSocial;
         this.fechaInicioActividades = fechaInicioActividades;
@@ -56,11 +56,11 @@ public class SocioProtector{
         this.usuarioDocumentacion = usuarioDocumentacion;
     }
 
-    public int getCuit() {
+    public String getCuit() {
         return cuit;
     }
 
-    public void setCuit(int cuit) {
+    public void setCuit(String cuit) {
         this.cuit = cuit;
     }
 
@@ -136,11 +136,11 @@ public class SocioProtector{
         this.documentacion = documentacion;
     }
 
-    public String getFechaDocumentacion() {
+    public Date getFechaDocumentacion() {
         return fechaDocumentacion;
     }
 
-    public void setFechaDocumentacion(String fechaDocumentacion) {
+    public void setFechaDocumentacion(Date fechaDocumentacion) {
         this.fechaDocumentacion = fechaDocumentacion;
     }
 

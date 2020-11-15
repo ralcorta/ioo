@@ -5,10 +5,14 @@ import java.util.Date;
 
 public class SociosController
 {
-    ArrayList <SocioProtector> listaDeSociosProtectores = new ArrayList<SocioProtector>();
+    public ArrayList <SocioProtector> listaDeSociosProtectores = new ArrayList<SocioProtector>();
     public ArrayList <SocioParticipe> listaDeSociosParticipes = new ArrayList <SocioParticipe>();
     ArrayList <Accionistas> listaDeAccionistas = new ArrayList<Accionistas>();
     OperacionController controladorOperaciones;
+
+    public SociosController(OperacionController controladorOperacion) {
+        this.controladorOperaciones = controladorOperacion;
+    }
 
     /*
     public boolean aprobarSocio(int cuit){
@@ -32,12 +36,12 @@ public class SociosController
 
     }*/
 
-    public String aprobarSocio(int cuit){
+    public String aprobarSocio(String cuit){
         boolean encontrado = false;
         SocioProtector auxProtector = null;
         SocioParticipe auxParticipe = null;
         for (SocioProtector s : listaDeSociosProtectores) {
-            if (s.getCuit() == cuit){
+            if (s.getCuit().equals(cuit)){
                 encontrado = true;
                 auxProtector = s;
             }
@@ -53,7 +57,7 @@ public class SociosController
         }
         else{
             for (SocioParticipe s : listaDeSociosParticipes) {
-                if(s.getCuit() == cuit){
+                if(s.getCuit().equals(cuit)){
                     encontrado = true;
                     auxParticipe = s;
                 }
@@ -71,12 +75,12 @@ public class SociosController
         return "socio no encontrado";
     }
 
-    public boolean accionesSuscritasSuficientes(int cuit){
+    public boolean accionesSuscritasSuficientes(String cuit){
         boolean encontrado = false;
         SocioProtector auxProtector = null;
         SocioParticipe auxParticipe = null;
         for (SocioProtector s : listaDeSociosProtectores) {
-            if (s.getCuit() == cuit){
+            if (s.getCuit().equals(cuit)){
                 encontrado = true;
                 auxProtector = s;
             }
@@ -96,7 +100,7 @@ public class SociosController
         }
         else{
             for (SocioParticipe s : listaDeSociosParticipes) {
-                if(s.getCuit() == cuit){
+                if(s.getCuit().equals(cuit)){
                     encontrado = true;
                     auxParticipe = s;
                 }
@@ -123,7 +127,7 @@ public class SociosController
         SocioProtector auxProtector = null;
         SocioParticipe auxParticipe = null;
         for (SocioProtector s : listaDeSociosProtectores) {
-            if (s.getCuit() == cuit){
+            if (s.getCuit().equals(cuit)){
                 encontrado = true;
                 auxProtector = s;
             }
@@ -133,7 +137,7 @@ public class SociosController
         }
         else{
             for (SocioParticipe s : listaDeSociosParticipes) {
-                if(s.getCuit() == cuit){
+                if(s.getCuit().equals(cuit)){
                     encontrado = true;
                     auxParticipe = s;
                 }
@@ -144,26 +148,68 @@ public class SociosController
         }
     }
 
-    public String crearSocioParticipe(int cuit, String razonSocial, Date fechaInicioActividades, String tipo, String actividadPrincipal, String direccion, String telefono, String correoElectronico, boolean esPleno, String documentacion, Date fechaDocumentacion, Boolean estadoDocumentacion, String usuarioDocumentacion){
+    public String crearSocioParticipe(String cuit, String razonSocial, Date fechaInicioActividades, String tipo, String actividadPrincipal, String direccion, String telefono, String correoElectronico, boolean esPleno, String documentacion, Date fechaDocumentacion, Boolean estadoDocumentacion, String usuarioDocumentacion){
         for(SocioParticipe s : listaDeSociosParticipes){
-            if(s.getCuit() == cuit){
-                return "el socio ya existe";
+            if(s.getCuit().equals(cuit)){
+                return "El socio con CUIT " + s.getCuit() + " ya existe, no puede ser creado nuevamente.";
             }
         }
         SocioParticipe nuevoSocioParticipe = new SocioParticipe(cuit, razonSocial, fechaInicioActividades, tipo, actividadPrincipal, direccion, telefono, correoElectronico, esPleno, documentacion, fechaDocumentacion, estadoDocumentacion, usuarioDocumentacion);
         listaDeSociosParticipes.add(nuevoSocioParticipe);
-        return "socio creado con exito";
+        return "El socio con CUIT " + cuit + " ha sido creado correctamente.";
     }
 
-    public String crearSocioProtector(int cuit, String razonSocial, Date fechaInicioActividades, String tipo, String actividadPrincipal, String direccion, String telefono, String correoElectronico, boolean esPleno, String documentacion, String fechaDocumentacion, Boolean estadoDocumentacion, String usuarioDocumentacion){
+    public String updateSocioParticipe(String cuit, String razonSocial, Date fechaInicioActividades, String tipo, String actividadPrincipal, String direccion, String telefono, String correoElectronico, boolean esPleno, String documentacion, Date fechaDocumentacion, Boolean estadoDocumentacion, String usuarioDocumentacion){
+        for(SocioParticipe s : listaDeSociosParticipes){
+            if(s.getCuit().equals(cuit)){
+                s.setRazonSocial(razonSocial);
+                s.setFechaInicioActividades(fechaInicioActividades);
+                s.setTipo(tipo);
+                s.setActividadPrincipal(actividadPrincipal);
+                s.setDireccion(direccion);
+                s.setTelefono(telefono);
+                s.setCorreoElectronico(correoElectronico);
+                s.setEsPleno(esPleno);
+                s.setDocumentacion(documentacion);
+                s.setFechaDocumentacion(fechaDocumentacion);
+                s.setEstadoDocumentacion(estadoDocumentacion);
+                s.setUsuarioDocumentacion(usuarioDocumentacion);
+                return "El socio con CUIT " + s.getCuit() + " fue actualizado correctamente !";
+            }
+        }
+        return "El socio a actualizar NO existe";
+    }
+
+    public String crearSocioProtector(String cuit, String razonSocial, Date fechaInicioActividades, String tipo, String actividadPrincipal, String direccion, String telefono, String correoElectronico, boolean esPleno, String documentacion, Date fechaDocumentacion, Boolean estadoDocumentacion, String usuarioDocumentacion){
         for (SocioProtector s : listaDeSociosProtectores){
-            if(s.getCuit() == cuit){
-                return "el socio ya existe";
+            if(s.getCuit().equals(cuit)){
+                return "El socio con CUIT " + s.getCuit() + " ya existe, no puede ser creado nuevamente.";
             }
         }
         SocioProtector nuevoSocioProtector = new SocioProtector(cuit, razonSocial, fechaInicioActividades, tipo, actividadPrincipal, direccion, telefono, correoElectronico, esPleno, documentacion, fechaDocumentacion, estadoDocumentacion, usuarioDocumentacion);
         listaDeSociosProtectores.add(nuevoSocioProtector);
-        return "socio creado con exito";
+        return "El socio con CUIT " + cuit + " ha sido creado correctamente.";
+    }
+
+    public String updateSocioProtector(String cuit, String razonSocial, Date fechaInicioActividades, String tipo, String actividadPrincipal, String direccion, String telefono, String correoElectronico, boolean esPleno, String documentacion, Date fechaDocumentacion, Boolean estadoDocumentacion, String usuarioDocumentacion){
+        for(SocioProtector s : listaDeSociosProtectores){
+            if(s.getCuit().equals(cuit)){
+                s.setRazonSocial(razonSocial);
+                s.setFechaInicioActividades(fechaInicioActividades);
+                s.setTipo(tipo);
+                s.setActividadPrincipal(actividadPrincipal);
+                s.setDireccion(direccion);
+                s.setTelefono(telefono);
+                s.setCorreoElectronico(correoElectronico);
+                s.setEsPleno(esPleno);
+                s.setDocumentacion(documentacion);
+                s.setFechaDocumentacion(fechaDocumentacion);
+                s.setEstadoDocumentacion(estadoDocumentacion);
+                s.setUsuarioDocumentacion(usuarioDocumentacion);
+                return "El socio con CUIT " + s.getCuit() + " fue actualizado correctamente !";
+            }
+        }
+        return "El socio a actualizar NO existe";
     }
 
     public String crearAccionista(int cuit, int porcentajeDeParticipacion, String razonSocial){

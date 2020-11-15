@@ -10,8 +10,8 @@ public class OperacionController{
     ArrayList <LineaDeCredito> lineasDeCredito = new ArrayList<LineaDeCredito>();
     ArrayList <Operacion> operaciones = new ArrayList<Operacion>();
 
-    public void crearLineaDeCredito(int idLineaCredito, Currency importeMaximo, Date fechaDeVigencia, boolean estadoAprobacion, Date fechaCambioEstado, String estadoAnterior, String usuarioModificador){
-        LineaDeCredito lineaNueva = new LineaDeCredito(idLineaCredito, importeMaximo, fechaDeVigencia, estadoAprobacion, fechaCambioEstado, estadoAnterior, usuarioModificador);
+    public void crearLineaDeCredito(int idLineaCredito, String importeMaximo, Date fechaDeVigencia, boolean estadoAprobacion, SocioParticipe socio){
+        LineaDeCredito lineaNueva = new LineaDeCredito(idLineaCredito, importeMaximo, fechaDeVigencia, estadoAprobacion, socio);
         lineasDeCredito.add(lineaNueva);
     }
 
@@ -37,12 +37,12 @@ public class OperacionController{
         }
     }
 
-    public void renovarLineaDeCredito(int cuit){
+    public void renovarLineaDeCredito(String cuit){
         boolean encontrado=false;
         Date todayDate = Calendar.getInstance().getTime();
         LineaDeCredito auxLinea = null;
         for (LineaDeCredito lc : lineasDeCredito) {
-            if (lc.getSocio().getCuit() == cuit){
+            if (lc.getSocio().getCuit().equals(cuit)){
                 encontrado = true;
                 auxLinea = lc;
             }
@@ -54,6 +54,10 @@ public class OperacionController{
                 auxLinea.setFechaDeVigencia(todayDate);
             }
         }
+    }
+
+    public ArrayList<LineaDeCredito> getLineasDeCredito(){
+        return lineasDeCredito;
     }
 
    /* public int totalComisionConChequeDia(date fecha){

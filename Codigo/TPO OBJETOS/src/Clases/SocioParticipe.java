@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class SocioParticipe
 {
-    private int cuit;
+    private String cuit;
     private String razonSocial;
     private Date fechaInicioActividades;
     private String tipo;
@@ -19,6 +19,11 @@ public class SocioParticipe
     private Boolean estadoDocumentacion;
     private String usuarioDocumentacion;
     ArrayList<Accionistas> listaDeAccionistas = new ArrayList<Accionistas>();
+    ArrayList<Accion> listaDeAcciones = new ArrayList<Accion>();
+    ArrayList<Accion> accionesSuscritas = new ArrayList<Accion>();
+    SociosController controlador;
+    LineaDeCredito linea;
+
 
     public ArrayList<Accionistas> getListaDeAccionistas() {
         return listaDeAccionistas;
@@ -36,16 +41,11 @@ public class SocioParticipe
         return linea;
     }
 
-    ArrayList<Accion> listaDeAcciones = new ArrayList<Accion>();
-    ArrayList<Accion> accionesSuscritas = new ArrayList<Accion>();
-    SociosController controlador;
-    LineaDeCredito linea;
-
-    public int getCuit() {
+    public String getCuit() {
         return cuit;
     }
 
-    public void setCuit(int cuit) {
+    public void setCuit(String cuit) {
         this.cuit = cuit;
     }
 
@@ -169,7 +169,7 @@ public class SocioParticipe
         return "accion no encontrada";
     }
 
-    public SocioParticipe(int cuit, String razonSocial, Date fechaInicioActividades, String tipo, String actividadPrincipal, String direccion, String telefono, String correoElectronico, boolean esPleno, String documentacion, Date fechaDocumentacion, Boolean estadoDocumentacion, String usuarioDocumentacion) {
+    public SocioParticipe(String cuit, String razonSocial, Date fechaInicioActividades, String tipo, String actividadPrincipal, String direccion, String telefono, String correoElectronico, boolean esPleno, String documentacion, Date fechaDocumentacion, Boolean estadoDocumentacion, String usuarioDocumentacion) {
         this.cuit = cuit;
         this.razonSocial = razonSocial;
         this.fechaInicioActividades = fechaInicioActividades;

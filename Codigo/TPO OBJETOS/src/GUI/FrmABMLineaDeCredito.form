@@ -30,16 +30,21 @@
         </properties>
         <border type="etched"/>
         <children>
-          <component id="e9db" class="javax.swing.JTable" binding="tblSociosPartPlenos">
+          <scrollpane id="3ac64">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                <preferred-size width="150" height="50"/>
-              </grid>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
-            <properties>
-              <background color="-990521"/>
-            </properties>
-          </component>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="e9db" class="javax.swing.JTable" binding="tblSociosPartPlenos">
+                <constraints/>
+                <properties>
+                  <background color="-990521"/>
+                </properties>
+              </component>
+            </children>
+          </scrollpane>
         </children>
       </grid>
       <component id="af171" class="javax.swing.JButton" binding="renovarLineaDeCreditoButton" default-binding="true">

@@ -1,5 +1,6 @@
 package GUI;
 
+import Clases.OperacionController;
 import Clases.SociosController;
 
 import javax.swing.*;
@@ -16,7 +17,7 @@ public class FrmDashboard extends JFrame{
     private JPanel panelTitulo;
     private JPanel panelBotones;
 
-    public FrmDashboard(String titulo, SociosController controlador)
+    public FrmDashboard(String titulo, SociosController controladorSocios, OperacionController controladorOperacion)
     {
         super(titulo);
 
@@ -40,16 +41,16 @@ public class FrmDashboard extends JFrame{
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
 
-        this.eventos();
+        this.eventos(controladorSocios, controladorOperacion);
         this.self = this;
     }
 
-    private void eventos()
+    private void eventos(SociosController cSocios, OperacionController cOperacion)
     {
         ABMSOCIOSButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                FrmABMsocios frame = new FrmABMsocios(self);
+                FrmABMsocios frame = new FrmABMsocios(self, cSocios);
                 frame.setVisible(true);
             }
         });
@@ -65,7 +66,7 @@ public class FrmDashboard extends JFrame{
         LINEASDECRÉDITOButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                FrmABMLineaDeCredito frame = new FrmABMLineaDeCredito(self);
+                FrmABMLineaDeCredito frame = new FrmABMLineaDeCredito(self, cSocios, cOperacion);
                 frame.setVisible(true);
             }
         });
@@ -73,15 +74,16 @@ public class FrmDashboard extends JFrame{
         OPERACIONESButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                FrmABMOperaciones frame = new FrmABMOperaciones(self);
+                FrmABMOperaciones frame = new FrmABMOperaciones(self, cSocios, cOperacion);
                 frame.setVisible(true);
             }
         });
     }
 
     public static void main(String[] args) {
-        SociosController controlador = new SociosController();
-        FrmDashboard frame = new FrmDashboard("SGR", controlador);
+        OperacionController controladorOperacion = new OperacionController();
+        SociosController controladorSocios = new SociosController(controladorOperacion);
+        FrmDashboard frame = new FrmDashboard("SGR", controladorSocios, controladorOperacion);
         frame.setVisible(true);
 
     }

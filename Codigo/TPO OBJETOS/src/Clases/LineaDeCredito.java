@@ -6,12 +6,10 @@ import java.util.Date;
 
 public class LineaDeCredito {
     private int idLineaCredito;
-    private Currency importeMaximo;
+    private String importeMaximo;
     private Date fechaDeVigencia;
     private boolean estadoAprobacion;
-    private Date fechaCambioEstado;
-    private String estadoAnterior;
-    private String usuarioModificador;
+
     private SocioParticipe socio;
     ArrayList<Operacion> operaciones = new ArrayList<Operacion>();
 
@@ -19,14 +17,13 @@ public class LineaDeCredito {
     public SocioParticipe getSocio() {
         return socio;
     }
-    public LineaDeCredito(int idLineaCredito, Currency importeMaximo, Date fechaDeVigencia, boolean estadoAprobacion, Date fechaCambioEstado, String estadoAnterior, String usuarioModificador) {
+    public LineaDeCredito(int idLineaCredito, String importeMaximo, Date fechaDeVigencia, boolean estadoAprobacion, SocioParticipe socio) {
         this.idLineaCredito = idLineaCredito;
         this.importeMaximo = importeMaximo;
         this.fechaDeVigencia = fechaDeVigencia;
         this.estadoAprobacion = estadoAprobacion;
-        this.fechaCambioEstado = fechaCambioEstado;
-        this.estadoAnterior = estadoAnterior;
-        this.usuarioModificador = usuarioModificador;
+
+        this.socio = socio;
     }
 
     public int getIdLineaCredito() {
@@ -37,11 +34,11 @@ public class LineaDeCredito {
         this.idLineaCredito = idLineaCredito;
     }
 
-    public Currency getImporteMaximo() {
+    public String getImporteMaximo() {
         return importeMaximo;
     }
 
-    public void setImporteMaximo(Currency importeMaximo) {
+    public void setImporteMaximo(String importeMaximo) {
         this.importeMaximo = importeMaximo;
     }
 
@@ -60,31 +57,4 @@ public class LineaDeCredito {
     public void setEstadoAprobacion(boolean estadoAprobacion) {
         this.estadoAprobacion = estadoAprobacion;
     }
-
-    public Date getFechaCambioEstado() {
-        return fechaCambioEstado;
-    }
-
-    public void setFechaCambioEstado(Date fechaCambioEstado) {
-        this.fechaCambioEstado = fechaCambioEstado;
-    }
-
-    public String getEstadoAnterior() {
-        return estadoAnterior;
-    }
-
-    public void setEstadoAnterior(String estadoAnterior) {
-        this.estadoAnterior = estadoAnterior;
-    }
-
-    public String getUsuarioModificador() {
-        return usuarioModificador;
-    }
-
-    public void setUsuarioModificador(String usuarioModificador) {
-        this.usuarioModificador = usuarioModificador;
-    }
-
-
-
 }

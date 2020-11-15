@@ -60,16 +60,8 @@
               </grid>
             </constraints>
             <properties>
-              <text value="  Fecha de inicio de actividades"/>
+              <text value="  Fecha de inicio de actividades (DD/MM/YYYY)"/>
             </properties>
-          </component>
-          <component id="d4b56" class="javax.swing.JTextField" binding="textFechaInicioAct">
-            <constraints>
-              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="247" height="30"/>
-              </grid>
-            </constraints>
-            <properties/>
           </component>
           <component id="cce2b" class="javax.swing.JLabel">
             <constraints>
@@ -80,14 +72,6 @@
             <properties>
               <text value="  Tipo de socio"/>
             </properties>
-          </component>
-          <component id="deece" class="javax.swing.JTextField" binding="textTipoSocio">
-            <constraints>
-              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="247" height="30"/>
-              </grid>
-            </constraints>
-            <properties/>
           </component>
           <component id="4c317" class="javax.swing.JLabel">
             <constraints>
@@ -217,14 +201,6 @@
               <text value="  Estado de documentacion"/>
             </properties>
           </component>
-          <component id="6ba7a" class="javax.swing.JTextField" binding="textEstadoDocumentacion">
-            <constraints>
-              <grid row="11" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="247" height="30"/>
-              </grid>
-            </constraints>
-            <properties/>
-          </component>
           <component id="31e1" class="javax.swing.JLabel">
             <constraints>
               <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
@@ -270,6 +246,26 @@
             <properties>
               <text value="Guardar"/>
             </properties>
+          </component>
+          <component id="ba93a" class="javax.swing.JComboBox" binding="socioCombo">
+            <constraints>
+              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="4a020" class="javax.swing.JTextField" binding="textFechaInicioAct">
+            <constraints>
+              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="2c58a" class="javax.swing.JComboBox" binding="comboEstadoDocumentacion">
+            <constraints>
+              <grid row="11" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
           </component>
         </children>
       </grid>

@@ -1,5 +1,6 @@
 package GUI;
 
+import Clases.OperacionController;
 import Clases.SocioParticipe;
 import Clases.SociosController;
 
@@ -34,10 +35,9 @@ public class FrmDetalleOperacion extends JDialog{
     private JTextField textField1;
     private JButton buttonLupa;
     private JPanel panelDetalle;
-    private SociosController controlador;
-    private ArrayList<SocioParticipe> sociosParticipes = controlador.listaDeSociosParticipes;
+    private ArrayList<SocioParticipe> sociosParticipes;
 
-    public FrmDetalleOperacion(Window owner, SociosController controlador) {
+    public FrmDetalleOperacion(Window owner, SociosController controladorSocios, OperacionController controladorOperacion) {
         super(owner, "Detalle de Operación");
 
         this.setContentPane(pnlPrincipal);
@@ -49,22 +49,21 @@ public class FrmDetalleOperacion extends JDialog{
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
 
-        this.eventos();
+        this.eventos(controladorSocios, controladorOperacion);
         this.self = this;
     }
 
-    private void eventos()
+    private void eventos(SociosController controladorSocios, OperacionController controladorOperacion)
     {
-
         buttonLupa.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String cuit = JOptionPane.showInputDialog(self,"Ingrese el CUIT del Socio:");
                 if(!cuit.matches("[0-9]+")){
-                    // JOptionPane.showMessageDialog(null,"","",JOptionPane.ERROR_MESSAGE);
+                    //JOptionPane.showMessageDialog(null,"","",JOptionPane.ERROR_MESSAGE);
                 }
                 for (SocioParticipe s : sociosParticipes) {
-                    if (s.getCuit() == Integer.parseInt(cuit)){
+                    if (s.getCuit().equals(cuit)){
 
                     }
                 }
@@ -77,5 +76,14 @@ public class FrmDetalleOperacion extends JDialog{
                 dispose();
             }
         });
+
+        guardarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
+
     }
 }
