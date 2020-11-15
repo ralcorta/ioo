@@ -1,5 +1,6 @@
 package Clases;
 
+import javax.sound.sampled.Line;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Currency;
@@ -25,17 +26,27 @@ public class OperacionController{
         }
     }
 
-    public void crearOperacion(int idLc, String tipoDeOperacion, String estado, String garantia, Currency importe, Date fechaCreacionOperacion, Date fechaVencimiento, int cuotasPagadas, int cantidadTotalCuotas, float importeUtilizado){
+    public String crearOperacion(int idLc, String tipoDeOperacion, String estado, String garantia, String importe, Date fechaCreacionOperacion, Date fechaVencimiento, int cuotasPagadas, float importeUtilizado,String nombreBancoCheque, String numeroCheque, Date fechaVencCheque ,int cuitCheque, float tasaDeDescuento, String cuentaCorriente, Date fechaVencimientoCuentaCorriente, String nombreBancoPrestamo, float tasaDeInteres, Date fechaDeAcreditacionPrestamo, int cantidadDeCuotas, String sistemaBancario){
         int newIdOperacion = operaciones.size()+1;
-        if(tipoDeOperacion.equals("Tipo 1")){
-            //Crear de forma tipo 1
+        LineaDeCredito aEnviar = obtenerLineadeCredito(idLc);
+        if (aEnviar == null){
+            return "No existe una linea de credito para este socio.";
         }
-        else if(tipoDeOperacion.equals("Tipo 2")){
-            //Crear de forma tipo 2
+
+        Operacion nuevaOperacion = new Operacion(newIdOperacion, tipoDeOperacion, estado, garantia, importe, fechaCreacionOperacion, fechaVencimiento, cuotasPagadas, importeUtilizado, nombreBancoCheque, numeroCheque, cuitCheque, tasaDeDescuento, cuentaCorriente, fechaVencimientoCuentaCorriente, nombreBancoPrestamo, tasaDeInteres, fechaDeAcreditacionPrestamo, cantidadDeCuotas,sistemaBancario, aEnviar);
+        operaciones.add(nuevaOperacion);
+        return "La opeacion " + nuevaOperacion.getIdOperacion() + " ha sido creada con exito!";
+    }
+
+    public LineaDeCredito obtenerLineadeCredito(int idLC){
+        boolean encontrado= false;
+        for (LineaDeCredito auxLC: lineasDeCredito) {
+            if (auxLC.getIdLineaCredito() ==  idLC){
+                encontrado = true;
+                return auxLC;
+            }
         }
-        else if(tipoDeOperacion.equals("Tipo 3")){
-            //Crear de forma tipo 3
-        }
+        return null;
     }
 
     public void modificarEstadoLineaDeCredito(int idLinea){

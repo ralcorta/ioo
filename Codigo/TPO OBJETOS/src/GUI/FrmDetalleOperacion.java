@@ -8,7 +8,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class FrmDetalleOperacion extends JDialog{
     private FrmDetalleOperacion self;
@@ -108,9 +111,96 @@ public class FrmDetalleOperacion extends JDialog{
         guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                    /*controladorOperacion.crearOperacion(txtfieldIdLinea.getText(),
-                            "Tipo 1", comboEstado.getSelectedItem().toString(),
-                            );*/
+               if (comboTipoOperacion.equals("Tipo 1")){
+                   try {
+                       controladorOperacion.crearOperacion(Integer.parseInt(txtfieldIdLinea.getText()),
+                                "Tipo 1",
+                               comboEstado.getSelectedItem().toString(),
+                               null,
+                               textImporte.getText(),
+                               new SimpleDateFormat("dd/MM/yyyy").parse(textFechaCreacOp.getText()),
+                               new SimpleDateFormat("dd/MM/yyyy").parse(textFechaVenc.getText()),
+                                0,
+                               0.0f,
+                               //TIPO1
+                               textBancoCheque.getText(),
+                               textNumCheque.getText(),
+                               new SimpleDateFormat("dd/MM/yyyy").parse(textFechaVencCheque.getText()),
+                               Integer.parseInt(textCuitCheque.getText()),
+                               Float.parseFloat(textTasaDescuentoCheque.getText()),
+                               //TIPO2
+                               "",
+                               new Date(),
+                               //TIPO3
+                               "",
+                               0.0f,
+                               new Date(),
+                               0,
+                               "");
+                   } catch (ParseException parseException) {
+                       parseException.printStackTrace();
+                   }
+               }
+               else if(comboTipoOperacion.equals("Tipo 2")){
+                   try {
+                       controladorOperacion.crearOperacion(Integer.parseInt(txtfieldIdLinea.getText()),
+                               "Tipo 1",
+                               comboEstado.getSelectedItem().toString(),
+                               null,
+                               textImporte.getText(),
+                               new SimpleDateFormat("dd/MM/yyyy").parse(textFechaCreacOp.getText()),
+                               new SimpleDateFormat("dd/MM/yyyy").parse(textFechaVenc.getText()),
+                               0,
+                               0.0f,
+                               //TIPO1
+                               "",
+                               "",
+                               new Date(),
+                               0,
+                               0.0f,
+                               //TIPO2
+                               textEmpresaCuenta.getText(),
+                               new SimpleDateFormat("dd/MM/yyyy").parse(textFechaVencCuenta.getText()),
+                               //TIPO3
+                               "",
+                               0.0f,
+                               new Date(),
+                               0,
+                               "");
+                   } catch (ParseException parseException) {
+                       parseException.printStackTrace();
+                   }
+               }
+               else{
+                   try {
+                       controladorOperacion.crearOperacion(Integer.parseInt(txtfieldIdLinea.getText()),
+                               "Tipo 1",
+                               comboEstado.getSelectedItem().toString(),
+                               null,
+                               textImporte.getText(),
+                               new SimpleDateFormat("dd/MM/yyyy").parse(textFechaCreacOp.getText()),
+                               new SimpleDateFormat("dd/MM/yyyy").parse(textFechaVenc.getText()),
+                               0,
+                               0.0f,
+                               //TIPO1
+                               "",
+                               "",
+                               new Date(),
+                               0,
+                               0.0f,
+                               //TIPO2
+                               "",
+                               new Date(),
+                               //TIPO3
+                               textBancoPrestamo.getText(),
+                               Float.parseFloat(textTasaInteresPrestamo.getText()),
+                               new SimpleDateFormat("dd/MM/yyyy").parse(textFechaAcrdPrestamo.getText()),
+                               Integer.parseInt(textCantCuotasPrestamo.getText()),
+                               comboSistemaBancario.getSelectedItem().toString());
+                   } catch (ParseException parseException) {
+                       parseException.printStackTrace();
+                   }
+               }
             }
         });
 
