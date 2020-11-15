@@ -242,4 +242,8 @@ public class SociosController
         listaDeAccionistas.add(nuevoAccionista);
         return "accionista creado con exito";
     }
+
+    public ArrayList<SocioParticipe> getListaDeSociosParticipes(){
+        return this.listaDeSociosParticipes;
+    }
 }

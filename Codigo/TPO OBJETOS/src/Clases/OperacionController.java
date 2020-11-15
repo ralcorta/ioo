@@ -25,8 +25,17 @@ public class OperacionController{
         }
     }
 
-    public void cargarOperacion(LineaDeCredito lc,int idOperacion, String tipoDeOperacion, String subtipoOperacion, String estado, Date fechaCambioEstado, String estadoAnterior, String usuarioModificador, String garantia, Currency importe, Date fechaCreacionOperacion, Date fechaVencimiento, int cuotasPagadas, int cantidadTotalCuotas, float importeUtilizado){
-
+    public void crearOperacion(int idLc, String tipoDeOperacion, String estado, String garantia, Currency importe, Date fechaCreacionOperacion, Date fechaVencimiento, int cuotasPagadas, int cantidadTotalCuotas, float importeUtilizado){
+        int newIdOperacion = operaciones.size()+1;
+        if(tipoDeOperacion.equals("Tipo 1")){
+            //Crear de forma tipo 1
+        }
+        else if(tipoDeOperacion.equals("Tipo 2")){
+            //Crear de forma tipo 2
+        }
+        else if(tipoDeOperacion.equals("Tipo 3")){
+            //Crear de forma tipo 3
+        }
     }
 
     public void modificarEstadoLineaDeCredito(int idLinea){
