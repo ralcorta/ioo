@@ -172,8 +172,7 @@ public class FrmDetalleSocio extends JDialog {
         }
     }
 
-    private void eventos(SociosController cSocio, String operation)
-    {
+    private void eventos(SociosController cSocio, String operation) {
         cancelarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
@@ -259,7 +258,8 @@ public class FrmDetalleSocio extends JDialog {
         listaDeAccionesButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                FrmABMAcciones frame = new FrmABMAcciones(self, cSocio, textCuitSocio.getText());
+                frame.setVisible(true);
             }
         });
     }

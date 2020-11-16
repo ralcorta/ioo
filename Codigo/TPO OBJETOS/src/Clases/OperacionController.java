@@ -13,6 +13,7 @@ public class OperacionController{
     ArrayList <Operacion> operaciones = new ArrayList<Operacion>();
 
     public void crearLineaDeCredito(int idLineaCredito, String importeMaximo, Date fechaDeVigencia, boolean estadoAprobacion, SocioParticipe socio){
+        //TODO: LA LINEA DE CREDITO SOLO PUEDE SER CREADA SI EL SOCIO ES PLENO. EVALUAR ESTO YA QUE ACTUALMENTE ESTA MAL
         LineaDeCredito lineaNueva = new LineaDeCredito(idLineaCredito, importeMaximo, fechaDeVigencia, estadoAprobacion, socio);
         socio.setLinea(lineaNueva);
         lineasDeCredito.add(lineaNueva);
