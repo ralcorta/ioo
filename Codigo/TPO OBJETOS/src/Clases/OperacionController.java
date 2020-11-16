@@ -109,10 +109,17 @@ public class OperacionController{
 
     public ArrayList<Operacion> getOperaciones() { return this.operaciones; }
 
-   /* public int totalComisionConChequeDia(date fecha){
-        return 0;
-    }*/
-
+    public float totalComisionConChequeDia(Date fecha){
+        float totalComision = 0;
+        for (Operacion o : operaciones){
+            if(o.getTipoDeOperacion().equals("Tipo 1") &&
+                    o.getEstado().equals("Monetizado")){ // Tipo 1 representa Cheques propios, de terceros y pagares bursatiles
+                totalComision += Integer.parseInt(o.getImporte()) * o.getPorcentajeComision() / 100;
+            }
+        }
+        return totalComision;
+    }
+/*
     /*public ArrayList<Operacion> operacionesDeSocioEnPeriodo(){
         return null;
     }*/

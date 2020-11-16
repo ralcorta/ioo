@@ -1,9 +1,15 @@
 package GUI;
 
+import Clases.OperacionController;
+import Clases.SociosController;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class FrmConsultasGenerales extends JDialog{
     private FrmConsultasGenerales self;
@@ -17,7 +23,7 @@ public class FrmConsultasGenerales extends JDialog{
     private JPanel frmBotones;
     private JPanel pnlTitle;
 
-    public FrmConsultasGenerales(Window owner) {
+    public FrmConsultasGenerales(Window owner, SociosController cSocios, OperacionController cOperacion) {
         super(owner, "Consultas");
 
         this.setContentPane(frmConsultasGenerales);
@@ -29,16 +35,24 @@ public class FrmConsultasGenerales extends JDialog{
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
 
-        this.eventos();
+        this.eventos(cSocios, cOperacion);
 
         this.self = this;
     }
 
-    private void eventos() {
+    private void eventos(SociosController cSocios, OperacionController cOperacion) {
         btnTotalComisiones.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                String cuit=JOptionPane.showInputDialog(self,"Ingrese el CUIT del Socio:");
+                float totalComision = 0.0f;
+                String fecha = JOptionPane.showInputDialog(self,"Ingrese la fecha (DD/MM/YYYY) para calcular la comisión de operaciones monetizadsa con Cheque:");
+
+                try {
+                    totalComision = cOperacion.totalComisionConChequeDia(new SimpleDateFormat("dd/MM/yyyy").parse(fecha));
+                    JOptionPane.showMessageDialog(null, "El total de comisiones en el dia " + fecha + "es " + totalComision + "$", "Reporte comisiones con cheques", JOptionPane.INFORMATION_MESSAGE);
+                } catch (ParseException e) {
+                    JOptionPane.showMessageDialog(self,"La fecha ingresada NO cumple con el formato DD/MM/YYYY", "ERROR: Fecha invalida", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
 

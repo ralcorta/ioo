@@ -224,9 +224,13 @@ public class Operacion {
         this.sistemaBancario = sistemaBancario;
     }
 
-    public void generarComision(int idComision, String estado, Date fechaCambioEstado, String estadoAnterior){
-        Comision comision = new Comision(idComision, estado, fechaCambioEstado, estadoAnterior);
+    public void generarComision(int idComision, String estado, Date fechaCambioEstado, String estadoAnterior, float porcentaje){
+        Comision comision = new Comision(idComision, estado, fechaCambioEstado, estadoAnterior, porcentaje);
         this.comision = comision;
+    }
+
+    public float getPorcentajeComision(){
+        return comision.getPorcentajeComision();
     }
 
     public void emitirCertificadoGarantia(String idCertificadoGarantia, Date fechaEmision){

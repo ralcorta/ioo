@@ -10,6 +10,7 @@ public class Comision
     private String estado;
     private Date fechaCambioEstado;
     private String estadoAnterior;
+    private float porcentaje;
     Operacion operacion;
     ArrayList <Factura> facturas = new ArrayList <Factura>();
 
@@ -45,11 +46,16 @@ public class Comision
         this.estadoAnterior = estadoAnterior;
     }
 
-    public Comision(int idComision, String estado, Date fechaCambioEstado, String estadoAnterior) {
+    public Comision(int idComision, String estado, Date fechaCambioEstado, String estadoAnterior, float porcentaje) {
         this.idComision = idComision;
         this.estado = estado;
         this.fechaCambioEstado = fechaCambioEstado;
         this.estadoAnterior = estadoAnterior;
+        this.porcentaje = porcentaje;
+    }
+
+    public float getPorcentajeComision(){
+        return this.porcentaje;
     }
 
     public int modificarEstado(String estado){ //int o String?

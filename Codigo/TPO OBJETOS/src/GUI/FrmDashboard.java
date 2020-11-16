@@ -63,7 +63,7 @@ public class FrmDashboard extends JFrame{
         CONSULTASButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                FrmConsultasGenerales frame = new FrmConsultasGenerales(self);
+                FrmConsultasGenerales frame = new FrmConsultasGenerales(self, cSocios, cOperacion);
                 frame.setVisible(true);
             }
         });
