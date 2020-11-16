@@ -238,6 +238,39 @@ public class SociosController
         return "Accionista creado con exito";
     }
 
+    public String suscribirAccion(String cuitSocio, Accion accion){
+        for (SocioParticipe sPa: listaDeSociosParticipes) {
+            if(sPa.getCuit().equals(cuitSocio)){
+                if(accion.getTipo().equals("A")){
+                    sPa.accionesSuscritas.add(accion);
+                    return "Accion suscripta con exito!";
+                }
+                else {
+                    return "No puede suscribir una accion de tipo B.";
+                }
+            }
+            else {
+                return "Esta accion no pertenece a nigun socio.";
+            }
+        }
+
+        for(SocioProtector sPr : listaDeSociosProtectores){
+            if(sPr.getCuit().equals(cuitSocio)){
+                if(accion.getTipo().equals("B")){
+                    sPr.accionesSuscritas.add(accion);
+                    return "Accion suscripta con exito!";
+                }
+                else{
+                    return "No puede suscribir una accion de tipo A.";
+                }
+            }
+            else{
+                return "Esta accion no pertenece a ningun socio.";
+            }
+        }
+        return "Accion creada con exito!";
+    }
+
     public ArrayList<SocioParticipe> getListaDeSociosParticipes(){
         return this.listaDeSociosParticipes;
     }

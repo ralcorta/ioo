@@ -17,7 +17,9 @@
         <children>
           <component id="9f720" class="javax.swing.JTable" binding="tablaDeAcciones">
             <constraints/>
-            <properties/>
+            <properties>
+              <fillsViewportHeight value="true"/>
+            </properties>
           </component>
         </children>
       </scrollpane>

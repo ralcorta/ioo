@@ -7,6 +7,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
 
 public class FrmABMAcciones extends JDialog{
     private FrmABMAcciones self;
@@ -81,5 +82,12 @@ public class FrmABMAcciones extends JDialog{
                 }
             }
         });
+
+        /*suscribirAccionButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cSocios.suscribirAccion(cuitSocio, accion);
+            }
+        });*/
     }
 }
