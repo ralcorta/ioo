@@ -51,6 +51,7 @@ public class FrmDetalleOperacion extends JDialog{
     private JComboBox comboSistemaBancario;
     private JLabel txtSistemaBancarioPrest;
     private JComboBox comboEstado;
+    private JTextField fieldCertificadoGarantia;
     private ArrayList<SocioParticipe> sociosParticipes;
     private String auxOperation;
 
@@ -91,6 +92,7 @@ public class FrmDetalleOperacion extends JDialog{
 
     public FrmDetalleOperacion(Window owner, SociosController controladorSocios, OperacionController controladorOperacion, Operacion o) {
         super(owner, "Detalle de Operación");
+        auxOperation = "Update";
 
         this.setContentPane(pnlPrincipal);
         //this.setSize(300, 300);
@@ -119,6 +121,16 @@ public class FrmDetalleOperacion extends JDialog{
         textImporte.setText(o.getImporte());
         textFechaCreacOp.setText(new SimpleDateFormat("dd/MM/yyyy").format(o.getFechaCreacionOperacion()));
         textFechaVenc.setText(new SimpleDateFormat("dd/MM/yyyy").format(o.getFechaVencimiento()));
+        if(o.getEstado().equals("Con certificado emitido")) {
+            comboEstado.removeItem("Ingresado");
+            fieldCertificadoGarantia.setText(o.getCertificadoGarantia().getIdCertificadoGarantia());
+        }
+        else if(o.getEstado().equals("Monetizado")) {
+            comboEstado.removeItem("Ingresado");
+            comboEstado.removeItem("Con certificado emitido");
+            fieldCertificadoGarantia.setText(o.getCertificadoGarantia().getIdCertificadoGarantia());
+        }
+
         textBancoCheque.setText(o.getNombreBancoCheque());
         textNumCheque.setText(o.getNumeroCheque());
         textFechaVencCheque.setText(new SimpleDateFormat("dd/MM/yyyy").format(o.getFechaVencCheque()));

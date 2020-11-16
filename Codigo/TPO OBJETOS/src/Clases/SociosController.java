@@ -217,15 +217,25 @@ public class SociosController
         return "El socio a actualizar NO existe";
     }
 
-    public String crearAccionista(int cuit, int porcentajeDeParticipacion, String razonSocial){
+    public String crearAccionista(String cuit, int porcentajeDeParticipacion, String razonSocial, String cuitSocio){
         for (Accionistas a : listaDeAccionistas) {
-            if (a.getCuit() == cuit){
-                return "el accionista ya existe";
+            if (a.getCuit().equals(cuit)){
+                return "El accionista ya existe";
             }
         }
         Accionistas nuevoAccionista = new Accionistas(cuit, porcentajeDeParticipacion, razonSocial);
         listaDeAccionistas.add(nuevoAccionista);
-        return "accionista creado con exito";
+        for(SocioProtector s : listaDeSociosProtectores){
+            if(s.getCuit().equals(cuitSocio)){
+                s.agregarAccionista(nuevoAccionista);
+            }
+        }
+        for(SocioParticipe s : listaDeSociosParticipes){
+            if(s.getCuit().equals(cuitSocio)){
+                s.agregarAccionista(nuevoAccionista);
+            }
+        }
+        return "Accionista creado con exito";
     }
 
     public ArrayList<SocioParticipe> getListaDeSociosParticipes(){

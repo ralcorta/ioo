@@ -4,15 +4,15 @@ import java.util.Date;
 
 public class CertificadoDeGarantia
 {
-    private int idCertificadoGarantia;
+    private String idCertificadoGarantia;
     private Date fechaEmision;
     Operacion operacion;
 
-    public int getIdCertificadoGarantia() {
+    public String getIdCertificadoGarantia() {
         return idCertificadoGarantia;
     }
 
-    public void setIdCertificadoGarantia(int idCertificadoGarantia) {
+    public void setIdCertificadoGarantia(String idCertificadoGarantia) {
         this.idCertificadoGarantia = idCertificadoGarantia;
     }
 
@@ -24,7 +24,7 @@ public class CertificadoDeGarantia
         this.fechaEmision = fechaEmision;
     }
 
-    public CertificadoDeGarantia(int idCertificadoGarantia, Date fechaEmision) {
+    public CertificadoDeGarantia(String idCertificadoGarantia, Date fechaEmision) {
         this.idCertificadoGarantia = idCertificadoGarantia;
         this.fechaEmision = fechaEmision;
     }

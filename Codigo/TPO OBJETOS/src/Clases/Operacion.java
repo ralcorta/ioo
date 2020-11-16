@@ -229,9 +229,13 @@ public class Operacion {
         this.comision = comision;
     }
 
-    public void emitirCertificadoGarantia(int idCertificadoGarantia, Date fechaEmision){
+    public void emitirCertificadoGarantia(String idCertificadoGarantia, Date fechaEmision){
         CertificadoDeGarantia certificadoDeGarantia = new CertificadoDeGarantia(idCertificadoGarantia, fechaEmision);
         this.certificadoGarantia = certificadoDeGarantia;
+    }
+
+    public CertificadoDeGarantia getCertificadoGarantia(){
+        return this.certificadoGarantia;
     }
 
     public void crearCheque(String banco, int numero, Date fechaDeVencimiento, String cuit, float tasaDeDescuento){

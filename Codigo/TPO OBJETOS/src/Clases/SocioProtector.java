@@ -19,6 +19,9 @@ public class SocioProtector{
     private String usuarioDocumentacion;
     ArrayList<Aportes> listaDeAportes = new ArrayList<Aportes>();
     ArrayList<Accionistas> listaDeAccionistas = new ArrayList<Accionistas>();
+    ArrayList<Accion> listaDeAcciones = new ArrayList<Accion>();
+    ArrayList<Accion> accionesSuscritas = new ArrayList<Accion>();
+    SociosController controlador;
 
     public ArrayList<Aportes> getListaDeAportes() {
         return listaDeAportes;
@@ -36,9 +39,9 @@ public class SocioProtector{
         return accionesSuscritas;
     }
 
-    ArrayList<Accion> listaDeAcciones = new ArrayList<Accion>();
-    ArrayList<Accion> accionesSuscritas = new ArrayList<Accion>();
-    SociosController controlador;
+    public void agregarAccionista(Accionistas accionista){
+        listaDeAccionistas.add(accionista);
+    }
 
     public SocioProtector(String cuit, String razonSocial, Date fechaInicioActividades, String tipo, String actividadPrincipal, String direccion, String telefono, String correoElectronico, boolean esPleno, String documentacion, Date fechaDocumentacion, Boolean estadoDocumentacion, String usuarioDocumentacion) {
         this.cuit = cuit;

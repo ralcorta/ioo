@@ -31,6 +31,8 @@ public class FrmDetalleSocio extends JDialog {
     private JPanel panelFormularioSocios;
     private JComboBox socioCombo;
     private JComboBox comboEstadoDocumentacion;
+    private JButton listaDeAccionistasButton;
+    private JButton listaDeAccionesButton;
 
     public FrmDetalleSocio(Window owner, SociosController cSocio) {
         super(owner, "Detalle de Socio");
@@ -45,6 +47,10 @@ public class FrmDetalleSocio extends JDialog {
         comboEstadoDocumentacion.addItem("Controlado");
         comboEstadoDocumentacion.addItem("Rechazado");
 
+        listaDeAccionistasButton.setEnabled(false);
+
+        comboBoxSocioPleno.setSelectedItem("No");
+        comboBoxSocioPleno.setEnabled(false);
 
         this.pack();
         this.setModal(true);
@@ -102,6 +108,7 @@ public class FrmDetalleSocio extends JDialog {
         } else {
             this.socioCombo.getModel().setSelectedItem("Protector");
         }
+        comboBoxSocioPleno.setEnabled(false);
 
         if(socio.getEstadoDocumentacion() == true) {
             this.comboEstadoDocumentacion.getModel().setSelectedItem("Controlado");
@@ -156,6 +163,7 @@ public class FrmDetalleSocio extends JDialog {
         } else {
             this.socioCombo.setSelectedIndex(1);
         }
+        comboBoxSocioPleno.setEnabled(false);
 
         if(socio.getEstadoDocumentacion() == true) {
             this.comboEstadoDocumentacion.setSelectedIndex(0);
@@ -240,5 +248,19 @@ public class FrmDetalleSocio extends JDialog {
             }
         });
 
+        listaDeAccionistasButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                FrmABMAccionista frame = new FrmABMAccionista(self, cSocio, textCuitSocio.getText());
+                frame.setVisible(true);
+            }
+        });
+
+        listaDeAccionesButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
     }
 }

@@ -1,6 +1,7 @@
 package Clases;
 
 import javax.sound.sampled.Line;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Currency;
@@ -36,8 +37,12 @@ public class OperacionController{
 
         if(Integer.parseInt(importe) <= Integer.parseInt(aEnviar.getImporteActual())) {
             Operacion nuevaOperacion = new Operacion(newIdOperacion, tipoDeOperacion, "Con certificado emitido", garantia, importe, fechaCreacionOperacion, fechaVencimiento, cuotasPagadas, importeUtilizado, nombreBancoCheque, fechaVencCheque, numeroCheque, cuitCheque, tasaDeDescuento, cuentaCorriente, fechaVencimientoCuentaCorriente, nombreBancoPrestamo, tasaDeInteres, fechaDeAcreditacionPrestamo, cantidadDeCuotas, sistemaBancario, aEnviar);
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMddhhmmss");
+            String dateAsString = simpleDateFormat.format(new Date());
+            nuevaOperacion.emitirCertificadoGarantia(dateAsString, new Date());
             operaciones.add(nuevaOperacion);
             aEnviar.restarImporteATotal(importe);
+
             return "La operacion con ID " + nuevaOperacion.getIdOperacion() + " ha sido creada con exito!";
         } else {
             Operacion nuevaOperacion = new Operacion(newIdOperacion, tipoDeOperacion, "Ingresado", garantia, importe, fechaCreacionOperacion, fechaVencimiento, cuotasPagadas, importeUtilizado, nombreBancoCheque, fechaVencCheque, numeroCheque, cuitCheque, tasaDeDescuento, cuentaCorriente, fechaVencimientoCuentaCorriente, nombreBancoPrestamo, tasaDeInteres, fechaDeAcreditacionPrestamo, cantidadDeCuotas,sistemaBancario, aEnviar);

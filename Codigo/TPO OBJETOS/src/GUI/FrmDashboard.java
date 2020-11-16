@@ -148,6 +148,9 @@ public class FrmDashboard extends JFrame{
                 0.0f, "ICBC", "123456", new Date(), "20593456543", 0.0f, "", new Date(),
                 "", 0.0f, new Date(), 0, "");
 
+        controladorSocios.crearAccionista("2058435241",5,"Razon puto", "20121231238");
+        controladorSocios.crearAccionista("2058435246",50,"Razon puto2", "20400067385");
+
         FrmDashboard frame = new FrmDashboard("SGR", controladorSocios, controladorOperacion);
         frame.setVisible(true);
 

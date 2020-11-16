@@ -29,6 +29,10 @@ public class SocioParticipe
         return listaDeAccionistas;
     }
 
+    public void agregarAccionista(Accionistas accionista){
+        listaDeAccionistas.add(accionista);
+    }
+
     public ArrayList<Accion> getListaDeAcciones() {
         return listaDeAcciones;
     }

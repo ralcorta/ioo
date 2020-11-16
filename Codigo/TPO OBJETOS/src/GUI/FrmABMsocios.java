@@ -24,6 +24,7 @@ public class FrmABMsocios extends JDialog{
     private JPanel panelTablaSocios;
     private JTable sociosTable;
     private JButton buscarButton;
+    private JButton aprobarSocioButton;
     private DefaultTableModel model = new DefaultTableModel();
 
     public FrmABMsocios(Window owner, SociosController cSocios) {
@@ -55,6 +56,7 @@ public class FrmABMsocios extends JDialog{
         this.eventos(cSocios);
 
         this.self = this;
+
     }
 
     private void eventos(SociosController cSocios)
@@ -106,6 +108,13 @@ public class FrmABMsocios extends JDialog{
                         }
                     }
                 }
+            }
+        });
+
+        aprobarSocioButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
             }
         });
     }
