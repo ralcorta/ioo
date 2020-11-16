@@ -22,6 +22,7 @@ public class FrmDetalleLineaDeCredito extends JDialog {
     private JPanel panelDetalleLinea;
     private JLabel txtNombreSocio;
     private JComboBox comboEstado;
+    private JTextField inputImporteDisponible;
 
     private String operation;
 
@@ -49,8 +50,11 @@ public class FrmDetalleLineaDeCredito extends JDialog {
             }
             comboEstado.setEnabled(false);
             txtImporte.setText(socio.getLinea().getImporteMaximo());
+            inputImporteDisponible.setText(socio.getLinea().getImporteActual());
             txtFechaVigencia.setText(new SimpleDateFormat("dd/MM/yyyy").format(socio.getLinea().getFechaDeVigencia()));
             txtFechaVigencia.setEnabled(false);
+        } else{
+            inputImporteDisponible.setEnabled(false);
         }
 
         txtNombreSocio.setText(socio.getCuit() + " - " + socio.getRazonSocial());

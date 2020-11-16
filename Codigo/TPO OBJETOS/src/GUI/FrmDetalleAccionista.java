@@ -3,6 +3,7 @@ package GUI;
 import Clases.SociosController;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,23 +17,27 @@ public class FrmDetalleAccionista extends JDialog {
     private JButton guardarButton;
     private JButton cancelarButton;
     private JTextField textCUITSocio;
+    private JPanel pnlPrincipal;
 
-    public FrmDetalleAccionista(Window owner, SociosController controlador) {
+
+    public FrmDetalleAccionista(Window owner, SociosController cSocios, String cuitSocio) {
         super(owner, "Detalle de Accionista");
-        this.setContentPane(panelCreacionAccionista);
-        //this.setSize(300, 300);
+        this.setContentPane(pnlPrincipal);
 
         this.pack();
         this.setModal(true);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
 
-        this.eventos();
+        textCUITSocio.setText(cuitSocio);
+        textCUITSocio.setEnabled(false);
+
+        this.eventos(cSocios, cuitSocio);
 
         this.self = this;
     }
 
-    private void eventos()
+    private void eventos(SociosController cSocios, String cuitSocio)
     {
         cancelarButton.addActionListener(new ActionListener() {
             @Override
@@ -40,5 +45,15 @@ public class FrmDetalleAccionista extends JDialog {
                 dispose();
             }
         });
+
+        guardarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                String resultado = cSocios.crearAccionista(textCUITAccionista.getText(),Integer.parseInt(textPorcentajeParticipacion.getText()), textRazonSocial.getText(), cuitSocio);
+                JOptionPane.showMessageDialog(null, resultado, "Operacion creada correctamente", JOptionPane.INFORMATION_MESSAGE);
+                dispose();
+            }
+        });
+
     }
 }

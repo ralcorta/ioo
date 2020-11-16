@@ -7,18 +7,29 @@ import java.util.Date;
 public class Operacion {
     private int idOperacion;
     private String tipoDeOperacion;
-    private String subtipoOperacion;
     private String estado;
-    private Date fechaCambioEstado;
-    private String estadoAnterior;
-    private String usuarioModificador;
     private String garantia;
-    private Currency importe;
+    private String importe;
     private Date fechaCreacionOperacion;
     private Date fechaVencimiento;
     private int cuotasPagadas;
-    private int cantidadTotalCuotas;
     private float importeUtilizado;
+    //if tipo1
+    private String nombreBancoCheque;
+    private String numeroCheque;
+    private String cuitCheque;
+    private Date fechaVencCheque;
+    private float tasaDeDescuento;
+    //if tipo2
+    private String cuentaCorriente;
+    private Date fechaVencimientoCuentaCorriente;
+    //if tipo3
+    private String nombreBancoPrestamo;
+    private float tasaDeInteres;
+    private Date fechaDeAcreditacionPrestamo;
+    private int cantidadDeCuotas;
+    private String sistemaBancario;
+    //fin de diferencias por tipo
     private LineaDeCredito linea;
     Comision comision;
     CertificadoDeGarantia certificadoGarantia;
@@ -26,23 +37,34 @@ public class Operacion {
     ArrayList <Prestamo> prestamos = new ArrayList<Prestamo>();
     ArrayList <CuentaCorriente> cuentasCorrientes = new ArrayList<CuentaCorriente>();
 
-    public Operacion(LineaDeCredito linea, int idOperacion, String tipoDeOperacion, String subtipoOperacion, String estado, Date fechaCambioEstado, String estadoAnterior, String usuarioModificador, String garantia, Currency importe, Date fechaCreacionOperacion, Date fechaVencimiento, int cuotasPagadas, int cantidadTotalCuotas, float importeUtilizado) {
-        this.linea = linea;
+    public Operacion(int idOperacion, String tipoDeOperacion, String estado, String garantia, String importe, Date fechaCreacionOperacion, Date fechaVencimiento, int cuotasPagadas, float importeUtilizado, String nombreBancoCheque, Date fechaVencCheque, String numeroCheque, String cuitCheque, float tasaDeDescuento, String cuentaCorriente, Date fechaVencimientoCuentaCorriente, String nombreBancoPrestamo, float tasaDeInteres, Date fechaDeAcreditacionPrestamo, int cantidadDeCuotas, String sistemaBancario, LineaDeCredito linea) {
         this.idOperacion = idOperacion;
         this.tipoDeOperacion = tipoDeOperacion;
-        this.subtipoOperacion = subtipoOperacion;
         this.estado = estado;
-        this.fechaCambioEstado = fechaCambioEstado;
-        this.estadoAnterior = estadoAnterior;
-        this.usuarioModificador = usuarioModificador;
         this.garantia = garantia;
         this.importe = importe;
+        this.fechaVencimiento = fechaVencCheque;
         this.fechaCreacionOperacion = fechaCreacionOperacion;
         this.fechaVencimiento = fechaVencimiento;
         this.cuotasPagadas = cuotasPagadas;
-        this.cantidadTotalCuotas = cantidadTotalCuotas;
         this.importeUtilizado = importeUtilizado;
+        this.nombreBancoCheque = nombreBancoCheque;
+        this.numeroCheque = numeroCheque;
+        this.cuitCheque = cuitCheque;
+        this.tasaDeDescuento = tasaDeDescuento;
+        this.cuentaCorriente = cuentaCorriente;
+        this.fechaVencimientoCuentaCorriente = fechaVencimientoCuentaCorriente;
+        this.nombreBancoPrestamo = nombreBancoPrestamo;
+        this.tasaDeInteres = tasaDeInteres;
+        this.fechaDeAcreditacionPrestamo = fechaDeAcreditacionPrestamo;
+        this.cantidadDeCuotas = cantidadDeCuotas;
+        this.sistemaBancario = sistemaBancario;
+        this.linea = linea;
     }
+
+    public Date getFechaVencCheque(){ return this.fechaVencimiento; }
+
+    public void setFechaVencCheque(Date fecha){ this.fechaVencimiento = fecha; }
 
     public int getIdOperacion() {
         return idOperacion;
@@ -60,14 +82,6 @@ public class Operacion {
         this.tipoDeOperacion = tipoDeOperacion;
     }
 
-    public String getSubtipoOperacion() {
-        return subtipoOperacion;
-    }
-
-    public void setSubtipoOperacion(String subtipoOperacion) {
-        this.subtipoOperacion = subtipoOperacion;
-    }
-
     public String getEstado() {
         return estado;
     }
@@ -76,44 +90,12 @@ public class Operacion {
         this.estado = estado;
     }
 
-    public Date getFechaCambioEstado() {
-        return fechaCambioEstado;
-    }
-
-    public void setFechaCambioEstado(Date fechaCambioEstado) {
-        this.fechaCambioEstado = fechaCambioEstado;
-    }
-
-    public String getEstadoAnterior() {
-        return estadoAnterior;
-    }
-
-    public void setEstadoAnterior(String estadoAnterior) {
-        this.estadoAnterior = estadoAnterior;
-    }
-
-    public String getUsuarioModificador() {
-        return usuarioModificador;
-    }
-
-    public void setUsuarioModificador(String usuarioModificador) {
-        this.usuarioModificador = usuarioModificador;
-    }
-
     public String getGarantia() {
         return garantia;
     }
 
     public void setGarantia(String garantia) {
         this.garantia = garantia;
-    }
-
-    public Currency getImporte() {
-        return importe;
-    }
-
-    public void setImporte(Currency importe) {
-        this.importe = importe;
     }
 
     public Date getFechaCreacionOperacion() {
@@ -128,6 +110,8 @@ public class Operacion {
         return fechaVencimiento;
     }
 
+    public String getImporte(){ return this.importe; }
+
     public void setFechaVencimiento(Date fechaVencimiento) {
         this.fechaVencimiento = fechaVencimiento;
     }
@@ -138,14 +122,6 @@ public class Operacion {
 
     public void setCuotasPagadas(int cuotasPagadas) {
         this.cuotasPagadas = cuotasPagadas;
-    }
-
-    public int getCantidadTotalCuotas() {
-        return cantidadTotalCuotas;
-    }
-
-    public void setCantidadTotalCuotas(int cantidadTotalCuotas) {
-        this.cantidadTotalCuotas = cantidadTotalCuotas;
     }
 
     public float getImporteUtilizado() {
@@ -160,14 +136,106 @@ public class Operacion {
         this.importeUtilizado = importeUtilizado;
     }
 
+    public String getNombreBancoCheque() {
+        return nombreBancoCheque;
+    }
+
+    public void setNombreBancoCheque(String nombreBancoCheque) {
+        this.nombreBancoCheque = nombreBancoCheque;
+    }
+
+    public String getNumeroCheque() {
+        return numeroCheque;
+    }
+
+    public void setNumeroCheque(String numeroCheque) {
+        this.numeroCheque = numeroCheque;
+    }
+
+    public String getCuitCheque() {
+        return cuitCheque;
+    }
+
+    public void setCuitCheque(String cuitCheque) {
+        this.cuitCheque = cuitCheque;
+    }
+
+    public float getTasaDeDescuento() {
+        return tasaDeDescuento;
+    }
+
+    public void setTasaDeDescuento(float tasaDeDescuento) {
+        this.tasaDeDescuento = tasaDeDescuento;
+    }
+
+    public String getCuentaCorriente() {
+        return cuentaCorriente;
+    }
+
+    public void setCuentaCorriente(String cuentaCorriente) {
+        this.cuentaCorriente = cuentaCorriente;
+    }
+
+    public Date getFechaVencimientoCuentaCorriente() {
+        return fechaVencimientoCuentaCorriente;
+    }
+
+    public void setFechaVencimientoCuentaCorriente(Date fechaVencimientoCuentaCorriente) {
+        this.fechaVencimientoCuentaCorriente = fechaVencimientoCuentaCorriente;
+    }
+
+    public String getNombreBancoPrestamo() {
+        return nombreBancoPrestamo;
+    }
+
+    public void setNombreBancoPrestamo(String nombreBancoPrestamo) {
+        this.nombreBancoPrestamo = nombreBancoPrestamo;
+    }
+
+    public float getTasaDeInteres() {
+        return tasaDeInteres;
+    }
+
+    public void setTasaDeInteres(float tasaDeInteres) {
+        this.tasaDeInteres = tasaDeInteres;
+    }
+
+    public Date getFechaDeAcreditacionPrestamo() {
+        return fechaDeAcreditacionPrestamo;
+    }
+
+    public void setFechaDeAcreditacionPrestamo(Date fechaDeAcreditacionPrestamo) {
+        this.fechaDeAcreditacionPrestamo = fechaDeAcreditacionPrestamo;
+    }
+
+    public int getCantidadDeCuotas() {
+        return cantidadDeCuotas;
+    }
+
+    public void setCantidadDeCuotas(int cantidadDeCuotas) {
+        this.cantidadDeCuotas = cantidadDeCuotas;
+    }
+
+    public String getSistemaBancario() {
+        return sistemaBancario;
+    }
+
+    public void setSistemaBancario(String sistemaBancario) {
+        this.sistemaBancario = sistemaBancario;
+    }
+
     public void generarComision(int idComision, String estado, Date fechaCambioEstado, String estadoAnterior){
         Comision comision = new Comision(idComision, estado, fechaCambioEstado, estadoAnterior);
         this.comision = comision;
     }
 
-    public void emitirCertificadoGarantia(int idCertificadoGarantia, Date fechaEmision){
+    public void emitirCertificadoGarantia(String idCertificadoGarantia, Date fechaEmision){
         CertificadoDeGarantia certificadoDeGarantia = new CertificadoDeGarantia(idCertificadoGarantia, fechaEmision);
         this.certificadoGarantia = certificadoDeGarantia;
+    }
+
+    public CertificadoDeGarantia getCertificadoGarantia(){
+        return this.certificadoGarantia;
     }
 
     public void crearCheque(String banco, int numero, Date fechaDeVencimiento, String cuit, float tasaDeDescuento){

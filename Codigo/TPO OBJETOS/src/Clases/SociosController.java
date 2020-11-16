@@ -16,22 +16,7 @@ public class SociosController
     public SociosController(OperacionController controladorOperacion) throws ParseException {
         this.controladorOperaciones = controladorOperacion;
         // JOptionPane.showMessageDialog(null, "Testing");
-        SimpleDateFormat df = new SimpleDateFormat("dd/MM/yy");
-        String dateStringCommon = "10/10/1991";
-        Date commonDate = df.parse(dateStringCommon);
-        this.crearSocioParticipe("20121231238",
-                "Usuario de prueba",
-                commonDate,
-                "1",
-                "ActPrincipal",
-                "Calle falsa 123",
-                "1112341234",
-                "example@gmail.com",
-                true,
-                "Documentacion del tipo",
-                commonDate,
-                true,
-                "Usuario de ingreso");
+
     }
 
     /*
@@ -232,14 +217,33 @@ public class SociosController
         return "El socio a actualizar NO existe";
     }
 
-    public String crearAccionista(int cuit, int porcentajeDeParticipacion, String razonSocial){
+    public String crearAccionista(String cuit, int porcentajeDeParticipacion, String razonSocial, String cuitSocio){
         for (Accionistas a : listaDeAccionistas) {
-            if (a.getCuit() == cuit){
-                return "el accionista ya existe";
+            if (a.getCuit().equals(cuit)){
+                return "El accionista ya existe";
             }
         }
         Accionistas nuevoAccionista = new Accionistas(cuit, porcentajeDeParticipacion, razonSocial);
         listaDeAccionistas.add(nuevoAccionista);
-        return "accionista creado con exito";
+        for(SocioProtector s : listaDeSociosProtectores){
+            if(s.getCuit().equals(cuitSocio)){
+                s.agregarAccionista(nuevoAccionista);
+            }
+        }
+        for(SocioParticipe s : listaDeSociosParticipes){
+            if(s.getCuit().equals(cuitSocio)){
+                s.agregarAccionista(nuevoAccionista);
+            }
+        }
+        return "Accionista creado con exito";
     }
+
+    public ArrayList<SocioParticipe> getListaDeSociosParticipes(){
+        return this.listaDeSociosParticipes;
+    }
+
+    public ArrayList<SocioProtector> getListaDeSociosProtectores(){
+        return this.listaDeSociosProtectores;
+    }
+
 }
