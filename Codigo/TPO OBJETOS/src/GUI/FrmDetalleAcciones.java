@@ -45,14 +45,14 @@ public class FrmDetalleAcciones extends JDialog{
             public void actionPerformed(ActionEvent e) {
                 for (SocioParticipe s: cSocios.listaDeSociosParticipes) {
                     if(cuitSocio.equals(s.getCuit())){
-                        int idAccion = s.getListaDeAcciones().size()+1;
+                        String idAccion = Integer.toString(s.getListaDeAcciones().size()+1);
                         String resultado = s.crearAccion(idAccion, comboBoxTipoAccion.getSelectedItem().toString());
                         JOptionPane.showMessageDialog(null, resultado, "Aviso", JOptionPane.INFORMATION_MESSAGE);
                     }
                 }
                 for (SocioProtector s: cSocios.listaDeSociosProtectores) {
                     if(cuitSocio.equals(s.getCuit())){
-                        int idAccion = s.getListaDeAcciones().size()+1;
+                        String idAccion = Integer.toString(s.getListaDeAcciones().size()+1);
                         String resultado = s.crearAccion(idAccion, comboBoxTipoAccion.getSelectedItem().toString());
                         JOptionPane.showMessageDialog(null, resultado, "Aviso", JOptionPane.INFORMATION_MESSAGE);
                     }

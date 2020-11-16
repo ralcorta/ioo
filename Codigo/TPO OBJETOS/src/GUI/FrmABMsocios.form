@@ -74,6 +74,7 @@
                   <autoCreateRowSorter value="false"/>
                   <background color="-990521"/>
                   <enabled value="true"/>
+                  <fillsViewportHeight value="false"/>
                   <focusable value="true"/>
                   <font/>
                   <updateSelectionOnSort value="true"/>

@@ -149,9 +149,9 @@ public class SocioParticipe
         this.usuarioDocumentacion = usuarioDocumentacion;
     }
 
-    public String crearAccion (int idAccion, String tipo){
+    public String crearAccion (String idAccion, String tipo){
         for (Accion a : listaDeAcciones){
-            if(a.getIdAccion() == idAccion){
+            if(a.getIdAccion().equals(idAccion)){
                 return "la accion ya existe";
             }
         }
@@ -160,7 +160,7 @@ public class SocioParticipe
         return "accion creada con exito";
     }
 
-    public String suscribirAccion(int idAccion){
+    public String suscribirAccion(String idAccion){
         for (Accion a: listaDeAcciones) {
             if (a.getIdAccion() == idAccion && a.getTipo() == "A"){
                 accionesSuscritas.add(a);

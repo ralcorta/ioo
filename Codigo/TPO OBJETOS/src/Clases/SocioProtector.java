@@ -178,9 +178,9 @@ public class SocioProtector{
         return"aporte no encontrado";
     }
 
-    public String suscribirAccion(int idAccion){
+    public String suscribirAccion(String idAccion){
         for (Accion a: listaDeAcciones) {
-            if (a.getIdAccion() == idAccion && a.getTipo() == "B"){
+            if (a.getIdAccion().equals(idAccion) && a.getTipo() == "B"){
                 accionesSuscritas.add(a);
                 return "accion suscrita con exito";
             }
@@ -191,9 +191,9 @@ public class SocioProtector{
         return "accion no encontrada";
     }
 
-    public String crearAccion (int idAccion, String tipo){
+    public String crearAccion (String idAccion, String tipo){
         for (Accion a : listaDeAcciones){
-            if(a.getIdAccion() == idAccion){
+            if(a.getIdAccion().equals(idAccion)){
                 return "la accion ya existe";
             }
         }

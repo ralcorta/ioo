@@ -242,33 +242,37 @@ public class SociosController
         for (SocioParticipe sPa: listaDeSociosParticipes) {
             if(sPa.getCuit().equals(cuitSocio)){
                 if(accion.getTipo().equals("A")){
+                    for(Accion aSusc : sPa.getAccionesSuscritas()) {
+                        if(aSusc.getIdAccion().equals(accion.getIdAccion())){
+                            return "La acción seleccionada ya se encuentra suscripta";
+                        }
+                    }
                     sPa.accionesSuscritas.add(accion);
                     return "Accion suscripta con exito!";
                 }
                 else {
-                    return "No puede suscribir una accion de tipo B.";
+                    return "Los Socios Participes no pueden suscribir acciones de Tipo B";
                 }
-            }
-            else {
-                return "Esta accion no pertenece a nigun socio.";
             }
         }
 
         for(SocioProtector sPr : listaDeSociosProtectores){
             if(sPr.getCuit().equals(cuitSocio)){
                 if(accion.getTipo().equals("B")){
+                    for(Accion aSusc : sPr.getAccionesSuscritas()) {
+                        if(aSusc.getIdAccion().equals(accion.getIdAccion())){
+                            return "La acción seleccionada ya se encuentra suscripta";
+                        }
+                    }
                     sPr.accionesSuscritas.add(accion);
                     return "Accion suscripta con exito!";
                 }
                 else{
-                    return "No puede suscribir una accion de tipo A.";
+                    return "Los Socios Participes no pueden suscribir acciones de Tipo A";
                 }
             }
-            else{
-                return "Esta accion no pertenece a ningun socio.";
-            }
         }
-        return "Accion creada con exito!";
+        return "La accion seleccionada no ha podido ser creada.";
     }
 
     public ArrayList<SocioParticipe> getListaDeSociosParticipes(){

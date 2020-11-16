@@ -1,21 +1,21 @@
 package Clases;
 
 public class Accion {
-    private int idAccion;
+    private String idAccion;
     private String tipo;
     SocioProtector socioProtector;
     SocioParticipe socioParticipe;
 
-    public Accion(int idAccion, String tipo) {
+    public Accion(String idAccion, String tipo) {
         this.idAccion = idAccion;
         this.tipo = tipo;
     }
 
-    public int getIdAccion() {
+    public String getIdAccion() {
         return idAccion;
     }
 
-    public void setIdAccion(int idAccion) {
+    public void setIdAccion(String idAccion) {
         this.idAccion = idAccion;
     }
 

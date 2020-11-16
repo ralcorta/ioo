@@ -27,25 +27,12 @@ public class FrmABMAcciones extends JDialog{
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         model.addColumn("ID accion");
         model.addColumn("Tipo");
+        model.addColumn("¿Accion suscripta?");
         this.setLocationRelativeTo(null);
         model.fireTableDataChanged();
         tablaDeAcciones.setModel(model);
 
-        for (SocioParticipe socio : cSocios.listaDeSociosParticipes) {
-            if(socio.getCuit().equals(cuitSocio)) {
-                for(Accion a : socio.getListaDeAcciones()) {
-                    model.addRow(new Object[]{a.getIdAccion(), a.getTipo()});
-                }
-            }
-        }
-
-        for (SocioProtector socio : cSocios.listaDeSociosProtectores) {
-            if(socio.getCuit().equals(cuitSocio)) {
-                for(Accion a : socio.getListaDeAcciones()) {
-                    model.addRow(new Object[]{a.getIdAccion(), a.getTipo()});
-                }
-            }
-        }
+        drawAccionesTable(cSocios, cuitSocio);
 
         this.self = this;
         this.eventos(cSocios, cuitSocio);
@@ -64,11 +51,24 @@ public class FrmABMAcciones extends JDialog{
         buttonRefresh.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                model.setRowCount(0);
+                drawAccionesTable(cSocios, cuitSocio);
+            }
+        });
+
+        suscribirAccionButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int filaSeleccionada = tablaDeAcciones.getSelectedRow();
+                String idAccionSel = tablaDeAcciones.getValueAt(filaSeleccionada,0).toString();
+                Accion auxAccion = null;
+                String response = null;
+
                 for (SocioParticipe socio : cSocios.listaDeSociosParticipes) {
                     if(socio.getCuit().equals(cuitSocio)) {
                         for(Accion a : socio.getListaDeAcciones()) {
-                            model.addRow(new Object[]{a.getIdAccion(), a.getTipo()});
+                            if (a.getIdAccion().equals(idAccionSel)){
+                                auxAccion = a;
+                            }
                         }
                     }
                 }
@@ -76,18 +76,59 @@ public class FrmABMAcciones extends JDialog{
                 for (SocioProtector socio : cSocios.listaDeSociosProtectores) {
                     if(socio.getCuit().equals(cuitSocio)) {
                         for(Accion a : socio.getListaDeAcciones()) {
-                            model.addRow(new Object[]{a.getIdAccion(), a.getTipo()});
+                            if (a.getIdAccion().equals(idAccionSel)){
+                                auxAccion = a;
+                            }
                         }
                     }
                 }
+
+                if(auxAccion != null) {
+                    response = cSocios.suscribirAccion(cuitSocio, auxAccion);
+                    JOptionPane.showMessageDialog(null, response, "Accion creada con exito", JOptionPane.INFORMATION_MESSAGE);
+                }
             }
         });
+    }
 
-        /*suscribirAccionButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                cSocios.suscribirAccion(cuitSocio, accion);
+    public void drawAccionesTable(SociosController cSocios, String cuitSocio){
+        model.setRowCount(0);
+        boolean aSus = false;
+
+        for (SocioParticipe socio : cSocios.listaDeSociosParticipes) {
+            if(socio.getCuit().equals(cuitSocio)) {
+                for(Accion a : socio.getListaDeAcciones()) {
+                    for(Accion aSusc : socio.getAccionesSuscritas()) {
+                        aSus = false;
+                        if(a.getIdAccion().equals(aSusc.getIdAccion())) {
+                            aSus = true;
+                        }
+                    }
+                    if(aSus) {
+                        model.addRow(new Object[]{a.getIdAccion(), a.getTipo(), "Si"});
+                    } else {
+                        model.addRow(new Object[]{a.getIdAccion(), a.getTipo(), "No"});
+                    };
+                }
             }
-        });*/
+        }
+
+        for (SocioProtector socio : cSocios.listaDeSociosProtectores) {
+            if(socio.getCuit().equals(cuitSocio)) {
+                for(Accion a : socio.getListaDeAcciones()) {
+                    aSus = false;
+                    for(Accion aSusc : socio.getAccionesSuscritas()) {
+                        if(a.getIdAccion().equals(aSusc.getIdAccion())) {
+                            aSus = true;
+                        }
+                    }
+                    if(aSus) {
+                        model.addRow(new Object[]{a.getIdAccion(), a.getTipo(), "Si"});
+                    } else {
+                        model.addRow(new Object[]{a.getIdAccion(), a.getTipo(), "No"});
+                    };
+                }
+            }
+        }
     }
 }
