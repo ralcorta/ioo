@@ -9,6 +9,7 @@ public class LineaDeCredito {
     private String importeMaximo;
     private Date fechaDeVigencia;
     private boolean estadoAprobacion;
+    private String importeActual;
 
     private SocioParticipe socio;
     ArrayList<Operacion> operaciones = new ArrayList<Operacion>();
@@ -22,6 +23,7 @@ public class LineaDeCredito {
         this.importeMaximo = importeMaximo;
         this.fechaDeVigencia = fechaDeVigencia;
         this.estadoAprobacion = estadoAprobacion;
+        this.importeActual = importeMaximo;
 
         this.socio = socio;
     }
@@ -30,12 +32,20 @@ public class LineaDeCredito {
         return idLineaCredito;
     }
 
+    public void restarImporteATotal(String importe) {
+        this.importeActual = Integer.toString(Integer.parseInt(importeActual) - Integer.parseInt(importe));
+    }
+
     public void setIdLineaCredito(int idLineaCredito) {
         this.idLineaCredito = idLineaCredito;
     }
 
     public String getImporteMaximo() {
-        return importeMaximo;
+        return this.importeMaximo;
+    }
+
+    public String getImporteActual() {
+        return this.importeActual;
     }
 
     public void setImporteMaximo(String importeMaximo) {

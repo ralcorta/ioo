@@ -17,7 +17,8 @@ public class Operacion {
     //if tipo1
     private String nombreBancoCheque;
     private String numeroCheque;
-    private int cuitCheque;
+    private String cuitCheque;
+    private Date fechaVencCheque;
     private float tasaDeDescuento;
     //if tipo2
     private String cuentaCorriente;
@@ -36,12 +37,13 @@ public class Operacion {
     ArrayList <Prestamo> prestamos = new ArrayList<Prestamo>();
     ArrayList <CuentaCorriente> cuentasCorrientes = new ArrayList<CuentaCorriente>();
 
-    public Operacion(int idOperacion, String tipoDeOperacion, String estado, String garantia, String importe, Date fechaCreacionOperacion, Date fechaVencimiento, int cuotasPagadas, float importeUtilizado, String nombreBancoCheque, String numeroCheque, int cuitCheque, float tasaDeDescuento, String cuentaCorriente, Date fechaVencimientoCuentaCorriente, String nombreBancoPrestamo, float tasaDeInteres, Date fechaDeAcreditacionPrestamo, int cantidadDeCuotas, String sistemaBancario, LineaDeCredito linea) {
+    public Operacion(int idOperacion, String tipoDeOperacion, String estado, String garantia, String importe, Date fechaCreacionOperacion, Date fechaVencimiento, int cuotasPagadas, float importeUtilizado, String nombreBancoCheque, Date fechaVencCheque, String numeroCheque, String cuitCheque, float tasaDeDescuento, String cuentaCorriente, Date fechaVencimientoCuentaCorriente, String nombreBancoPrestamo, float tasaDeInteres, Date fechaDeAcreditacionPrestamo, int cantidadDeCuotas, String sistemaBancario, LineaDeCredito linea) {
         this.idOperacion = idOperacion;
         this.tipoDeOperacion = tipoDeOperacion;
         this.estado = estado;
         this.garantia = garantia;
         this.importe = importe;
+        this.fechaVencimiento = fechaVencCheque;
         this.fechaCreacionOperacion = fechaCreacionOperacion;
         this.fechaVencimiento = fechaVencimiento;
         this.cuotasPagadas = cuotasPagadas;
@@ -59,6 +61,10 @@ public class Operacion {
         this.sistemaBancario = sistemaBancario;
         this.linea = linea;
     }
+
+    public Date getFechaVencCheque(){ return this.fechaVencimiento; }
+
+    public void setFechaVencCheque(Date fecha){ this.fechaVencimiento = fecha; }
 
     public int getIdOperacion() {
         return idOperacion;
@@ -104,6 +110,8 @@ public class Operacion {
         return fechaVencimiento;
     }
 
+    public String getImporte(){ return this.importe; }
+
     public void setFechaVencimiento(Date fechaVencimiento) {
         this.fechaVencimiento = fechaVencimiento;
     }
@@ -144,11 +152,11 @@ public class Operacion {
         this.numeroCheque = numeroCheque;
     }
 
-    public int getCuitCheque() {
+    public String getCuitCheque() {
         return cuitCheque;
     }
 
-    public void setCuitCheque(int cuitCheque) {
+    public void setCuitCheque(String cuitCheque) {
         this.cuitCheque = cuitCheque;
     }
 

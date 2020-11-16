@@ -16,22 +16,7 @@ public class SociosController
     public SociosController(OperacionController controladorOperacion) throws ParseException {
         this.controladorOperaciones = controladorOperacion;
         // JOptionPane.showMessageDialog(null, "Testing");
-        SimpleDateFormat df = new SimpleDateFormat("dd/MM/yy");
-        String dateStringCommon = "10/10/1991";
-        Date commonDate = df.parse(dateStringCommon);
-        this.crearSocioParticipe("20121231238",
-                "Usuario de prueba",
-                commonDate,
-                "1",
-                "ActPrincipal",
-                "Calle falsa 123",
-                "1112341234",
-                "example@gmail.com",
-                true,
-                "Documentacion del tipo",
-                commonDate,
-                true,
-                "Usuario de ingreso");
+
     }
 
     /*
@@ -246,4 +231,9 @@ public class SociosController
     public ArrayList<SocioParticipe> getListaDeSociosParticipes(){
         return this.listaDeSociosParticipes;
     }
+
+    public ArrayList<SocioProtector> getListaDeSociosProtectores(){
+        return this.listaDeSociosProtectores;
+    }
+
 }

@@ -26,16 +26,24 @@ public class OperacionController{
         }
     }
 
-    public String crearOperacion(int idLc, String tipoDeOperacion, String estado, String garantia, String importe, Date fechaCreacionOperacion, Date fechaVencimiento, int cuotasPagadas, float importeUtilizado,String nombreBancoCheque, String numeroCheque, Date fechaVencCheque ,int cuitCheque, float tasaDeDescuento, String cuentaCorriente, Date fechaVencimientoCuentaCorriente, String nombreBancoPrestamo, float tasaDeInteres, Date fechaDeAcreditacionPrestamo, int cantidadDeCuotas, String sistemaBancario){
+    public String crearOperacion(int idLc, String tipoDeOperacion, String estado, String garantia, String importe, Date fechaCreacionOperacion, Date fechaVencimiento, int cuotasPagadas, float importeUtilizado,String nombreBancoCheque, String numeroCheque, Date fechaVencCheque ,String cuitCheque, float tasaDeDescuento, String cuentaCorriente, Date fechaVencimientoCuentaCorriente, String nombreBancoPrestamo, float tasaDeInteres, Date fechaDeAcreditacionPrestamo, int cantidadDeCuotas, String sistemaBancario){
         int newIdOperacion = operaciones.size()+1;
         LineaDeCredito aEnviar = obtenerLineadeCredito(idLc);
-        if (aEnviar == null){
+
+        if (aEnviar == null) {
             return "No existe una linea de credito para este socio.";
         }
 
-        Operacion nuevaOperacion = new Operacion(newIdOperacion, tipoDeOperacion, estado, garantia, importe, fechaCreacionOperacion, fechaVencimiento, cuotasPagadas, importeUtilizado, nombreBancoCheque, numeroCheque, cuitCheque, tasaDeDescuento, cuentaCorriente, fechaVencimientoCuentaCorriente, nombreBancoPrestamo, tasaDeInteres, fechaDeAcreditacionPrestamo, cantidadDeCuotas,sistemaBancario, aEnviar);
-        operaciones.add(nuevaOperacion);
-        return "La opeacion " + nuevaOperacion.getIdOperacion() + " ha sido creada con exito!";
+        if(Integer.parseInt(importe) <= Integer.parseInt(aEnviar.getImporteActual())) {
+            Operacion nuevaOperacion = new Operacion(newIdOperacion, tipoDeOperacion, "Con certificado emitido", garantia, importe, fechaCreacionOperacion, fechaVencimiento, cuotasPagadas, importeUtilizado, nombreBancoCheque, fechaVencCheque, numeroCheque, cuitCheque, tasaDeDescuento, cuentaCorriente, fechaVencimientoCuentaCorriente, nombreBancoPrestamo, tasaDeInteres, fechaDeAcreditacionPrestamo, cantidadDeCuotas, sistemaBancario, aEnviar);
+            operaciones.add(nuevaOperacion);
+            aEnviar.restarImporteATotal(importe);
+            return "La operacion con ID " + nuevaOperacion.getIdOperacion() + " ha sido creada con exito!";
+        } else {
+            Operacion nuevaOperacion = new Operacion(newIdOperacion, tipoDeOperacion, "Ingresado", garantia, importe, fechaCreacionOperacion, fechaVencimiento, cuotasPagadas, importeUtilizado, nombreBancoCheque, fechaVencCheque, numeroCheque, cuitCheque, tasaDeDescuento, cuentaCorriente, fechaVencimientoCuentaCorriente, nombreBancoPrestamo, tasaDeInteres, fechaDeAcreditacionPrestamo, cantidadDeCuotas,sistemaBancario, aEnviar);
+            operaciones.add(nuevaOperacion);
+            return "La operacion con ID " + nuevaOperacion.getIdOperacion() + " ha sido creada con exito!";
+        }
     }
 
     public LineaDeCredito obtenerLineadeCredito(int idLC){
@@ -92,6 +100,8 @@ public class OperacionController{
     public ArrayList<LineaDeCredito> getLineasDeCredito(){
         return lineasDeCredito;
     }
+
+    public ArrayList<Operacion> getOperaciones() { return this.operaciones; }
 
    /* public int totalComisionConChequeDia(date fecha){
         return 0;
