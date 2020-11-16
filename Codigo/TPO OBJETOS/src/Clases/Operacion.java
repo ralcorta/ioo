@@ -1,5 +1,6 @@
 package Clases;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Currency;
 import java.util.Date;
@@ -111,6 +112,8 @@ public class Operacion {
     }
 
     public String getImporte(){ return this.importe; }
+
+    public void setImporte(String importe){ this.importe = importe; }
 
     public void setFechaVencimiento(Date fechaVencimiento) {
         this.fechaVencimiento = fechaVencimiento;
@@ -224,7 +227,10 @@ public class Operacion {
         this.sistemaBancario = sistemaBancario;
     }
 
-    public void generarComision(int idComision, String estado, Date fechaCambioEstado, String estadoAnterior, float porcentaje){
+    public void generarComision(String estado, Date fechaCambioEstado, String estadoAnterior, float porcentaje){
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMddhhmmss");
+        String idComision = "COM"+simpleDateFormat.format(new Date());
+
         Comision comision = new Comision(idComision, estado, fechaCambioEstado, estadoAnterior, porcentaje);
         this.comision = comision;
     }
@@ -232,6 +238,10 @@ public class Operacion {
     public float getPorcentajeComision(){
         return comision.getPorcentajeComision();
     }
+
+    public String getIdComision(){ return comision.getIdComision(); }
+
+    public String getEstadoComision(){ return comision.getEstado(); }
 
     public void emitirCertificadoGarantia(String idCertificadoGarantia, Date fechaEmision){
         CertificadoDeGarantia certificadoDeGarantia = new CertificadoDeGarantia(idCertificadoGarantia, fechaEmision);

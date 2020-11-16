@@ -52,6 +52,17 @@ public class OperacionController{
         }
     }
 
+    public String updateOperacion(int idOperacion, String estado, String importe){
+        for (Operacion o : operaciones){
+            if(o.getIdOperacion() == idOperacion){
+                o.setEstado(estado);
+                o.setImporte(importe);
+                return "La operacion con ID " + idOperacion + " ha sido modificada correctamente.";
+            }
+        }
+        return "La operacion a modificar NO existe";
+    }
+
     public LineaDeCredito obtenerLineadeCredito(int idLC){
         boolean encontrado= false;
         for (LineaDeCredito auxLC: lineasDeCredito) {
@@ -112,7 +123,7 @@ public class OperacionController{
     public float totalComisionConChequeDia(Date fecha){
         float totalComision = 0;
         for (Operacion o : operaciones){
-            if(o.getTipoDeOperacion().equals("Tipo 1") &&
+             if(o.getTipoDeOperacion().equals("Tipo 1") &&
                     o.getEstado().equals("Monetizado")){ // Tipo 1 representa Cheques propios, de terceros y pagares bursatiles
                 totalComision += Integer.parseInt(o.getImporte()) * o.getPorcentajeComision() / 100;
             }

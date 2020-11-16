@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class Comision
 {
-    private int idComision;
+    private String idComision;
     private String estado;
     private Date fechaCambioEstado;
     private String estadoAnterior;
@@ -14,11 +14,11 @@ public class Comision
     Operacion operacion;
     ArrayList <Factura> facturas = new ArrayList <Factura>();
 
-    public int getIdComision() {
+    public String getIdComision() {
         return idComision;
     }
 
-    public void setIdComision(int idComision) {
+    public void setIdComision(String idComision) {
         this.idComision = idComision;
     }
 
@@ -46,7 +46,7 @@ public class Comision
         this.estadoAnterior = estadoAnterior;
     }
 
-    public Comision(int idComision, String estado, Date fechaCambioEstado, String estadoAnterior, float porcentaje) {
+    public Comision(String idComision, String estado, Date fechaCambioEstado, String estadoAnterior, float porcentaje) {
         this.idComision = idComision;
         this.estado = estado;
         this.fechaCambioEstado = fechaCambioEstado;

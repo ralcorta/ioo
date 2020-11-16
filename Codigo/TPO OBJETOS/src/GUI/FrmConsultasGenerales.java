@@ -45,12 +45,12 @@ public class FrmConsultasGenerales extends JDialog{
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 float totalComision = 0.0f;
-                String fecha = JOptionPane.showInputDialog(self,"Ingrese la fecha (DD/MM/YYYY) para calcular la comisión de operaciones monetizadsa con Cheque:");
+                String fecha = JOptionPane.showInputDialog(self,"Ingrese la fecha (DD/MM/YYYY) para calcular la comisión de operaciones monetizadas con Cheque:");
 
                 try {
                     totalComision = cOperacion.totalComisionConChequeDia(new SimpleDateFormat("dd/MM/yyyy").parse(fecha));
-                    JOptionPane.showMessageDialog(null, "El total de comisiones en el dia " + fecha + "es " + totalComision + "$", "Reporte comisiones con cheques", JOptionPane.INFORMATION_MESSAGE);
-                } catch (ParseException e) {
+                    JOptionPane.showMessageDialog(null, "El total de comisiones en el dia " + fecha + " es " + totalComision + "$", "Reporte comisiones con cheques", JOptionPane.INFORMATION_MESSAGE);
+                   } catch (ParseException e) {
                     JOptionPane.showMessageDialog(self,"La fecha ingresada NO cumple con el formato DD/MM/YYYY", "ERROR: Fecha invalida", JOptionPane.ERROR_MESSAGE);
                 }
             }

@@ -52,8 +52,12 @@ public class FrmDetalleOperacion extends JDialog{
     private JLabel txtSistemaBancarioPrest;
     private JComboBox comboEstado;
     private JTextField fieldCertificadoGarantia;
+    private JButton comisionAsociadaButton;
+    private JLabel lblTxtOperacion;
     private ArrayList<SocioParticipe> sociosParticipes;
     private String auxOperation;
+    private String estadoAnterior;
+    private int idOperacion;
 
     public FrmDetalleOperacion(Window owner, SociosController controladorSocios, OperacionController controladorOperacion) {
         super(owner, "Detalle de Operación");
@@ -81,6 +85,7 @@ public class FrmDetalleOperacion extends JDialog{
 
         comboEstado.setSelectedItem("Ingresado");
         comboEstado.setEnabled(false);
+        comisionAsociadaButton.setVisible(false);
 
         this.sociosParticipes = controladorSocios.getListaDeSociosParticipes();
 
@@ -114,13 +119,17 @@ public class FrmDetalleOperacion extends JDialog{
 
         this.eventos(controladorSocios, controladorOperacion);
 
+        idOperacion = o.getIdOperacion();
+        lblTxtOperacion.setText("ID de Operacion: " + idOperacion);
         comboTipoOperacion.setSelectedItem(o.getTipoDeOperacion());
         showFinancialElements();
+        estadoAnterior = o.getEstado();
         comboEstado.setSelectedItem(o.getEstado());
         txtfieldIdLinea.setText(Integer.toString(o.getLinea().getIdLineaCredito()));
         textImporte.setText(o.getImporte());
         textFechaCreacOp.setText(new SimpleDateFormat("dd/MM/yyyy").format(o.getFechaCreacionOperacion()));
         textFechaVenc.setText(new SimpleDateFormat("dd/MM/yyyy").format(o.getFechaVencimiento()));
+        comisionAsociadaButton.setVisible(false);
         if(o.getEstado().equals("Con certificado emitido")) {
             comboEstado.removeItem("Ingresado");
             fieldCertificadoGarantia.setText(o.getCertificadoGarantia().getIdCertificadoGarantia());
@@ -128,6 +137,7 @@ public class FrmDetalleOperacion extends JDialog{
         else if(o.getEstado().equals("Monetizado")) {
             comboEstado.removeItem("Ingresado");
             comboEstado.removeItem("Con certificado emitido");
+            comisionAsociadaButton.setVisible(true);
             fieldCertificadoGarantia.setText(o.getCertificadoGarantia().getIdCertificadoGarantia());
         }
 
@@ -149,6 +159,7 @@ public class FrmDetalleOperacion extends JDialog{
         txtfieldIdLinea.setEnabled(false);
         buttonLupa.setEnabled(false);
         textFechaVenc.setEnabled(false);
+        fieldCertificadoGarantia.setEnabled(false);
         // Tipo 1
         textBancoCheque.setEnabled(false);
         textNumCheque.setEnabled(false);
@@ -200,8 +211,8 @@ public class FrmDetalleOperacion extends JDialog{
             public void actionPerformed(ActionEvent e) {
                     if(auxOperation.equals("Create")) {
                         String resultado = null;
+                        try{
                         if (comboTipoOperacion.getSelectedItem().toString().equals("Tipo 1")) {
-                            try {
                                 resultado = controladorOperacion.crearOperacion(Integer.parseInt(txtfieldIdLinea.getText()),
                                         "Tipo 1",
                                         comboEstado.getSelectedItem().toString(),
@@ -226,11 +237,8 @@ public class FrmDetalleOperacion extends JDialog{
                                         new Date(),
                                         0,
                                         "");
-                            } catch (ParseException parseException) {
-                                parseException.printStackTrace();
-                            }
+
                         } else if (comboTipoOperacion.getSelectedItem().toString().equals("Tipo 2")) {
-                            try {
                                 resultado = controladorOperacion.crearOperacion(Integer.parseInt(txtfieldIdLinea.getText()),
                                         "Tipo 2",
                                         comboEstado.getSelectedItem().toString(),
@@ -255,44 +263,60 @@ public class FrmDetalleOperacion extends JDialog{
                                         new Date(),
                                         0,
                                         "");
-                            } catch (ParseException parseException) {
-                                parseException.printStackTrace();
-                            }
                         } else {
-                            try {
-                                resultado = controladorOperacion.crearOperacion(Integer.parseInt(txtfieldIdLinea.getText()),
-                                        "Tipo 3",
-                                        comboEstado.getSelectedItem().toString(),
-                                        null,
-                                        textImporte.getText(),
-                                        new Date(),
-                                        new SimpleDateFormat("dd/MM/yyyy").parse(textFechaVenc.getText()),
-                                        0,
-                                        0.0f,
-                                        //TIPO1
-                                        "",
-                                        "",
-                                        new Date(),
-                                        "",
-                                        0.0f,
-                                        //TIPO2
-                                        "",
-                                        new Date(),
-                                        //TIPO3
-                                        textBancoPrestamo.getText(),
-                                        Float.parseFloat(textTasaInteresPrestamo.getText()),
-                                        new SimpleDateFormat("dd/MM/yyyy").parse(textFechaAcrdPrestamo.getText()),
-                                        Integer.parseInt(textCantCuotasPrestamo.getText()),
-                                        comboSistemaBancario.getSelectedItem().toString());
-                            } catch (ParseException parseException) {
-                                parseException.printStackTrace();
+                            resultado = controladorOperacion.crearOperacion(Integer.parseInt(txtfieldIdLinea.getText()),
+                                    "Tipo 3",
+                                    comboEstado.getSelectedItem().toString(),
+                                    null,
+                                    textImporte.getText(),
+                                    new Date(),
+                                    new SimpleDateFormat("dd/MM/yyyy").parse(textFechaVenc.getText()),
+                                    0,
+                                    0.0f,
+                                    //TIPO1
+                                    "",
+                                    "",
+                                    new Date(),
+                                    "",
+                                    0.0f,
+                                    //TIPO2
+                                    "",
+                                    new Date(),
+                                    //TIPO3
+                                    textBancoPrestamo.getText(),
+                                    Float.parseFloat(textTasaInteresPrestamo.getText()),
+                                    new SimpleDateFormat("dd/MM/yyyy").parse(textFechaAcrdPrestamo.getText()),
+                                    Integer.parseInt(textCantCuotasPrestamo.getText()),
+                                    comboSistemaBancario.getSelectedItem().toString());
                             }
+                        } catch (ParseException parseException) {
+                            parseException.printStackTrace();
                         }
+
                         JOptionPane.showMessageDialog(null, resultado, "Operacion creada correctamente", JOptionPane.INFORMATION_MESSAGE);
                         dispose();
                     }
                     else if(auxOperation.equals("Update")){
                         // Llamar a metodo actualizar estado
+                        // idOperacion
+                        String resultado = controladorOperacion.updateOperacion(idOperacion, comboEstado.getSelectedItem().toString(), textImporte.getText());
+                        if(comboEstado.getSelectedItem().toString().equals("Monetizado") && estadoAnterior.equals("Con certificado emitido")){
+                            // Generar comision
+                            for(Operacion o : controladorOperacion.getOperaciones()){
+                                if(o.getIdOperacion() == idOperacion){
+                                    if(o.getTipoDeOperacion().equals("Tipo 1")){
+                                        o.generarComision("Calculada", new Date(), "", 3.0f);
+                                    }
+                                    else if(o.getTipoDeOperacion().equals("Tipo 2")){
+                                        o.generarComision("Calculada", new Date(), "", 3.0f);
+                                    } else {
+                                        o.generarComision("Calculada", new Date(), "", 4.0f);
+                                    }
+                                }
+                            }
+                        }
+                        JOptionPane.showMessageDialog(null, resultado, "Operacion modificada correctamente", JOptionPane.INFORMATION_MESSAGE);
+                        dispose();
                     }
                 }
         });
@@ -301,6 +325,17 @@ public class FrmDetalleOperacion extends JDialog{
             @Override
             public void actionPerformed(ActionEvent e) {
                 showFinancialElements();
+            }
+        });
+
+        comisionAsociadaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for(Operacion o : controladorOperacion.getOperaciones()) {
+                    if (o.getIdOperacion() == idOperacion) {
+                        JOptionPane.showMessageDialog(null, "La comisión con ID " + o.getIdComision() + " posee " + o.getPorcentajeComision() + "% de interes. Su estado es: " + o.getEstadoComision(), "", JOptionPane.PLAIN_MESSAGE);
+                    }
+                }
             }
         });
     }

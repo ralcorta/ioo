@@ -134,7 +134,7 @@ public class FrmDashboard extends JFrame{
             }
         }
 
-        controladorOperacion.crearLineaDeCredito(1, "2000", new Date(), true, socioAux2);
+        controladorOperacion.crearLineaDeCredito(1, "200000", new Date(), true, socioAux2);
 
         controladorOperacion.crearOperacion(1, "Tipo 1", "Ingresado", null, "2000",new Date(), new Date(), 0,
                 0.0f, "ICBC", "123456", new Date(), "20593456543", 0.0f, "", new Date(),
