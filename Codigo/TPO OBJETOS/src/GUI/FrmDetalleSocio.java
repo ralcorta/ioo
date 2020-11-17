@@ -184,65 +184,77 @@ public class FrmDetalleSocio extends JDialog {
         guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                boolean isPleno = comboBoxSocioPleno.getSelectedItem().equals("Si");
-                boolean isDocumentacion = comboEstadoDocumentacion.getSelectedItem().equals("Controlado");
+                if (textCuitSocio.getText().length() == 0 ||
+                        textRazonSocial.getText().length() == 0 ||
+                        textFechaInicioAct.getText().length() == 0 ||
+                        textActPrincipal.getText().length() == 0 ||
+                        textDireccion.getText().length() == 0 ||
+                        textTelefono.getText().length() == 0 ||
+                        textEmail.getText().length() == 0 ||
+                        textDocumentacion.getText().length() == 0 ||
+                        textFechaDocumentacion.getText().length() == 0 ||
+                        textUsuarioDeIngreso.getText().length() == 0) {
+                    JOptionPane.showMessageDialog(null,"Revisar formulario. Alguno de los campos mandatorios esta vacio.", "ERROR: Input error" ,JOptionPane.ERROR_MESSAGE);
+                } else {
+                    boolean isPleno = comboBoxSocioPleno.getSelectedItem().equals("Si");
+                    boolean isDocumentacion = comboEstadoDocumentacion.getSelectedItem().equals("Controlado");
 
-                if(socioCombo.getSelectedItem().toString().equals("Participe")){
-                    try {
-                        if(operation.equals("Create")) {
-                            String respuesta = cSocio.crearSocioParticipe(textCuitSocio.getText(), textRazonSocial.getText(),
-                                    new SimpleDateFormat("dd/MM/yyyy").parse(textFechaInicioAct.getText()), socioCombo.getSelectedItem().toString(),
-                                    textActPrincipal.getText(), textDireccion.getText(),
-                                    textTelefono.getText(), textEmail.getText(),
-                                    isPleno, textDocumentacion.getText(),
-                                    new SimpleDateFormat("dd/MM/yyyy").parse(textFechaDocumentacion.getText()), isDocumentacion,
-                                    textUsuarioDeIngreso.getText());
-                            JOptionPane.showMessageDialog(self, respuesta);
+                    if (socioCombo.getSelectedItem().toString().equals("Participe")) {
+                        try {
+                            if (operation.equals("Create")) {
+                                String respuesta = cSocio.crearSocioParticipe(textCuitSocio.getText(), textRazonSocial.getText(),
+                                        new SimpleDateFormat("dd/MM/yyyy").parse(textFechaInicioAct.getText()), socioCombo.getSelectedItem().toString(),
+                                        textActPrincipal.getText(), textDireccion.getText(),
+                                        textTelefono.getText(), textEmail.getText(),
+                                        isPleno, textDocumentacion.getText(),
+                                        new SimpleDateFormat("dd/MM/yyyy").parse(textFechaDocumentacion.getText()), isDocumentacion,
+                                        textUsuarioDeIngreso.getText());
+                                JOptionPane.showMessageDialog(self, respuesta);
+                                dispose();
+                            }
+                            if (operation.equals("Update")) {
+                                String respuesta = cSocio.updateSocioParticipe(textCuitSocio.getText(), textRazonSocial.getText(),
+                                        new SimpleDateFormat("dd/MM/yyyy").parse(textFechaInicioAct.getText()), socioCombo.getSelectedItem().toString(),
+                                        textActPrincipal.getText(), textDireccion.getText(),
+                                        textTelefono.getText(), textEmail.getText(),
+                                        isPleno, textDocumentacion.getText(),
+                                        new SimpleDateFormat("dd/MM/yyyy").parse(textFechaDocumentacion.getText()), isDocumentacion,
+                                        textUsuarioDeIngreso.getText());
+                                JOptionPane.showMessageDialog(self, respuesta);
+                                dispose();
+                            }
+                        } catch (ParseException e) {
+                            e.printStackTrace();
                             dispose();
                         }
-                        if(operation.equals("Update")){
-                            String respuesta = cSocio.updateSocioParticipe(textCuitSocio.getText(), textRazonSocial.getText(),
-                                    new SimpleDateFormat("dd/MM/yyyy").parse(textFechaInicioAct.getText()), socioCombo.getSelectedItem().toString(),
-                                    textActPrincipal.getText(), textDireccion.getText(),
-                                    textTelefono.getText(), textEmail.getText(),
-                                    isPleno, textDocumentacion.getText(),
-                                    new SimpleDateFormat("dd/MM/yyyy").parse(textFechaDocumentacion.getText()), isDocumentacion,
-                                    textUsuarioDeIngreso.getText());
-                            JOptionPane.showMessageDialog(self, respuesta);
+                    } else if (socioCombo.getSelectedItem().toString().equals("Protector")) {
+                        try {
+                            if (operation.equals("Create")) {
+                                String respuesta = cSocio.crearSocioProtector(textCuitSocio.getText(), textRazonSocial.getText(),
+                                        new SimpleDateFormat("dd/MM/yyyy").parse(textFechaInicioAct.getText()), socioCombo.getSelectedItem().toString(),
+                                        textActPrincipal.getText(), textDireccion.getText(),
+                                        textTelefono.getText(), textEmail.getText(),
+                                        isPleno, textDocumentacion.getText(),
+                                        new SimpleDateFormat("dd/MM/yyyy").parse(textFechaDocumentacion.getText()), isDocumentacion,
+                                        textUsuarioDeIngreso.getText());
+                                JOptionPane.showMessageDialog(self, respuesta);
+                                dispose();
+                            }
+                            if (operation.equals("Update")) {
+                                String respuesta = cSocio.updateSocioProtector(textCuitSocio.getText(), textRazonSocial.getText(),
+                                        new SimpleDateFormat("dd/MM/yyyy").parse(textFechaInicioAct.getText()), socioCombo.getSelectedItem().toString(),
+                                        textActPrincipal.getText(), textDireccion.getText(),
+                                        textTelefono.getText(), textEmail.getText(),
+                                        isPleno, textDocumentacion.getText(),
+                                        new SimpleDateFormat("dd/MM/yyyy").parse(textFechaDocumentacion.getText()), isDocumentacion,
+                                        textUsuarioDeIngreso.getText());
+                                JOptionPane.showMessageDialog(self, respuesta);
+                                dispose();
+                            }
+                        } catch (ParseException e) {
+                            e.printStackTrace();
                             dispose();
                         }
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                        dispose();
-                    }
-                }
-                else if (socioCombo.getSelectedItem().toString().equals("Protector")){
-                    try {
-                        if(operation.equals("Create")) {
-                            String respuesta = cSocio.crearSocioProtector(textCuitSocio.getText(), textRazonSocial.getText(),
-                                    new SimpleDateFormat("dd/MM/yyyy").parse(textFechaInicioAct.getText()), socioCombo.getSelectedItem().toString(),
-                                    textActPrincipal.getText(), textDireccion.getText(),
-                                    textTelefono.getText(), textEmail.getText(),
-                                    isPleno, textDocumentacion.getText(),
-                                    new SimpleDateFormat("dd/MM/yyyy").parse(textFechaDocumentacion.getText()), isDocumentacion,
-                                    textUsuarioDeIngreso.getText());
-                            JOptionPane.showMessageDialog(self, respuesta);
-                            dispose();
-                        }
-                        if(operation.equals("Update")){
-                            String respuesta = cSocio.updateSocioProtector(textCuitSocio.getText(), textRazonSocial.getText(),
-                                    new SimpleDateFormat("dd/MM/yyyy").parse(textFechaInicioAct.getText()), socioCombo.getSelectedItem().toString(),
-                                    textActPrincipal.getText(), textDireccion.getText(),
-                                    textTelefono.getText(), textEmail.getText(),
-                                    isPleno, textDocumentacion.getText(),
-                                    new SimpleDateFormat("dd/MM/yyyy").parse(textFechaDocumentacion.getText()), isDocumentacion,
-                                    textUsuarioDeIngreso.getText());
-                            JOptionPane.showMessageDialog(self, respuesta);
-                            dispose();
-                        }
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                        dispose();
                     }
                 }
             }

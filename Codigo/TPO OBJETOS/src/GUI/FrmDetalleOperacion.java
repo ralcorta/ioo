@@ -89,6 +89,7 @@ public class FrmDetalleOperacion extends JDialog{
         comboEstado.setSelectedItem("Ingresado");
         comboEstado.setEnabled(false);
         comisionAsociadaButton.setVisible(false);
+        fieldCertificadoGarantia.setEnabled(false);
 
         this.sociosParticipes = controladorSocios.getListaDeSociosParticipes();
 
@@ -136,12 +137,14 @@ public class FrmDetalleOperacion extends JDialog{
         if(o.getEstado().equals(EstadosDefine.EMITIDO)) {
             comboEstado.removeItem(EstadosDefine.INGRESADO);
             fieldCertificadoGarantia.setText(o.getCertificadoGarantia().getIdCertificadoGarantia());
+            fieldCertificadoGarantia.setEnabled(false);
         }
         else if(o.getEstado().equals(EstadosDefine.MONETIZADO)) {
             comboEstado.removeItem(EstadosDefine.INGRESADO);
             comboEstado.removeItem(EstadosDefine.EMITIDO);
             comisionAsociadaButton.setVisible(true);
             fieldCertificadoGarantia.setText(o.getCertificadoGarantia().getIdCertificadoGarantia());
+            fieldCertificadoGarantia.setEnabled(false);
         }
 
         textBancoCheque.setText(o.getNombreBancoCheque());
