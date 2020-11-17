@@ -303,25 +303,32 @@ public class FrmDetalleOperacion extends JDialog{
                         dispose();
                     }
                     else if(auxOperation.equals("Update")){
-                        // Llamar a metodo actualizar estado
-                        // idOperacion
+                        Boolean generaComision = false;
+                        float porcentajeComision = 0.0f;
+                        String idComision = "";
                         String resultado = controladorOperacion.updateOperacion(idOperacion, comboEstado.getSelectedItem().toString(), textImporte.getText());
                         if(comboEstado.getSelectedItem().toString().equals(EstadosDefine.MONETIZADO) && estadoAnterior.equals(EstadosDefine.EMITIDO)){
-                            // Generar comision
+                            generaComision = true;
                             for(Operacion o : controladorOperacion.getOperaciones()){
                                 if(o.getIdOperacion() == idOperacion){
                                     if(o.getTipoDeOperacion().equals(TipoOperacionDefine.TIPO_1)){
-                                        o.generarComision("Calculada", new Date(), "", 3.0f);
+                                        idComision = o.generarComision("Calculada", new Date(), "", 3.0f);
+                                        porcentajeComision = 3.0f;
                                     }
                                     else if(o.getTipoDeOperacion().equals(TipoOperacionDefine.TIPO_2)){
-                                        o.generarComision("Calculada", new Date(), "", 3.0f);
+                                        idComision = o.generarComision("Calculada", new Date(), "", 3.0f);
+                                        porcentajeComision = 3.0f;
                                     } else {
-                                        o.generarComision("Calculada", new Date(), "", 4.0f);
+                                        idComision = o.generarComision("Calculada", new Date(), "", 4.0f);
+                                        porcentajeComision = 4.0f;
                                     }
                                 }
                             }
                         }
                         JOptionPane.showMessageDialog(null, resultado, "Operacion modificada correctamente", JOptionPane.INFORMATION_MESSAGE);
+                        if(generaComision){
+                            JOptionPane.showMessageDialog(null, "Se generó la comisión con ID " + idComision + " con un porcentaje de " + porcentajeComision + "%", "Comision generada correctamente", JOptionPane.INFORMATION_MESSAGE);
+                        }
                         dispose();
                     }
                 }
@@ -339,7 +346,8 @@ public class FrmDetalleOperacion extends JDialog{
             public void actionPerformed(ActionEvent e) {
                 for(Operacion o : controladorOperacion.getOperaciones()) {
                     if (o.getIdOperacion() == idOperacion) {
-                        JOptionPane.showMessageDialog(null, "La comisión con ID " + o.getIdComision() + " posee " + o.getPorcentajeComision() + "% de interes. Su estado es: " + o.getEstadoComision(), "", JOptionPane.PLAIN_MESSAGE);
+                        FrmDetalleComision frame = new FrmDetalleComision(self, controladorOperacion, idOperacion);
+                        frame.setVisible(true);
                     }
                 }
             }

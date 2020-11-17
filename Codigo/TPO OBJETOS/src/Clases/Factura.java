@@ -5,18 +5,19 @@ import java.util.Date;
 
 public class Factura
 {
-    private int idFactura;
+    private String idFactura;
     private Date fechaDeEmision;
-    private Currency importe;
+    private float importe;
     private String usuarioModificador;
     private Date fechaVencimiento;
+    private long CAE;
     Comision comision;
 
-    public int getIdFactura() {
+    public String getIdFactura() {
         return idFactura;
     }
 
-    public void setIdFactura(int idFactura) {
+    public void setIdFactura(String idFactura) {
         this.idFactura = idFactura;
     }
 
@@ -28,11 +29,11 @@ public class Factura
         this.fechaDeEmision = fechaDeEmision;
     }
 
-    public Currency getImporte() {
+    public float getImporte() {
         return importe;
     }
 
-    public void setImporte(Currency importe) {
+    public void setImporte(float importe) {
         this.importe = importe;
     }
 
@@ -52,11 +53,11 @@ public class Factura
         this.fechaVencimiento = fechaVencimiento;
     }
 
-    public Factura(int idFactura, Date fechaDeEmision, Currency importe, String usuarioModificador, Date fechaVencimiento) {
+    public Factura(String idFactura, Date fechaDeEmision, long CAE, float importe, Date fechaVencimiento) {
         this.idFactura = idFactura;
         this.fechaDeEmision = fechaDeEmision;
+        this.CAE = CAE;
         this.importe = importe;
-        this.usuarioModificador = usuarioModificador;
         this.fechaVencimiento = fechaVencimiento;
     }
 }

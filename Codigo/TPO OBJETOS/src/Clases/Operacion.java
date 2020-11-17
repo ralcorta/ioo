@@ -211,6 +211,10 @@ public class Operacion {
         this.fechaDeAcreditacionPrestamo = fechaDeAcreditacionPrestamo;
     }
 
+    public Comision getComision(){
+        return this.comision;
+    }
+
     public int getCantidadDeCuotas() {
         return cantidadDeCuotas;
     }
@@ -227,12 +231,13 @@ public class Operacion {
         this.sistemaBancario = sistemaBancario;
     }
 
-    public void generarComision(String estado, Date fechaCambioEstado, String estadoAnterior, float porcentaje){
+    public String generarComision(String estado, Date fechaCambioEstado, String estadoAnterior, float porcentaje){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMddhhmmss");
         String idComision = "COM"+simpleDateFormat.format(new Date());
 
         Comision comision = new Comision(idComision, estado, fechaCambioEstado, estadoAnterior, porcentaje);
         this.comision = comision;
+        return idComision;
     }
 
     public float getPorcentajeComision(){
@@ -265,5 +270,11 @@ public class Operacion {
     public void crearCuentaCorriente(String nombreEmpresa, Date fechaDeVencimiento){
         CuentaCorriente cuentaCorriente = new CuentaCorriente(nombreEmpresa, fechaDeVencimiento);
         cuentasCorrientes.add(cuentaCorriente);
+    }
+
+    public void generarFactura(){
+        if(comision.getEstado().equals("Calculado")) {
+            comision.setEstado("Facturada");
+        }
     }
 }

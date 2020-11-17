@@ -54,6 +54,5 @@ public class FrmDetalleAccionista extends JDialog {
                 dispose();
             }
         });
-
     }
 }
