@@ -5,6 +5,7 @@ import Clases.OperacionController;
 import Clases.SocioParticipe;
 import Clases.SociosController;
 import Enums.EstadosDefine;
+import Enums.SistemaBancarioDefine;
 
 import javax.swing.*;
 import java.awt.*;
@@ -111,9 +112,9 @@ public class FrmDetalleOperacion extends JDialog{
         comboTipoOperacion.addItem("Tipo 1");
         comboTipoOperacion.addItem("Tipo 2");
         comboTipoOperacion.addItem("Tipo 3");
-        comboSistemaBancario.addItem("Frances");
-        comboSistemaBancario.addItem("Americano");
-        comboSistemaBancario.addItem("Aleman");
+        comboSistemaBancario.addItem(SistemaBancarioDefine.FRANCES);
+        comboSistemaBancario.addItem(SistemaBancarioDefine.AMERICANO);
+        comboSistemaBancario.addItem(SistemaBancarioDefine.ALEMAN);
         comboEstado.addItem(EstadosDefine.INGRESADO);
         comboEstado.addItem(EstadosDefine.EMITIDO);
         comboEstado.addItem(EstadosDefine.MONETIZADO);
