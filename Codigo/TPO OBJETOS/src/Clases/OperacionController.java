@@ -131,6 +131,24 @@ public class OperacionController{
         }
         return totalComision;
     }
+
+    public ArrayList<Operacion> operacionesDeSocioEnUnPeriodo(String cuit, Date fechaDesde, Date fechaHasta){
+        ArrayList<Operacion> operacionesMonetizadas = new ArrayList<>();
+        LineaDeCredito lineaAux;
+        for (SocioParticipe sPa: controlador.listaDeSociosParticipes) {
+            if(sPa.getCuit().equals(cuit)){
+                lineaAux =sPa.getLinea();
+                for (Operacion auxOpe: lineaAux.operaciones ) {
+                    if (auxOpe.getTipoDeOperacion().equals("Monetizado") &&
+                            (auxOpe.getFechaCreacionOperacion().after(fechaDesde) &&
+                                    auxOpe.getFechaVencimiento().before(fechaHasta))){
+                                operacionesMonetizadas.add(auxOpe);
+                    }
+                }
+            }
+        }
+        return operacionesMonetizadas;
+    }
 /*
     /*public ArrayList<Operacion> operacionesDeSocioEnPeriodo(){
         return null;
