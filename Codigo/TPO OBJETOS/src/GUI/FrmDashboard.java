@@ -106,20 +106,22 @@ public class FrmDashboard extends JFrame{
                 commonDate,
                 true,
                 "Usuario de ingreso");
+
         controladorSocios.crearSocioParticipe("20400067385",
-                "Usuario de prueba",
+                "Rodrigo Damian Sosa",
                 commonDate,
                 "Participe",
-                "ActPrincipal",
-                "Calle falsa 123",
+                "Testing Team Lead",
+                "Av Mitre 300, Avellaneda",
                 "1112341234",
-                "example@gmail.com",
+                "rodrigo.sosa.ext@telefonica.com",
                 true,
-                "Documentacion del tipo",
+                "Repo de documentacion",
                 commonDate,
                 true,
-                "Usuario de ingreso");
-        controladorSocios.crearSocioProtector("20400067385",
+                "rsosacar");
+
+        controladorSocios.crearSocioProtector("20387086055",
                 "Usuario de prueba 2",
                 commonDate,
                 "Protector",
@@ -161,12 +163,10 @@ public class FrmDashboard extends JFrame{
                 0.0f, "ICBC", "123456", new Date(), "20593456543", 0.0f, "", new Date(),
                 "", 0.0f, new Date(), 0, "");
 
-        controladorSocios.crearAccionista("2058435241",5,"Razon puto", "20121231238");
-        controladorSocios.crearAccionista("2058435246",50,"Razon puto2", "20400067385");
+        controladorSocios.crearAccionista("2058435241",5,"Razon Social Uno", "20121231238");
+        controladorSocios.crearAccionista("2058435246",50,"Razon Social Dos", "20400067385");
 
         FrmDashboard frame = new FrmDashboard("SGR", controladorSocios, controladorOperacion);
         frame.setVisible(true);
-
     }
-
 }

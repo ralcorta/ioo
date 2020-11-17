@@ -159,6 +159,11 @@ public class SociosController
                 return "El socio con CUIT " + s.getCuit() + " ya existe, no puede ser creado nuevamente.";
             }
         }
+        for(SocioProtector s : listaDeSociosProtectores){
+            if(s.getCuit().equals(cuit)){
+                return "El socio con CUIT " + s.getCuit() + " ya existe, no puede ser creado nuevamente.";
+            }
+        }
         SocioParticipe nuevoSocioParticipe = new SocioParticipe(cuit, razonSocial, fechaInicioActividades, tipo, actividadPrincipal, direccion, telefono, correoElectronico, esPleno, documentacion, fechaDocumentacion, estadoDocumentacion, usuarioDocumentacion);
         listaDeSociosParticipes.add(nuevoSocioParticipe);
         return "El socio con CUIT " + cuit + " ha sido creado correctamente.";
@@ -187,6 +192,11 @@ public class SociosController
 
     public String crearSocioProtector(String cuit, String razonSocial, Date fechaInicioActividades, String tipo, String actividadPrincipal, String direccion, String telefono, String correoElectronico, boolean esPleno, String documentacion, Date fechaDocumentacion, Boolean estadoDocumentacion, String usuarioDocumentacion){
         for (SocioProtector s : listaDeSociosProtectores){
+            if(s.getCuit().equals(cuit)){
+                return "El socio con CUIT " + s.getCuit() + " ya existe, no puede ser creado nuevamente.";
+            }
+        }
+        for(SocioParticipe s : listaDeSociosParticipes){
             if(s.getCuit().equals(cuit)){
                 return "El socio con CUIT " + s.getCuit() + " ya existe, no puede ser creado nuevamente.";
             }

@@ -230,15 +230,17 @@ public class FrmDetalleSocio extends JDialog {
                     } else if (socioCombo.getSelectedItem().toString().equals("Protector")) {
                         try {
                             if (operation.equals("Create")) {
-                                String respuesta = cSocio.crearSocioProtector(textCuitSocio.getText(), textRazonSocial.getText(),
-                                        new SimpleDateFormat("dd/MM/yyyy").parse(textFechaInicioAct.getText()), socioCombo.getSelectedItem().toString(),
-                                        textActPrincipal.getText(), textDireccion.getText(),
-                                        textTelefono.getText(), textEmail.getText(),
-                                        isPleno, textDocumentacion.getText(),
-                                        new SimpleDateFormat("dd/MM/yyyy").parse(textFechaDocumentacion.getText()), isDocumentacion,
-                                        textUsuarioDeIngreso.getText());
-                                JOptionPane.showMessageDialog(self, respuesta);
-                                dispose();
+                                for (SocioProtector sp : cSocio.getListaDeSociosProtectores()){
+                                    String respuesta = cSocio.crearSocioProtector(textCuitSocio.getText(), textRazonSocial.getText(),
+                                            new SimpleDateFormat("dd/MM/yyyy").parse(textFechaInicioAct.getText()), socioCombo.getSelectedItem().toString(),
+                                            textActPrincipal.getText(), textDireccion.getText(),
+                                            textTelefono.getText(), textEmail.getText(),
+                                            isPleno, textDocumentacion.getText(),
+                                            new SimpleDateFormat("dd/MM/yyyy").parse(textFechaDocumentacion.getText()), isDocumentacion,
+                                            textUsuarioDeIngreso.getText());
+                                    JOptionPane.showMessageDialog(self, respuesta);
+                                    dispose();
+                                }
                             }
                             if (operation.equals("Update")) {
                                 String respuesta = cSocio.updateSocioProtector(textCuitSocio.getText(), textRazonSocial.getText(),

@@ -60,7 +60,5 @@ public class FrmDetalleAcciones extends JDialog{
                 dispose();
             }
         });
-
-
     }
 }
