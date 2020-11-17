@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+
 public class SociosController
 {
     public ArrayList <SocioProtector> listaDeSociosProtectores = new ArrayList<SocioProtector>();

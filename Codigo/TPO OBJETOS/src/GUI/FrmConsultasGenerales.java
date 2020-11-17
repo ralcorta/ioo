@@ -62,10 +62,20 @@ public class FrmConsultasGenerales extends JDialog{
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 String cuit = JOptionPane.showInputDialog(self,"Ingrese el CUIT del Socio:");
-                //ArrayList <Operacion> operaciones = new ArrayList<Operacion>();
-                //for (Operacion op : cOperacion.getOperaciones()) {
-                    //if(op.getEstado().)
-                //}
+                String fechaDesde = JOptionPane.showInputDialog(self,"Ingrese el CUIT del Socio:");
+                String fechaHasta = JOptionPane.showInputDialog(self,"Ingrese el CUIT del Socio:");
+                ArrayList <Operacion> operaciones = new ArrayList<Operacion>();
+                OperacionController oCon = new OperacionController();
+                try {
+                    operaciones = oCon.operacionesDeSocioEnUnPeriodo(cuit, new SimpleDateFormat("dd/MM/yyyy").parse(fechaDesde), new SimpleDateFormat("dd/MM/yyyy").parse(fechaHasta));
+                    JOptionPane.showMessageDialog(self, "Entre la fecha " + fechaDesde + " y la fecha " + fechaHasta + " se encontraron las siguientes operaciones: ");
+                    for (Operacion opAux : operaciones) {
+                        JOptionPane.showMessageDialog(self,"Id operacion: " + opAux.getIdOperacion());;
+                    }
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                    JOptionPane.showMessageDialog(self, "La fecha ingresada NO cumple con el formato DD/MM/YYYY", "ERROR: Fecha invalida", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
 
