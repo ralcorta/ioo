@@ -1,8 +1,6 @@
 package Clases;
 
-import java.util.ArrayList;
-import java.util.Currency;
-import java.util.Date;
+import java.util.*;
 
 public class Comision
 {
@@ -62,8 +60,28 @@ public class Comision
         return 0;
     }
 
-    public void emitirFactura(int idFactura, Date fechaDeEmision, Currency importe, String usuarioModificador, Date fechaVencimiento){
-        Factura factura = new Factura(idFactura, fechaDeEmision, importe, usuarioModificador, fechaVencimiento);
+    public String[] emitirFactura(String controladorFiscal, float importe){
+        Date fechaDeEmision = new Date();
+        Date fechaVencimiento = null;
+
+        Calendar c = Calendar.getInstance();
+        c.setTime(fechaDeEmision);
+        c.add(Calendar.DAY_OF_YEAR, 20);
+        fechaVencimiento = c.getTime();
+
+        int codigoFactura = 100000 + new Random().nextInt(900000);
+        String idFactura = controladorFiscal + "-00" + codigoFactura;
+
+        long CAE = (long) Math.floor(Math.random() * 9000000000000L) + 1000000000000L;
+
+        Factura factura = new Factura(idFactura, fechaDeEmision, CAE, importe, fechaVencimiento);
         facturas.add(factura);
+
+        String resultado[] = new String[2];
+        resultado[0]= idFactura;
+        resultado[1] = String.valueOf(CAE);
+
+        return resultado;
     }
+
 }
