@@ -1,5 +1,6 @@
 package GUI;
 
+import Clases.Operacion;
 import Clases.OperacionController;
 import Clases.SociosController;
 
@@ -9,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class FrmConsultasGenerales extends JDialog{
@@ -59,7 +61,11 @@ public class FrmConsultasGenerales extends JDialog{
         btnOperacionesASocio.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                String cuit=JOptionPane.showInputDialog(self,"Ingrese el CUIT del Socio:");
+                String cuit = JOptionPane.showInputDialog(self,"Ingrese el CUIT del Socio:");
+                //ArrayList <Operacion> operaciones = new ArrayList<Operacion>();
+                //for (Operacion op : cOperacion.getOperaciones()) {
+                    //if(op.getEstado().)
+                //}
             }
         });
 
