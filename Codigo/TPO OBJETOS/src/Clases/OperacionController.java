@@ -22,6 +22,7 @@ public class OperacionController{
     public void updateLineaDeCredito(String importeMaximo, SocioParticipe socio){
         for(LineaDeCredito ldc : lineasDeCredito) {
             if (ldc.getSocio().getCuit().equals(socio.getCuit())) {
+                ldc.setImporteDisponible(Integer.toString((Integer.parseInt(importeMaximo) - (Integer.parseInt(ldc.getImporteMaximo()) - Integer.parseInt(ldc.getImporteActual())))));
                 ldc.setImporteMaximo(importeMaximo);
                 socio.setLinea(ldc);
             }

@@ -37,6 +37,8 @@ public class FrmDetalleLineaDeCredito extends JDialog {
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
 
+        inputImporteDisponible.setEnabled(false);
+
         comboEstado.addItem("Activo");
         comboEstado.addItem("Inactivo");
 

@@ -48,6 +48,7 @@ public class FrmDetalleSocio extends JDialog {
         comboEstadoDocumentacion.addItem("Rechazado");
 
         listaDeAccionistasButton.setEnabled(false);
+        listaDeAccionesButton.setEnabled(false);
 
         comboBoxSocioPleno.setSelectedItem("No");
         comboBoxSocioPleno.setEnabled(false);

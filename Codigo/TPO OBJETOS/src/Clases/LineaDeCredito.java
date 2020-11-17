@@ -52,6 +52,10 @@ public class LineaDeCredito {
         this.importeMaximo = importeMaximo;
     }
 
+    public void setImporteDisponible(String importe) {
+        this.importeActual = importe;
+    }
+
     public Date getFechaDeVigencia() {
         return fechaDeVigencia;
     }
