@@ -132,6 +132,10 @@ public class FrmDetalleOperacion extends JDialog{
         textFechaCreacOp.setText(new SimpleDateFormat("dd/MM/yyyy").format(o.getFechaCreacionOperacion()));
         textFechaVenc.setText(new SimpleDateFormat("dd/MM/yyyy").format(o.getFechaVencimiento()));
         comisionAsociadaButton.setVisible(false);
+        if(o.getEstado().equals(EstadosDefine.INGRESADO)) {
+            comboEstado.removeItem(EstadosDefine.MONETIZADO);
+        }
+
         if(o.getEstado().equals(EstadosDefine.EMITIDO)) {
             comboEstado.removeItem(EstadosDefine.INGRESADO);
             fieldCertificadoGarantia.setText(o.getCertificadoGarantia().getIdCertificadoGarantia());
