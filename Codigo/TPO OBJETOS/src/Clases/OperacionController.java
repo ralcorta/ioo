@@ -56,15 +56,15 @@ public class OperacionController{
             }
 
             if(tipoDeOperacion == "1"){
-                Cheque nuevoCheque = new Cheque(nombreBancoCheque, Integer.parseInt(numeroCheque), fechaVencCheque, cuitCheque, tasaDeDescuento,importeUtilizado);
+                Cheque nuevoCheque = new Cheque(nombreBancoCheque, Integer.parseInt(numeroCheque), fechaVencCheque, cuitCheque, tasaDeDescuento,Float.parseFloat(importe));
                 nuevaOperacion.cheques.add(nuevoCheque);
             }
             else if(tipoDeOperacion == "2"){
-                CuentaCorriente nuevaCuenta = new CuentaCorriente(cuentaCorriente, fechaVencimientoCuentaCorriente, importeUtilizado);
+                CuentaCorriente nuevaCuenta = new CuentaCorriente(cuentaCorriente, fechaVencimientoCuentaCorriente, Float.parseFloat(importe));
                 nuevaOperacion.cuentasCorrientes.add(nuevaCuenta);
             }
             else{
-                Prestamo nuevoPrestamo = new Prestamo(nombreBancoPrestamo, tasaDeDescuento, fechaDeAcreditacionPrestamo,cantidadDeCuotas,sistemaBancario,importeUtilizado);
+                Prestamo nuevoPrestamo = new Prestamo(nombreBancoPrestamo, tasaDeDescuento, fechaDeAcreditacionPrestamo,cantidadDeCuotas,sistemaBancario, Float.parseFloat(importe));
                 nuevaOperacion.prestamos.add(nuevoPrestamo);
             }
 
@@ -91,15 +91,15 @@ public class OperacionController{
             }
 
             if(tipoDeOperacion == "1"){
-                Cheque nuevoCheque = new Cheque(nombreBancoCheque, Integer.parseInt(numeroCheque), fechaVencCheque, cuitCheque, tasaDeDescuento,importeUtilizado);
+                Cheque nuevoCheque = new Cheque(nombreBancoCheque, Integer.parseInt(numeroCheque), fechaVencCheque, cuitCheque, tasaDeDescuento,Float.parseFloat(importe));
                 nuevaOperacion.cheques.add(nuevoCheque);
             }
             else if(tipoDeOperacion == "2"){
-                CuentaCorriente nuevaCuenta = new CuentaCorriente(cuentaCorriente, fechaVencimientoCuentaCorriente, importeUtilizado);
+                CuentaCorriente nuevaCuenta = new CuentaCorriente(cuentaCorriente, fechaVencimientoCuentaCorriente, Float.parseFloat(importe));
                 nuevaOperacion.cuentasCorrientes.add(nuevaCuenta);
             }
             else{
-                Prestamo nuevoPrestamo = new Prestamo(nombreBancoPrestamo, tasaDeDescuento, fechaDeAcreditacionPrestamo,cantidadDeCuotas,sistemaBancario,importeUtilizado);
+                Prestamo nuevoPrestamo = new Prestamo(nombreBancoPrestamo, tasaDeDescuento, fechaDeAcreditacionPrestamo,cantidadDeCuotas,sistemaBancario, Float.parseFloat(importe));
                 nuevaOperacion.prestamos.add(nuevoPrestamo);
             }
 
