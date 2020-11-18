@@ -224,7 +224,12 @@ public class FrmDetalleSocio extends JDialog {
                     boolean isDocumentacion = comboEstadoDocumentacion.getSelectedItem().equals(EstadoDocumentacionDefine.CONTROLADO);
 
                     if(!Validator.isDate(textFechaInicioAct.getText())) {
-                        JOptionPane.showMessageDialog(null, "La fecha no tiene el formato deseado (" + CommonFormatsDefine.FULL_DATE + ")", "Error de formato", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "La fecha de inicio no tiene el formato deseado (" + CommonFormatsDefine.FULL_DATE + ")", "Error de formato", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+
+                    if(!Validator.isDate(textFechaDocumentacion.getText())) {
+                        JOptionPane.showMessageDialog(null, "La fecha de documentacion no tiene el formato deseado (" + CommonFormatsDefine.FULL_DATE + ")", "Error de formato", JOptionPane.ERROR_MESSAGE);
                         return;
                     }
 
