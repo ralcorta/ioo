@@ -150,7 +150,22 @@ public class FrmConsultasGenerales extends JDialog{
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 String cuit = JOptionPane.showInputDialog(self,"Ingrese el CUIT del Socio:");
+                if(cuit == null){
+                    return;
+                }
+                if(!Validator.isCuit(cuit)){
+                    JOptionPane.showMessageDialog(self, "El cuit es invalido", "ERROR: cuit invalido", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
                 String tipoDeOperacion = JOptionPane.showInputDialog(self,"Ingrese el Tipo de Operación a consultar:");
+                if(tipoDeOperacion == null){
+                    return;
+                }
+                if(tipoDeOperacion == ""){
+                    JOptionPane.showMessageDialog(self, "El tipo de operacion es invalida", "ERROR: operacion invalido", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
 
                 if(cuit.length() == 0 && tipoDeOperacion.length() == 0){
                     JOptionPane.showMessageDialog(self, "Debe ingresarse un CUIT o el tipo de operacion.", "ERROR: Se ingreso un campo vacio", JOptionPane.ERROR_MESSAGE);
