@@ -188,15 +188,21 @@ public class FrmConsultasGenerales extends JDialog{
                     return;
                 }
 
-                ArrayList<Operacion> opFiltered = new ArrayList<Operacion>();
+                ArrayList<Operacion> opFilteredMon = new ArrayList<Operacion>();
+                ArrayList<Operacion> opFilteredEmi = new ArrayList<Operacion>();
                 ArrayList<Operacion> ops = cOperacion.getOperaciones();
 
                 for (Operacion op : ops) {
-                    if(op.getCuitCheque().equals(cuitSocio) && op.esRiesgoVivo())
-                        opFiltered.add(op);
+                    if(op.getCuitCheque().equals(cuitSocio)) {
+                        if(op.esRiesgoVivo()) {
+                            opFilteredMon.add(op);
+                        } else if (op.esMonetizadaYNoVencida()) {
+                            opFilteredEmi.add((op));
+                        }
+                    }
                 }
 
-                FrmConsultaConsolidadaDeSocio frame = new FrmConsultaConsolidadaDeSocio(self, opFiltered);
+                FrmConsultaConsolidadaDeSocio frame = new FrmConsultaConsolidadaDeSocio(self, opFilteredMon, opFilteredEmi);
                 frame.setVisible(true);
             }
 
