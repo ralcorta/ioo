@@ -48,13 +48,18 @@ public class FrmDetalleLineaDeCredito extends JDialog {
         this.operation = operation;
 
         if(operation.equals("Update")) {
+            controladorOperaciones.modificarEstadoLineaDeCredito(socio.getLinea().getIdLineaCredito());
+            if(socio.getLinea().isEstadoAprobacion()){
+                comboEstado.setSelectedItem("Activo");
+            } else {
+                comboEstado.setSelectedItem("Inactivo");
+            }
             comboEstado.setEnabled(false);
             txtImporte.setText(socio.getLinea().getImporteMaximo());
             inputImporteDisponible.setText(socio.getLinea().getImporteActual());
             txtFechaVigencia.setText(new SimpleDateFormat("dd/MM/yyyy").format(socio.getLinea().getFechaDeVigencia()));
             txtFechaVigencia.setEnabled(false);
         } else{
-            comboEstado.setSelectedItem("Inactivo");
             inputImporteDisponible.setEnabled(false);
         }
 
@@ -83,15 +88,10 @@ public class FrmDetalleLineaDeCredito extends JDialog {
                 }
 
                 try {
-                    boolean estadoAux;
-                    if (comboEstado.getSelectedItem().toString().equals("Activo")) {
-                        estadoAux = true;
-                    } else {
-                        estadoAux = false;
-                    }
-
                     if(operation.equals("Create")){
-                        controladorOperaciones.crearLineaDeCredito(auxId, txtImporte.getText(), new SimpleDateFormat("dd/MM/yyyy").parse(txtFechaVigencia.getText()), estadoAux, socio);
+                        controladorOperaciones.crearLineaDeCredito(auxId, txtImporte.getText(), new SimpleDateFormat("dd/MM/yyyy").parse(txtFechaVigencia.getText()), true, socio);
+                        controladorOperaciones.modificarEstadoLineaDeCredito(socio.getLinea().getIdLineaCredito());
+                        comboEstado.setSelectedItem(socio.getLinea().isEstadoAprobacion());
                         JOptionPane.showMessageDialog(self, "Se creo correctamente la linea de credito con monto " + txtImporte.getText() + "$ para el socio con CUIT " + socio.getCuit(), "Operacion generada correctamente", JOptionPane.INFORMATION_MESSAGE);
                     } else {
                         controladorOperaciones.updateLineaDeCredito(txtImporte.getText(), socio);
