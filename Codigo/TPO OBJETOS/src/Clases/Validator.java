@@ -17,4 +17,15 @@ public class Validator {
         }
         return true;
     }
+
+    public static boolean isFloat(String importe){
+        if (importe == null) return false;
+        try {
+            Float.parseFloat(importe);
+        }
+        catch (NumberFormatException e){
+            return false;
+        }
+        return true;
+    }
 }

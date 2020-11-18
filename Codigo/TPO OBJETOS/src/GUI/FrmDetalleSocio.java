@@ -99,7 +99,7 @@ public class FrmDetalleSocio extends JDialog {
         this.eventos(cSocio, "Update");
 
         this.self = this;
-
+        textFechaInicioAct.setEnabled(false);
         this.textCuitSocio.setText(socio.getCuit());
         this.textRazonSocial.setText(socio.getRazonSocial());
         this.textFechaInicioAct.setText(new SimpleDateFormat(CommonFormatsDefine.FULL_DATE).format(socio.getFechaInicioActividades()));
@@ -161,7 +161,7 @@ public class FrmDetalleSocio extends JDialog {
         this.setLocationRelativeTo(null);
 
         this.eventos(cSocio, "Update");
-
+        textFechaInicioAct.setEnabled(false);
         this.self = this;
 
         this.textCuitSocio.setText(socio.getCuit());
