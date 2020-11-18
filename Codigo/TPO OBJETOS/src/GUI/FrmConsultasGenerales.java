@@ -115,10 +115,7 @@ public class FrmConsultasGenerales extends JDialog{
                     if(fechaDesde == null){
                         return;
                     }
-<<<<<<< HEAD
 
-=======
->>>>>>> 1cddf6606c0194f18d6d485f9d255a7307d83d55
                     if(!Validator.isDate(fechaDesde)){
                         JOptionPane.showMessageDialog(self, "El campo fecha no puede ser vacio", "ERROR: campo fecha vacio", JOptionPane.ERROR_MESSAGE);
                         return;

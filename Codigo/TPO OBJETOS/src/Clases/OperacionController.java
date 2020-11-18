@@ -38,12 +38,10 @@ public class OperacionController{
         LineaDeCredito aEnviar = obtenerLineadeCredito(idLc);
 
         if(Integer.parseInt(importe) <= Integer.parseInt(aEnviar.getImporteActual())) {
-            Operacion nuevaOperacion = new Operacion(newIdOperacion, tipoDeOperacion, estado /*"Con certificado emitido"*/, garantia, importe, fechaCreacionOperacion, fechaVencimiento, cuotasPagadas, importeUtilizado, nombreBancoCheque, fechaVencCheque, numeroCheque, cuitCheque, tasaDeDescuento, cuentaCorriente, fechaVencimientoCuentaCorriente, nombreBancoPrestamo, tasaDeInteres, fechaDeAcreditacionPrestamo, cantidadDeCuotas, sistemaBancario, aEnviar);
+            Operacion nuevaOperacion = new Operacion(newIdOperacion, tipoDeOperacion,"Con certificado emitido", garantia, importe, fechaCreacionOperacion, fechaVencimiento, cuotasPagadas, importeUtilizado, nombreBancoCheque, fechaVencCheque, numeroCheque, cuitCheque, tasaDeDescuento, cuentaCorriente, fechaVencimientoCuentaCorriente, nombreBancoPrestamo, tasaDeInteres, fechaDeAcreditacionPrestamo, cantidadDeCuotas, sistemaBancario, aEnviar);
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMddhhmmss");
             String dateAsString = simpleDateFormat.format(new Date());
             nuevaOperacion.emitirCertificadoGarantia(dateAsString, new Date());
-
-            operaciones.add(nuevaOperacion);
 
             for(LineaDeCredito ldc : lineasDeCredito){
                 if(ldc.getIdLineaCredito() == idLc){
@@ -73,12 +71,11 @@ public class OperacionController{
             }
 
             aEnviar.restarImporteATotal(importe);
-
+            operaciones.add(nuevaOperacion);
             return "La operacion con ID " + nuevaOperacion.getIdOperacion() + " ha sido creada con exito!";
 
         } else {
             Operacion nuevaOperacion = new Operacion(newIdOperacion, tipoDeOperacion, "Ingresado", garantia, importe, fechaCreacionOperacion, fechaVencimiento, cuotasPagadas, importeUtilizado, nombreBancoCheque, fechaVencCheque, numeroCheque, cuitCheque, tasaDeDescuento, cuentaCorriente, fechaVencimientoCuentaCorriente, nombreBancoPrestamo, tasaDeInteres, fechaDeAcreditacionPrestamo, cantidadDeCuotas,sistemaBancario, aEnviar);
-            operaciones.add(nuevaOperacion);
 
             for(LineaDeCredito ldc : lineasDeCredito){
                 if(ldc.getIdLineaCredito() == idLc){
@@ -103,6 +100,7 @@ public class OperacionController{
                 nuevaOperacion.prestamos.add(nuevoPrestamo);
             }
 
+            operaciones.add(nuevaOperacion);
             return "La operacion con ID " + nuevaOperacion.getIdOperacion() + " ha sido creada con exito!";
         }
 
@@ -204,36 +202,25 @@ public class OperacionController{
         int cont=0;
         float promTasa =0.0f;
         float importeTotalChques= 0.0f;
-        float importeTotalPrestamos= 0.0f;
-        float importeTotalCtaCte= 0.0f;
         for(SocioParticipe s :controlador.listaDeSociosParticipes){
             if(s.getTipoDeEmpresa().equals(tipoDeEmpresa)){
                 if(s.getFechaInicioActividades().after(fechaDesde) && s.getFechaInicioActividades().before(fechaHasta)){
-                    ArrayList<Operacion> operacionesAux = s.linea.operaciones;
+                    ArrayList<Operacion> operacionesAux = s.getLinea().getOperaciones();
                     for(Operacion opAux: operacionesAux){
                         for(Cheque chAux:opAux.cheques){
                             promTasa= promTasa + chAux.getTasaDeDescuento();
                             importeTotalChques = importeTotalChques + chAux.getImporte();
                             cont++;
                         }
-                        for(Prestamo prAux: opAux.prestamos){
-                            promTasa = promTasa + prAux.getTasa();
-                            importeTotalPrestamos = importeTotalPrestamos + prAux.getImporte();
-                            cont++;
-                        }
-                        for(CuentaCorriente ctaAux : opAux.cuentasCorrientes){
-                            importeTotalCtaCte = importeTotalCtaCte + ctaAux.getImporte();
-                        }
                     }
                 }
             }
         }
-        float importePagares = importeTotalCtaCte+importeTotalPrestamos;
         if (cont == 0){
-            return "No existen cheques o pagares para calcular lo que esta pidiendo.";
+            return "No existen cheques o pagares para calcular lo que esta pidiendo";
         }
         promTasa=promTasa/cont;
-        mensaje="El promedio total de la tasa de descuento de cheques y pagares es" + promTasa + ". El importe total de cheques es" + importeTotalChques + "; el importe total de pagares es"+importePagares+".";
+        mensaje="El promedio total de la tasa de descuento de cheques y pagares es " + promTasa + ". El importe total es " + importeTotalChques;
         return mensaje;
     }
 
