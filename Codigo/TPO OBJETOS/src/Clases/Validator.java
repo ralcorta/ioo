@@ -8,6 +8,9 @@ import java.util.Date;
 
 public class Validator {
     public static boolean isDate(String dateString) {
+        if(dateString == null || dateString.length() == 0){
+            return false;
+        }
         SimpleDateFormat sdfrmt = new SimpleDateFormat(CommonFormatsDefine.FULL_DATE);
         sdfrmt.setLenient(false);
         try {

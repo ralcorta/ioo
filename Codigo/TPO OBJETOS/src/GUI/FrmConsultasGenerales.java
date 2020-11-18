@@ -51,12 +51,17 @@ public class FrmConsultasGenerales extends JDialog{
             public void actionPerformed(ActionEvent actionEvent) {
                 float totalComision = 0.0f;
                 String fecha = JOptionPane.showInputDialog(self,"Ingrese la fecha (DD/MM/YYYY) para calcular la comisión de operaciones monetizadas con Cheque:");
-
-                try {
-                    totalComision = cOperacion.totalComisionConChequeDia(new SimpleDateFormat("dd/MM/yyyy").parse(fecha));
+                if(!Validator.isDate(fecha)){
+                    JOptionPane.showMessageDialog(self,"La fecha ingresada NO cumple con el formato DD/MM/YYYY", "ERROR: Fecha vacia", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                else{
+                    try {
+                        totalComision = cOperacion.totalComisionConChequeDia(new SimpleDateFormat("dd/MM/yyyy").parse(fecha));
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
                     JOptionPane.showMessageDialog(null, "El total de comisiones en el dia " + fecha + " es " + totalComision + "$", "Reporte comisiones con cheques", JOptionPane.INFORMATION_MESSAGE);
-                   } catch (ParseException e) {
-                    JOptionPane.showMessageDialog(self,"La fecha ingresada NO cumple con el formato DD/MM/YYYY", "ERROR: Fecha invalida", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
@@ -65,7 +70,8 @@ public class FrmConsultasGenerales extends JDialog{
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 String cuit = JOptionPane.showInputDialog(self, "Ingrese el CUIT del Socio:");
-                if(cuit.length() == 0 || !Validator.isCuit(cuit)){
+
+                if(cuit==null || cuit.length() == 0 || !Validator.isCuit(cuit)){
                     JOptionPane.showMessageDialog(self, "El CUIT debe ser numerico y tener entre 1 y 11 caracteres", "ERROR: Fecha invalida", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
@@ -94,10 +100,25 @@ public class FrmConsultasGenerales extends JDialog{
             public void actionPerformed(ActionEvent actionEvent) {
                 try {
                     String tipoEmpresa=JOptionPane.showInputDialog(self,"Por favor ingrese el tipo de empresa: ");
-                    String fechaDesde=JOptionPane.showInputDialog(self,"Ingrese la fecha desde la que desea buscar:");
-                    String fechaHasta=JOptionPane.showInputDialog(self,"Ingrese la fecha hasta la que desea buscar:");
 
-                    String mensaje = cOperacion.valorPromedioTasaDescuento(tipoEmpresa, new SimpleDateFormat("dd/MM/yyyy").parse(fechaDesde), new SimpleDateFormat("dd/MM/yyyy").parse(fechaHasta));
+                    if(tipoEmpresa == null){
+                        JOptionPane.showMessageDialog(self, "el tipo de empresa no puede estar vacio", "ERROR: El campo tipo empresa esta vacio", JOptionPane.ERROR_MESSAGE);
+                    }
+
+                    String fechaDesde=JOptionPane.showInputDialog(self,"Ingrese la fecha desde la que desea buscar:");
+                    Date fechaDesdeObj = new SimpleDateFormat("dd/MM/yyyy").parse(fechaDesde);
+                    
+                    if(!Validator.isDate(fechaDesde)){
+                        JOptionPane.showMessageDialog(self, "el campo fecha no puede ser vacio", "ERROR: campo fecha vacio", JOptionPane.ERROR_MESSAGE);
+                    }
+
+                    String fechaHasta=JOptionPane.showInputDialog(self,"Ingrese la fecha hasta la que desea buscar:");
+                    Date fechaHastaObj = new SimpleDateFormat("dd/MM/yyyy").parse(fechaHasta);
+                    if(!Validator.isDate(fechaHasta) || fechaHastaObj.after(fechaDesdeObj)){
+                        JOptionPane.showMessageDialog(self, "la fecha hasta no es valida", "ERROR: campo fecha incorrecto", JOptionPane.ERROR_MESSAGE);
+                    }
+
+                    String mensaje = cOperacion.valorPromedioTasaDescuento(tipoEmpresa, fechaDesdeObj, fechaHastaObj);
                     JOptionPane.showMessageDialog(self, mensaje);
                 } catch (ParseException e) {
                     e.printStackTrace();
