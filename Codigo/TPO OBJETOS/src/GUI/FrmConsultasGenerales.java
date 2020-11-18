@@ -3,6 +3,7 @@ package GUI;
 import Clases.Operacion;
 import Clases.OperacionController;
 import Clases.SociosController;
+import Clases.Validator;
 
 import javax.swing.*;
 import java.awt.*;
@@ -63,9 +64,13 @@ public class FrmConsultasGenerales extends JDialog{
         btnOperacionesASocio.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                String cuit = JOptionPane.showInputDialog(self,"Ingrese el CUIT del Socio:");
+                String cuit = JOptionPane.showInputDialog(self, "Ingrese el CUIT del Socio:");
+                if(cuit.length() == 0 || !Validator.isCuit(cuit)){
+                    JOptionPane.showMessageDialog(self, "El CUIT debe ser numerico y tener entre 1 y 11 caracteres", "ERROR: Fecha invalida", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
                 String fechaDesde = JOptionPane.showInputDialog(self,"Ingrese la fecha desde la que desea buscar:");
-                String fechaHasta = JOptionPane.showInputDialog(self,"Ingrese la fecha hasta    la que desea buscar:");
+                String fechaHasta = JOptionPane.showInputDialog(self,"Ingrese la fecha hasta la que desea buscar:");
                 ArrayList <Operacion> operaciones = new ArrayList<Operacion>();
                 try {
                     operaciones = cOperacion.operacionesDeSocioEnUnPeriodo(cuit, new SimpleDateFormat("dd/MM/yyyy").parse(fechaDesde), new SimpleDateFormat("dd/MM/yyyy").parse(fechaHasta));

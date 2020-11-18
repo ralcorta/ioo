@@ -33,4 +33,14 @@ public class Validator {
         return date.before(new Date());
     }
 
+    public static boolean isCuit(String cuit) {
+        if (cuit.length() == 0 || cuit.length() > 11){ return false; }
+        try{
+            Long.parseLong(cuit);
+        } catch (Exception e){
+            return false;
+        }
+        return true;
+    }
+
 }
