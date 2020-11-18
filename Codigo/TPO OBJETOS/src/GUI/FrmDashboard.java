@@ -108,7 +108,8 @@ public class FrmDashboard extends JFrame{
                 "Documentacion del tipo",
                 commonDate,
                 true,
-                "Usuario de ingreso");
+                "Usuario de ingreso",
+                "Pequeña");
 
         controladorSocios.crearSocioParticipe("20400067385",
                 "Rodrigo Damian Sosa",
@@ -122,7 +123,8 @@ public class FrmDashboard extends JFrame{
                 "Repo de documentacion",
                 commonDate,
                 true,
-                "rsosacar");
+                "rsosacar",
+                "Mediana");
 
         controladorSocios.crearSocioProtector("20387086055",
                 "Usuario de prueba 2",
@@ -136,7 +138,8 @@ public class FrmDashboard extends JFrame{
                 "Documentacion del tipo",
                 commonDate,
                 true,
-                "Usuario de ingreso");
+                "Usuario de ingreso",
+                "Grande");
 
         controladorSocios.crearSocioProtector("20121231238",
                 "Usuario de prueba",

@@ -33,6 +33,7 @@ public class FrmDetalleSocio extends JDialog {
     private JComboBox comboEstadoDocumentacion;
     private JButton listaDeAccionistasButton;
     private JButton listaDeAccionesButton;
+    private JComboBox tipoEmpresaCombo;
 
     public FrmDetalleSocio(Window owner, SociosController cSocio) {
         super(owner, "Detalle de Socio");
@@ -46,6 +47,10 @@ public class FrmDetalleSocio extends JDialog {
 
         comboEstadoDocumentacion.addItem("Controlado");
         comboEstadoDocumentacion.addItem("Rechazado");
+
+        tipoEmpresaCombo.addItem("Pequeña");
+        tipoEmpresaCombo.addItem("Mediana");
+        tipoEmpresaCombo.addItem("Grande");
 
         listaDeAccionistasButton.setEnabled(false);
         listaDeAccionesButton.setEnabled(false);
@@ -75,6 +80,10 @@ public class FrmDetalleSocio extends JDialog {
 
         comboEstadoDocumentacion.addItem("Controlado");
         comboEstadoDocumentacion.addItem("Rechazado");
+
+        tipoEmpresaCombo.addItem("Pequeña");
+        tipoEmpresaCombo.addItem("Mediana");
+        tipoEmpresaCombo.addItem("Grande");
 
         socioCombo.setEnabled(false);
         textCuitSocio.setEditable(false);
@@ -130,6 +139,10 @@ public class FrmDetalleSocio extends JDialog {
 
         comboEstadoDocumentacion.addItem("Controlado");
         comboEstadoDocumentacion.addItem("Rechazado");
+
+        tipoEmpresaCombo.addItem("Pequeña");
+        tipoEmpresaCombo.addItem("Mediana");
+        tipoEmpresaCombo.addItem("Grande");
 
         socioCombo.setEnabled(false);
         textCuitSocio.setEditable(false);
@@ -208,7 +221,9 @@ public class FrmDetalleSocio extends JDialog {
                                         textTelefono.getText(), textEmail.getText(),
                                         isPleno, textDocumentacion.getText(),
                                         new SimpleDateFormat("dd/MM/yyyy").parse(textFechaDocumentacion.getText()), isDocumentacion,
-                                        textUsuarioDeIngreso.getText());
+                                        textUsuarioDeIngreso.getText(),
+                                        tipoEmpresaCombo.getSelectedItem().toString());
+
                                 JOptionPane.showMessageDialog(self, respuesta);
                                 dispose();
                             }
@@ -219,7 +234,8 @@ public class FrmDetalleSocio extends JDialog {
                                         textTelefono.getText(), textEmail.getText(),
                                         isPleno, textDocumentacion.getText(),
                                         new SimpleDateFormat("dd/MM/yyyy").parse(textFechaDocumentacion.getText()), isDocumentacion,
-                                        textUsuarioDeIngreso.getText());
+                                        textUsuarioDeIngreso.getText(),
+                                        tipoEmpresaCombo.getSelectedItem().toString());
                                 JOptionPane.showMessageDialog(self, respuesta);
                                 dispose();
                             }
@@ -237,7 +253,8 @@ public class FrmDetalleSocio extends JDialog {
                                             textTelefono.getText(), textEmail.getText(),
                                             isPleno, textDocumentacion.getText(),
                                             new SimpleDateFormat("dd/MM/yyyy").parse(textFechaDocumentacion.getText()), isDocumentacion,
-                                            textUsuarioDeIngreso.getText());
+                                            textUsuarioDeIngreso.getText(),
+                                            tipoEmpresaCombo.getSelectedItem().toString());
                                     JOptionPane.showMessageDialog(self, respuesta);
                                     dispose();
                                 }
@@ -249,7 +266,8 @@ public class FrmDetalleSocio extends JDialog {
                                         textTelefono.getText(), textEmail.getText(),
                                         isPleno, textDocumentacion.getText(),
                                         new SimpleDateFormat("dd/MM/yyyy").parse(textFechaDocumentacion.getText()), isDocumentacion,
-                                        textUsuarioDeIngreso.getText());
+                                        textUsuarioDeIngreso.getText(),
+                                        tipoEmpresaCombo.getSelectedItem().toString());
                                 JOptionPane.showMessageDialog(self, respuesta);
                                 dispose();
                             }

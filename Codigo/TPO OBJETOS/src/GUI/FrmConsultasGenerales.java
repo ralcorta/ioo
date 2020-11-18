@@ -95,7 +95,15 @@ public class FrmConsultasGenerales extends JDialog{
         btnPorcentajeComision.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                String fechaDesde=JOptionPane.showInputDialog(self,"Texto futuro:");
+                String cuit = JOptionPane.showInputDialog(self,"Ingrese el CUIT del Socio:");
+                String tipoDeOperacion = JOptionPane.showInputDialog(self,"Ingrese el Tipo de Operación a consultar:");
+
+                if(cuit.length() == 0 && tipoDeOperacion.length() == 0){
+                    JOptionPane.showMessageDialog(self, "Debe ingresarse un CUIT o el tipo de operacion.", "ERROR: Se ingreso un campo vacio", JOptionPane.ERROR_MESSAGE);
+                }
+
+                float totalComisiones = cSocios.calcularComisionSocio(tipoDeOperacion, cuit);
+                JOptionPane.showMessageDialog(self, "El total de comisiones del socio es: " + totalComisiones + "$", "Total de comisiones", JOptionPane.INFORMATION_MESSAGE);
             }
         });
 
