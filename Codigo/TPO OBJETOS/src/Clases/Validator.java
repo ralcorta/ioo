@@ -28,4 +28,9 @@ public class Validator {
         }
         return true;
     }
+
+    public static boolean isDateBeforeNow(Date date) {
+        return date.before(new Date());
+    }
+
 }
