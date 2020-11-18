@@ -213,6 +213,12 @@ public class FrmDetalleOperacion extends JDialog{
         guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                    if((!Validator.isFloat(textImporte.getText()) || Float.parseFloat(textImporte.getText()) < 0)){
+                        JOptionPane.showMessageDialog(null, "El importe es invalido", "Error", JOptionPane.ERROR_MESSAGE);
+                        return;
+                     }
+
                     if(!Validator.isDate(textFechaCreacOp.getText())) {
                         JOptionPane.showMessageDialog(null, "La fecha de creacion de operacion no tiene el formato deseado (" + CommonFormatsDefine.FULL_DATE + ")", "Error de formato", JOptionPane.ERROR_MESSAGE);
                         return;

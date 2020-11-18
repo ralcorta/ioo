@@ -84,7 +84,7 @@ public class FrmDetalleLineaDeCredito extends JDialog {
                     JOptionPane.showMessageDialog(null, "La fecha de vigencia no tiene el formato deseado (" + CommonFormatsDefine.FULL_DATE + ")", "Error de formato", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
-
+                
                 try {
                     boolean estadoAux;
                     if (comboEstado.getSelectedItem().toString().equals("Activo")) {
