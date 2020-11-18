@@ -183,6 +183,14 @@ public class FrmConsultasGenerales extends JDialog{
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 String cuitSocio = JOptionPane.showInputDialog(self,"Cuit del socio:");
+                if(cuitSocio == null){
+                    return;
+                }
+                if(cuitSocio == ""){
+                    JOptionPane.showMessageDialog(self, "El CUIT es invalido", "ERROR: cuit invalido", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
                 ArrayList<Operacion> opFiltered = new ArrayList<Operacion>();
                 ArrayList<Operacion> ops = cOperacion.getOperaciones();
 
