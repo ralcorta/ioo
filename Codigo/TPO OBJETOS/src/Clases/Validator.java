@@ -33,4 +33,23 @@ public class Validator {
         return date.before(new Date());
     }
 
+<<<<<<< HEAD
+    public static boolean isNumeric(String importe){
+        if (importe == null) return false;
+        try {
+            Integer.parseInt(importe);
+        }
+        catch (NumberFormatException e){
+=======
+    public static boolean isCuit(String cuit) {
+        if (cuit.length() == 0 || cuit.length() > 11){ return false; }
+        try{
+            Long.parseLong(cuit);
+        } catch (Exception e){
+>>>>>>> 2401d91a4978d8915a21bbdcfa32a1708c6fb22b
+            return false;
+        }
+        return true;
+    }
+
 }
