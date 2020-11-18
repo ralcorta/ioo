@@ -97,13 +97,6 @@ public class FrmConsultasGenerales extends JDialog{
             }
         });
 
-        btnSaldoMora.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                String fechaDesde=JOptionPane.showInputDialog(self,"Texto futuro:");
-            }
-        });
-
         btnConsultaConsolidada.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
