@@ -8,14 +8,16 @@ public class Cheque {
     private Date fechaDeVencimiento;
     private String cuit;
     private float tasaDeDescuento;
+    private float importe;
     Operacion operacion;
 
-    public Cheque(String banco, int numero, Date fechaDeVencimiento, String cuit, float tasaDeDescuento) {
+    public Cheque(String banco, int numero, Date fechaDeVencimiento, String cuit, float tasaDeDescuento, float importe) {
         this.banco = banco;
         this.numero = numero;
         this.fechaDeVencimiento = fechaDeVencimiento;
         this.cuit = cuit;
         this.tasaDeDescuento = tasaDeDescuento;
+        this.importe = importe;
     }
 
     public String getBanco() {
@@ -56,5 +58,13 @@ public class Cheque {
 
     public void setTasaDeDescuento(float tasaDeDescuento) {
         this.tasaDeDescuento = tasaDeDescuento;
+    }
+
+    public float getImporte() {
+        return importe;
+    }
+
+    public void setImporte(float importe) {
+        this.importe = importe;
     }
 }

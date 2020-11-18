@@ -6,10 +6,13 @@ public class CuentaCorriente {
     private String nombreEmpresa;
     private Date fechaDeVencimiento;
     private Operacion operacion;
+    private float importe;
 
-    public CuentaCorriente(String nombreEmpresa, Date fechaDeVencimiento) {
+
+    public CuentaCorriente(String nombreEmpresa, Date fechaDeVencimiento, float importe) {
         this.nombreEmpresa = nombreEmpresa;
         this.fechaDeVencimiento = fechaDeVencimiento;
+        this.importe = importe;
     }
 
     public String getNombreEmpresa() {
@@ -26,5 +29,13 @@ public class CuentaCorriente {
 
     public void setFechaDeVencimiento(Date fechaDeVencimiento) {
         this.fechaDeVencimiento = fechaDeVencimiento;
+    }
+
+    public float getImporte() {
+        return importe;
+    }
+
+    public void setImporte(float importe) {
+        this.importe = importe;
     }
 }

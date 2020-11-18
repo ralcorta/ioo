@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 public class FrmDetalleSocio extends JDialog {
     private FrmDetalleSocio self;
@@ -107,8 +108,11 @@ public class FrmDetalleSocio extends JDialog {
         this.textDocumentacion.setText(socio.getDocumentacion());
         this.textFechaDocumentacion.setText(new SimpleDateFormat("dd/MM/yyyy").format(socio.getFechaDocumentacion()));
         this.textUsuarioDeIngreso.setText(socio.getUsuarioDocumentacion());
+        this.tipoEmpresaCombo.setSelectedItem(socio.getTipoDeEmpresa());
+        this.tipoEmpresaCombo.setEnabled(false);
         if(socio.isEsPleno()){
             this.comboBoxSocioPleno.getModel().setSelectedItem("Si");
+            this.comboEstadoDocumentacion.setEnabled(false);
         } else {
             this.comboBoxSocioPleno.getModel().setSelectedItem("No");
         }
@@ -166,8 +170,11 @@ public class FrmDetalleSocio extends JDialog {
         this.textDocumentacion.setText(socio.getDocumentacion());
         this.textFechaDocumentacion.setText(new SimpleDateFormat("dd/MM/yyyy").format(socio.getFechaDocumentacion()));
         this.textUsuarioDeIngreso.setText(socio.getUsuarioDocumentacion());
+        this.tipoEmpresaCombo.setSelectedItem(socio.getTipoDeEmpresa());
+        this.tipoEmpresaCombo.setEnabled(false);
         if(socio.isEsPleno()){
             this.comboBoxSocioPleno.setSelectedIndex(1);
+            this.comboEstadoDocumentacion.setEnabled(false);
         } else {
             this.comboBoxSocioPleno.setSelectedIndex(0);
         }
@@ -246,18 +253,16 @@ public class FrmDetalleSocio extends JDialog {
                     } else if (socioCombo.getSelectedItem().toString().equals("Protector")) {
                         try {
                             if (operation.equals("Create")) {
-                                for (SocioProtector sp : cSocio.getListaDeSociosProtectores()){
-                                    String respuesta = cSocio.crearSocioProtector(textCuitSocio.getText(), textRazonSocial.getText(),
-                                            new SimpleDateFormat("dd/MM/yyyy").parse(textFechaInicioAct.getText()), socioCombo.getSelectedItem().toString(),
-                                            textActPrincipal.getText(), textDireccion.getText(),
-                                            textTelefono.getText(), textEmail.getText(),
-                                            isPleno, textDocumentacion.getText(),
-                                            new SimpleDateFormat("dd/MM/yyyy").parse(textFechaDocumentacion.getText()), isDocumentacion,
-                                            textUsuarioDeIngreso.getText(),
-                                            tipoEmpresaCombo.getSelectedItem().toString());
-                                    JOptionPane.showMessageDialog(self, respuesta);
-                                    dispose();
-                                }
+                                String respuesta = cSocio.crearSocioProtector(textCuitSocio.getText(), textRazonSocial.getText(),
+                                        new SimpleDateFormat("dd/MM/yyyy").parse(textFechaInicioAct.getText()), socioCombo.getSelectedItem().toString(),
+                                        textActPrincipal.getText(), textDireccion.getText(),
+                                        textTelefono.getText(), textEmail.getText(),
+                                        isPleno, textDocumentacion.getText(),
+                                        new SimpleDateFormat("dd/MM/yyyy").parse(textFechaDocumentacion.getText()), isDocumentacion,
+                                        textUsuarioDeIngreso.getText(),
+                                        tipoEmpresaCombo.getSelectedItem().toString());
+                                JOptionPane.showMessageDialog(self, respuesta);
+                                dispose();
                             }
                             if (operation.equals("Update")) {
                                 String respuesta = cSocio.updateSocioProtector(textCuitSocio.getText(), textRazonSocial.getText(),

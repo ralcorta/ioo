@@ -54,7 +54,15 @@ public class SociosController
 
     }*/
 
-    public String aprobarSocio(String cuit){
+    public boolean estaParaAprobar(SocioProtector s){
+        return s.getEstadoDocumentacion() == true && accionesSuscritasSuficientes(s.getCuit());
+    }
+
+    public boolean estaParaAprobar(SocioParticipe s){
+        return s.getEstadoDocumentacion() == true && accionesSuscritasSuficientes(s.getCuit());
+    }
+
+    public int aprobarSocio(String cuit){
         boolean encontrado = false;
         SocioProtector auxProtector = null;
         SocioParticipe auxParticipe = null;
@@ -67,10 +75,10 @@ public class SociosController
         if (encontrado == true){
             if (auxProtector.getEstadoDocumentacion() == true && accionesSuscritasSuficientes(cuit)){
                 auxProtector.setEsPleno(true);
-                return "socio aprobado con exito";
+                return 1;
             }
             else{
-                return "el socio protector no cumple las condiciones de aprobacion";
+                return 0;
             }
         }
         else{
@@ -83,14 +91,14 @@ public class SociosController
             if (encontrado == true){
                 if (auxParticipe.getEstadoDocumentacion() == true && accionesSuscritasSuficientes(cuit)){
                     auxParticipe.setEsPleno(true);
-                    return "socio aprobado con exito";
+                    return 1;
                 }
                 else{
-                    return "el socio participe no cumple las condiciones de aprobacion";
+                    return 0;
                 }
             }
         }
-        return "socio no encontrado";
+        return 2;
     }
 
     public boolean accionesSuscritasSuficientes(String cuit){
