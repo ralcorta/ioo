@@ -33,4 +33,15 @@ public class Validator {
         return date.before(new Date());
     }
 
+    public static boolean isNumeric(String importe){
+        if (importe == null) return false;
+        try {
+            Integer.parseInt(importe);
+        }
+        catch (NumberFormatException e){
+            return false;
+        }
+        return true;
+    }
+
 }

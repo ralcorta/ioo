@@ -197,7 +197,7 @@ public class FrmDetalleOperacion extends JDialog{
                 else if(!cuit.matches("[0-9]+")){
                     JOptionPane.showMessageDialog(null,"El CUIT debe ser numerico","Error: Formato CUIT",JOptionPane.ERROR_MESSAGE);
                 }
-                
+
                 else {
                     boolean encontrado = false;
                     SocioParticipe auxSocioParticipe = null;
@@ -227,11 +227,10 @@ public class FrmDetalleOperacion extends JDialog{
         guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                     if((!Validator.isFloat(textImporte.getText()) || Float.parseFloat(textImporte.getText()) < 0)){
                         JOptionPane.showMessageDialog(null, "El importe es invalido", "Error", JOptionPane.ERROR_MESSAGE);
                         return;
-                     }
+                    }
 
                     if(!Validator.isDate(textFechaCreacOp.getText())) {
                         JOptionPane.showMessageDialog(null, "La fecha de creacion de operacion no tiene el formato deseado (" + CommonFormatsDefine.FULL_DATE + ")", "Error de formato", JOptionPane.ERROR_MESSAGE);
@@ -243,30 +242,14 @@ public class FrmDetalleOperacion extends JDialog{
                         return;
                     }
 
-                    if(!Validator.isDate(textFechaVencCheque.getText())) {
-                        JOptionPane.showMessageDialog(null, "La fecha de vencimiento de cheque no tiene el formato deseado (" + CommonFormatsDefine.FULL_DATE + ")", "Error de formato", JOptionPane.ERROR_MESSAGE);
-                        return;
-                    }
-
-                    if(!Validator.isDate(textFechaVencCuenta.getText())) {
-                        JOptionPane.showMessageDialog(null, "La fecha de vencimiento de cuenta no tiene el formato deseado (" + CommonFormatsDefine.FULL_DATE + ")", "Error de formato", JOptionPane.ERROR_MESSAGE);
-                        return;
-                    }
-
-                    if(!Validator.isDate(textFechaAcrdPrestamo.getText())) {
-                        JOptionPane.showMessageDialog(null, "La fecha de vencimiento de prestamo no tiene el formato deseado (" + CommonFormatsDefine.FULL_DATE + ")", "Error de formato", JOptionPane.ERROR_MESSAGE);
-                        return;
-                    }
-
-                    if(!Validator.isDate(txtFechaPrest.getText())) {
-                        JOptionPane.showMessageDialog(null, "La fecha de prestamo no tiene el formato deseado (" + CommonFormatsDefine.FULL_DATE + ")", "Error de formato", JOptionPane.ERROR_MESSAGE);
-                        return;
-                    }
-
                     if(auxOperation.equals("Create")) {
                         String resultado = null;
                         try{
                             if (comboTipoOperacion.getSelectedItem().toString().equals(TipoOperacionDefine.TIPO_1)) {
+                                if(!Validator.isDate(textFechaVencCheque.getText())) {
+                                    JOptionPane.showMessageDialog(null, "La fecha de vencimiento de cheque no tiene el formato deseado (" + CommonFormatsDefine.FULL_DATE + ")", "Error de formato", JOptionPane.ERROR_MESSAGE);
+                                    return;
+                                }
                                     resultado = controladorOperacion.crearOperacion(Integer.parseInt(txtfieldIdLinea.getText()),
                                             TipoOperacionDefine.TIPO_1,
                                             EstadosDefine.EMITIDO/*comboEstado.getSelectedItem().toString()*/,
@@ -292,6 +275,10 @@ public class FrmDetalleOperacion extends JDialog{
                                             0,
                                             "");
                             } else if (comboTipoOperacion.getSelectedItem().toString().equals(TipoOperacionDefine.TIPO_2)) {
+                                    if(!Validator.isDate(textFechaVencCuenta.getText())) {
+                                        JOptionPane.showMessageDialog(null, "La fecha de vencimiento de cuenta no tiene el formato deseado (" + CommonFormatsDefine.FULL_DATE + ")", "Error de formato", JOptionPane.ERROR_MESSAGE);
+                                        return;
+                                    }
                                     resultado = controladorOperacion.crearOperacion(Integer.parseInt(txtfieldIdLinea.getText()),
                                             TipoOperacionDefine.TIPO_2,
                                             EstadosDefine.EMITIDO /*comboEstado.getSelectedItem().toString()*/,
@@ -317,6 +304,12 @@ public class FrmDetalleOperacion extends JDialog{
                                             0,
                                             "");
                             } else {
+
+                                if(!Validator.isDate(textFechaAcrdPrestamo.getText())) {
+                                    JOptionPane.showMessageDialog(null, "La fecha de vencimiento de prestamo no tiene el formato deseado (" + CommonFormatsDefine.FULL_DATE + ")", "Error de formato", JOptionPane.ERROR_MESSAGE);
+                                    return;
+                                }
+
                                 resultado = controladorOperacion.crearOperacion(Integer.parseInt(txtfieldIdLinea.getText()),
                                         TipoOperacionDefine.TIPO_3,
                                         EstadosDefine.EMITIDO /*comboEstado.getSelectedItem().toString()*/,
