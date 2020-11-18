@@ -18,6 +18,7 @@ public class SocioParticipe
     private Date fechaDocumentacion;
     private Boolean estadoDocumentacion;
     private String usuarioDocumentacion;
+    private String tipoDeEmpresa;
     ArrayList<Accionistas> listaDeAccionistas = new ArrayList<Accionistas>();
     ArrayList<Accion> listaDeAcciones = new ArrayList<Accion>();
     ArrayList<Accion> accionesSuscritas = new ArrayList<Accion>();
@@ -145,6 +146,14 @@ public class SocioParticipe
         return usuarioDocumentacion;
     }
 
+    public String getTipoDeEmpresa() {
+        return tipoDeEmpresa;
+    }
+
+    public void setTipoDeEmpresa(String tipoDeEmpresa) {
+        this.tipoDeEmpresa = tipoDeEmpresa;
+    }
+
     public void setUsuarioDocumentacion(String usuarioDocumentacion) {
         this.usuarioDocumentacion = usuarioDocumentacion;
     }
@@ -173,7 +182,7 @@ public class SocioParticipe
         return "accion no encontrada";
     }
 
-    public SocioParticipe(String cuit, String razonSocial, Date fechaInicioActividades, String tipo, String actividadPrincipal, String direccion, String telefono, String correoElectronico, boolean esPleno, String documentacion, Date fechaDocumentacion, Boolean estadoDocumentacion, String usuarioDocumentacion) {
+    public SocioParticipe(String cuit, String razonSocial, Date fechaInicioActividades, String tipo, String actividadPrincipal, String direccion, String telefono, String correoElectronico, boolean esPleno, String documentacion, Date fechaDocumentacion, Boolean estadoDocumentacion, String usuarioDocumentacion, String tipoDeEmpresa) {
         this.cuit = cuit;
         this.razonSocial = razonSocial;
         this.fechaInicioActividades = fechaInicioActividades;
@@ -187,6 +196,8 @@ public class SocioParticipe
         this.fechaDocumentacion = fechaDocumentacion;
         this.estadoDocumentacion = estadoDocumentacion;
         this.usuarioDocumentacion = usuarioDocumentacion;
+        this.tipoDeEmpresa = tipoDeEmpresa;
+
     }
 
     public void suscribirAcciones(){

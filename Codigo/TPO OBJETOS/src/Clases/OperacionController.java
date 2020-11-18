@@ -149,6 +149,12 @@ public class OperacionController{
         }
         return operacionesMonetizadas;
     }
+
+    public float promedioTasaDescuento(String tipoDeEmpresa, Date fechaDesde, Date fechaHasta){
+
+        return 0.0f;
+    }
+
 /*
     /*public ArrayList<Operacion> operacionesDeSocioEnPeriodo(){
         return null;

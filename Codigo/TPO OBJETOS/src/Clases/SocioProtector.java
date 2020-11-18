@@ -17,6 +17,7 @@ public class SocioProtector{
     private Date fechaDocumentacion;
     private Boolean estadoDocumentacion;
     private String usuarioDocumentacion;
+    private String tipoDeEmpresa;
     ArrayList<Aportes> listaDeAportes = new ArrayList<Aportes>();
     ArrayList<Accionistas> listaDeAccionistas = new ArrayList<Accionistas>();
     ArrayList<Accion> listaDeAcciones = new ArrayList<Accion>();
@@ -43,7 +44,7 @@ public class SocioProtector{
         listaDeAccionistas.add(accionista);
     }
 
-    public SocioProtector(String cuit, String razonSocial, Date fechaInicioActividades, String tipo, String actividadPrincipal, String direccion, String telefono, String correoElectronico, boolean esPleno, String documentacion, Date fechaDocumentacion, Boolean estadoDocumentacion, String usuarioDocumentacion) {
+    public SocioProtector(String cuit, String razonSocial, Date fechaInicioActividades, String tipo, String actividadPrincipal, String direccion, String telefono, String correoElectronico, boolean esPleno, String documentacion, Date fechaDocumentacion, Boolean estadoDocumentacion, String usuarioDocumentacion, String tipoDeEmpresa) {
         this.cuit = cuit;
         this.razonSocial = razonSocial;
         this.fechaInicioActividades = fechaInicioActividades;
@@ -57,6 +58,7 @@ public class SocioProtector{
         this.fechaDocumentacion = fechaDocumentacion;
         this.estadoDocumentacion = estadoDocumentacion;
         this.usuarioDocumentacion = usuarioDocumentacion;
+        this.tipoDeEmpresa = tipoDeEmpresa;
     }
 
     public String getCuit() {
@@ -82,6 +84,8 @@ public class SocioProtector{
     public void setFechaInicioActividades(Date fechaInicioActividades) {
         this.fechaInicioActividades = fechaInicioActividades;
     }
+
+
 
     public String getTipo() {
         return tipo;
@@ -145,6 +149,14 @@ public class SocioProtector{
 
     public void setFechaDocumentacion(Date fechaDocumentacion) {
         this.fechaDocumentacion = fechaDocumentacion;
+    }
+
+    public String getTipoDeEmpresa() {
+        return tipoDeEmpresa;
+    }
+
+    public void setTipoDeEmpresa(String tipoDeEmpresa) {
+        this.tipoDeEmpresa = tipoDeEmpresa;
     }
 
     public Boolean getEstadoDocumentacion() {

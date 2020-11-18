@@ -17,7 +17,6 @@ public class SociosController
     public SociosController(OperacionController controladorOperacion) throws ParseException {
         this.controladorOperaciones = controladorOperacion;
         // JOptionPane.showMessageDialog(null, "Testing");
-
     }
 
     /*
@@ -154,7 +153,7 @@ public class SociosController
         }
     }
 
-    public String crearSocioParticipe(String cuit, String razonSocial, Date fechaInicioActividades, String tipo, String actividadPrincipal, String direccion, String telefono, String correoElectronico, boolean esPleno, String documentacion, Date fechaDocumentacion, Boolean estadoDocumentacion, String usuarioDocumentacion){
+    public String crearSocioParticipe(String cuit, String razonSocial, Date fechaInicioActividades, String tipo, String actividadPrincipal, String direccion, String telefono, String correoElectronico, boolean esPleno, String documentacion, Date fechaDocumentacion, Boolean estadoDocumentacion, String usuarioDocumentacion, String tipoDeEmpresa){
         for(SocioParticipe s : listaDeSociosParticipes){
             if(s.getCuit().equals(cuit)){
                 return "El socio con CUIT " + s.getCuit() + " ya existe, no puede ser creado nuevamente.";
@@ -165,12 +164,12 @@ public class SociosController
                 return "El socio con CUIT " + s.getCuit() + " ya existe, no puede ser creado nuevamente.";
             }
         }
-        SocioParticipe nuevoSocioParticipe = new SocioParticipe(cuit, razonSocial, fechaInicioActividades, tipo, actividadPrincipal, direccion, telefono, correoElectronico, esPleno, documentacion, fechaDocumentacion, estadoDocumentacion, usuarioDocumentacion);
+        SocioParticipe nuevoSocioParticipe = new SocioParticipe(cuit, razonSocial, fechaInicioActividades, tipo, actividadPrincipal, direccion, telefono, correoElectronico, esPleno, documentacion, fechaDocumentacion, estadoDocumentacion, usuarioDocumentacion, tipoDeEmpresa);
         listaDeSociosParticipes.add(nuevoSocioParticipe);
         return "El socio con CUIT " + cuit + " ha sido creado correctamente.";
     }
 
-    public String updateSocioParticipe(String cuit, String razonSocial, Date fechaInicioActividades, String tipo, String actividadPrincipal, String direccion, String telefono, String correoElectronico, boolean esPleno, String documentacion, Date fechaDocumentacion, Boolean estadoDocumentacion, String usuarioDocumentacion){
+    public String updateSocioParticipe(String cuit, String razonSocial, Date fechaInicioActividades, String tipo, String actividadPrincipal, String direccion, String telefono, String correoElectronico, boolean esPleno, String documentacion, Date fechaDocumentacion, Boolean estadoDocumentacion, String usuarioDocumentacion, String tipoDeEmpresa){
         for(SocioParticipe s : listaDeSociosParticipes){
             if(s.getCuit().equals(cuit)){
                 s.setRazonSocial(razonSocial);
@@ -185,13 +184,14 @@ public class SociosController
                 s.setFechaDocumentacion(fechaDocumentacion);
                 s.setEstadoDocumentacion(estadoDocumentacion);
                 s.setUsuarioDocumentacion(usuarioDocumentacion);
+                s.setTipoDeEmpresa(tipoDeEmpresa);
                 return "El socio con CUIT " + s.getCuit() + " fue actualizado correctamente !";
             }
         }
         return "El socio a actualizar NO existe";
     }
 
-    public String crearSocioProtector(String cuit, String razonSocial, Date fechaInicioActividades, String tipo, String actividadPrincipal, String direccion, String telefono, String correoElectronico, boolean esPleno, String documentacion, Date fechaDocumentacion, Boolean estadoDocumentacion, String usuarioDocumentacion){
+    public String crearSocioProtector(String cuit, String razonSocial, Date fechaInicioActividades, String tipo, String actividadPrincipal, String direccion, String telefono, String correoElectronico, boolean esPleno, String documentacion, Date fechaDocumentacion, Boolean estadoDocumentacion, String usuarioDocumentacion, String tipoDeEmpresa){
         for (SocioProtector s : listaDeSociosProtectores){
             if(s.getCuit().equals(cuit)){
                 return "El socio con CUIT " + s.getCuit() + " ya existe, no puede ser creado nuevamente.";
@@ -202,12 +202,12 @@ public class SociosController
                 return "El socio con CUIT " + s.getCuit() + " ya existe, no puede ser creado nuevamente.";
             }
         }
-        SocioProtector nuevoSocioProtector = new SocioProtector(cuit, razonSocial, fechaInicioActividades, tipo, actividadPrincipal, direccion, telefono, correoElectronico, esPleno, documentacion, fechaDocumentacion, estadoDocumentacion, usuarioDocumentacion);
+        SocioProtector nuevoSocioProtector = new SocioProtector(cuit, razonSocial, fechaInicioActividades, tipo, actividadPrincipal, direccion, telefono, correoElectronico, esPleno, documentacion, fechaDocumentacion, estadoDocumentacion, usuarioDocumentacion, tipoDeEmpresa);
         listaDeSociosProtectores.add(nuevoSocioProtector);
         return "El socio con CUIT " + cuit + " ha sido creado correctamente.";
     }
 
-    public String updateSocioProtector(String cuit, String razonSocial, Date fechaInicioActividades, String tipo, String actividadPrincipal, String direccion, String telefono, String correoElectronico, boolean esPleno, String documentacion, Date fechaDocumentacion, Boolean estadoDocumentacion, String usuarioDocumentacion){
+    public String updateSocioProtector(String cuit, String razonSocial, Date fechaInicioActividades, String tipo, String actividadPrincipal, String direccion, String telefono, String correoElectronico, boolean esPleno, String documentacion, Date fechaDocumentacion, Boolean estadoDocumentacion, String usuarioDocumentacion, String tipoDeEmpresa){
         for(SocioProtector s : listaDeSociosProtectores){
             if(s.getCuit().equals(cuit)){
                 s.setRazonSocial(razonSocial);
@@ -222,6 +222,7 @@ public class SociosController
                 s.setFechaDocumentacion(fechaDocumentacion);
                 s.setEstadoDocumentacion(estadoDocumentacion);
                 s.setUsuarioDocumentacion(usuarioDocumentacion);
+                s.setTipoDeEmpresa(tipoDeEmpresa);
                 return "El socio con CUIT " + s.getCuit() + " fue actualizado correctamente !";
             }
         }

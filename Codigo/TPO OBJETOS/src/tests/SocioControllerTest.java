@@ -32,7 +32,8 @@ public class SocioControllerTest {
                 "Documentacion del tipo",
                 new Date(),
                 true,
-                "Usuario de ingreso");
+                "Usuario de ingreso",
+                "Pequeña");
         Assert.assertEquals("El socio con CUIT " + cuit + " ha sido creado correctamente.", resultado);
     }
 
@@ -51,7 +52,8 @@ public class SocioControllerTest {
                 "Documentacion del tipo",
                 new Date(),
                 true,
-                "Usuario de ingreso");
+                "Usuario de ingreso",
+                "Mediana");
         Assert.assertEquals("El socio con CUIT " + cuit + " ha sido creado correctamente.", resultado);
     }
 
@@ -70,7 +72,8 @@ public class SocioControllerTest {
                 "Documentacion del tipo",
                 new Date(),
                 true,
-                "Usuario de ingreso");
+                "Usuario de ingreso",
+                "Grande");
 
         String resultadoDos = sc.crearSocioParticipe("20121231238",
                 "Usuario de prueba",
@@ -84,7 +87,8 @@ public class SocioControllerTest {
                 "Documentacion del tipo",
                 new Date(),
                 true,
-                "Usuario de ingreso");
+                "Usuario de ingreso",
+                "Mediana");
 
         Assert.assertEquals(resultadoDos, "El socio con CUIT 20121231238 ya existe, no puede ser creado nuevamente.");
         Assert.assertEquals(sc.getListaDeSociosParticipes().size(), 1);
@@ -97,7 +101,7 @@ public class SocioControllerTest {
         boolean esPlenoNuevo = true;
         SocioProtector socioAux = null;
 
-        sc.crearSocioProtector("20400067385",razonSocialAnterior, new Date(), "Protector", "ActPrincipal","Calle falsa 123","1112341234","example@gmail.com",false,"Documentacion del tipo",new Date(),true,"Usuario de ingreso");
+        sc.crearSocioProtector("20400067385",razonSocialAnterior, new Date(), "Protector", "ActPrincipal","Calle falsa 123","1112341234","example@gmail.com",false,"Documentacion del tipo",new Date(),true,"Usuario de ingreso", "Mediana");
 
         for (SocioProtector socio : sc.getListaDeSociosProtectores()) {
             if(socio.getCuit().equals("20400067385")) {
@@ -105,7 +109,7 @@ public class SocioControllerTest {
             }
         }
 
-        String resultado = sc.updateSocioProtector("20400067385",razonSocialNueva,new Date(),"Protector","ActPrincipal","Calle falsa 123","1112341234","example@gmail.com",esPlenoNuevo,"Documentacion del tipo",new Date(),true,"Usuario de ingreso");
+        String resultado = sc.updateSocioProtector("20400067385",razonSocialNueva,new Date(),"Protector","ActPrincipal","Calle falsa 123","1112341234","example@gmail.com",esPlenoNuevo,"Documentacion del tipo",new Date(),true,"Usuario de ingreso","Mediana");
 
         Assert.assertEquals(resultado, "El socio con CUIT 20400067385 fue actualizado correctamente !");
         Assert.assertNotEquals(razonSocialNueva, razonSocialAnterior);
@@ -120,7 +124,7 @@ public class SocioControllerTest {
         boolean esPlenoNuevo = true;
         SocioParticipe socioAux = null;
 
-        sc.crearSocioParticipe("20400067385",razonSocialAnterior, new Date(), "Protector", "ActPrincipal","Calle falsa 123","1112341234","example@gmail.com",false,"Documentacion del tipo",new Date(),true,"Usuario de ingreso");
+        sc.crearSocioParticipe("20400067385",razonSocialAnterior, new Date(), "Protector", "ActPrincipal","Calle falsa 123","1112341234","example@gmail.com",false,"Documentacion del tipo",new Date(),true,"Usuario de ingreso", "Mediana");
 
         for (SocioParticipe socio : sc.getListaDeSociosParticipes()) {
             if(socio.getCuit().equals("20400067385")) {
@@ -128,7 +132,7 @@ public class SocioControllerTest {
             }
         }
 
-        String resultado = sc.updateSocioParticipe("20400067385",razonSocialNueva,new Date(),"Protector","ActPrincipal","Calle falsa 123","1112341234","example@gmail.com",esPlenoNuevo,"Documentacion del tipo",new Date(),true,"Usuario de ingreso");
+        String resultado = sc.updateSocioParticipe("20400067385",razonSocialNueva,new Date(),"Protector","ActPrincipal","Calle falsa 123","1112341234","example@gmail.com",esPlenoNuevo,"Documentacion del tipo",new Date(),true,"Usuario de ingreso", "Mediana");
 
         Assert.assertEquals("El socio con CUIT 20400067385 fue actualizado correctamente !", resultado);
         Assert.assertNotEquals(razonSocialAnterior, razonSocialNueva);
@@ -141,7 +145,7 @@ public class SocioControllerTest {
         SocioParticipe socioAux = null;
         Accionistas accionistaAux = null;
 
-        sc.crearSocioParticipe("20400067385","Rodrigo Sosa", new Date(), "Protector", "ActPrincipal","Calle falsa 123","1112341234","example@gmail.com",true,"Documentacion del tipo",new Date(),true,"Usuario de ingreso");
+        sc.crearSocioParticipe("20400067385","Rodrigo Sosa", new Date(), "Protector", "ActPrincipal","Calle falsa 123","1112341234","example@gmail.com",true,"Documentacion del tipo",new Date(),true,"Usuario de ingreso", "Mediana");
 
         for (SocioParticipe socio : sc.getListaDeSociosParticipes()) {
             if(socio.getCuit().equals("20400067385")) {
