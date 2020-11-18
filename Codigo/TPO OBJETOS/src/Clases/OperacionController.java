@@ -53,11 +53,11 @@ public class OperacionController{
                 }
             }
 
-            if(tipoDeOperacion == "1"){
+            if(tipoDeOperacion.equals("Tipo 1")){
                 Cheque nuevoCheque = new Cheque(nombreBancoCheque, Integer.parseInt(numeroCheque), fechaVencCheque, cuitCheque, tasaDeDescuento,Float.parseFloat(importe));
                 nuevaOperacion.cheques.add(nuevoCheque);
             }
-            else if(tipoDeOperacion == "2"){
+            else if(tipoDeOperacion.equals("Tipo 2")){
                 CuentaCorriente nuevaCuenta = new CuentaCorriente(cuentaCorriente, fechaVencimientoCuentaCorriente, Float.parseFloat(importe));
                 nuevaOperacion.cuentasCorrientes.add(nuevaCuenta);
             }
@@ -72,6 +72,13 @@ public class OperacionController{
 
             aEnviar.restarImporteATotal(importe);
             operaciones.add(nuevaOperacion);
+
+            for(SocioParticipe sp : controlador.getListaDeSociosParticipes()){
+                if(sp.getCuit().equals(cuitCheque)){
+                    sp.getLinea().agregarOperacion(nuevaOperacion);
+                }
+            }
+
             return "La operacion con ID " + nuevaOperacion.getIdOperacion() + " ha sido creada con exito!";
 
         } else {
@@ -87,11 +94,11 @@ public class OperacionController{
                 }
             }
 
-            if(tipoDeOperacion == "1"){
+            if(tipoDeOperacion.equals("Tipo 1")){
                 Cheque nuevoCheque = new Cheque(nombreBancoCheque, Integer.parseInt(numeroCheque), fechaVencCheque, cuitCheque, tasaDeDescuento,Float.parseFloat(importe));
                 nuevaOperacion.cheques.add(nuevoCheque);
             }
-            else if(tipoDeOperacion == "2"){
+            else if(tipoDeOperacion.equals("Tipo 2")){
                 CuentaCorriente nuevaCuenta = new CuentaCorriente(cuentaCorriente, fechaVencimientoCuentaCorriente, Float.parseFloat(importe));
                 nuevaOperacion.cuentasCorrientes.add(nuevaCuenta);
             }
