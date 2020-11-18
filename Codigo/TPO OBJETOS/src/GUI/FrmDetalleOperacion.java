@@ -191,13 +191,27 @@ public class FrmDetalleOperacion extends JDialog{
             @Override
             public void actionPerformed(ActionEvent e) {
                 String cuit = JOptionPane.showInputDialog(self,"Ingrese el CUIT del Socio:");
-                if(!cuit.matches("[0-9]+")){
+                if(cuit == null){
+                    JOptionPane.showMessageDialog(null,"Ingrese un CUIT","Error: Campo vacio",JOptionPane.ERROR_MESSAGE);
+                }
+                else if(!cuit.matches("[0-9]+")){
                     JOptionPane.showMessageDialog(null,"El CUIT debe ser numerico","Error: Formato CUIT",JOptionPane.ERROR_MESSAGE);
-                } else {
+                }
+                
+                else {
+                    boolean encontrado = false;
+                    SocioParticipe auxSocioParticipe = null;
                     for (SocioParticipe s : sociosParticipes) {
                         if (s.getCuit().equals(cuit)) {
-                            txtfieldIdLinea.setText(Integer.toString(s.getLinea().getIdLineaCredito()));
+                            encontrado = true;
+                            auxSocioParticipe = s;
                         }
+                    }
+                    if(encontrado == true){
+                        txtfieldIdLinea.setText(Integer.toString(auxSocioParticipe.getLinea().getIdLineaCredito()));
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null,"El CUIT no existe","Error: CUIT NO ENCONTRADO",JOptionPane.ERROR_MESSAGE);
                     }
                 }
             }
