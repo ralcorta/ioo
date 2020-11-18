@@ -95,7 +95,6 @@ public class FrmConsultasGenerales extends JDialog{
         btnPorcentajeComision.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-<<<<<<< HEAD
                 String tipoEmpresa=JOptionPane.showInputDialog(self,"Por favor ingrese el tipo de empresa: ");
                 String fechaDesde=JOptionPane.showInputDialog(self,"Ingrese la fecha desde la que desea buscar:");
                 String fechaHasta=JOptionPane.showInputDialog(self,"Ingrese la fecha hasta la que desea buscar:");
@@ -106,7 +105,6 @@ public class FrmConsultasGenerales extends JDialog{
                     e.printStackTrace();
                     JOptionPane.showMessageDialog(self, "La fecha ingresada NO cumple con el formato DD/MM/YYYY", "ERROR: Fecha invalida", JOptionPane.ERROR_MESSAGE);
                 }
-=======
                 String cuit = JOptionPane.showInputDialog(self,"Ingrese el CUIT del Socio:");
                 String tipoDeOperacion = JOptionPane.showInputDialog(self,"Ingrese el Tipo de Operación a consultar:");
 
@@ -116,7 +114,6 @@ public class FrmConsultasGenerales extends JDialog{
 
                 float totalComisiones = cSocios.calcularComisionSocio(tipoDeOperacion, cuit);
                 JOptionPane.showMessageDialog(self, "El total de comisiones del socio es: " + totalComisiones + "$", "Total de comisiones", JOptionPane.INFORMATION_MESSAGE);
->>>>>>> a67f0b88452afdb6dd92d6abe92aa741a6e3cc83
             }
         });
 
