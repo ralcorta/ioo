@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.Console;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -103,13 +104,15 @@ public class FrmConsultasGenerales extends JDialog{
             public void actionPerformed(ActionEvent actionEvent) {
                 String cuitSocio = JOptionPane.showInputDialog(self,"Cuit del socio:");
                 ArrayList<Operacion> opFiltered = new ArrayList<Operacion>();
-                for (Operacion op : cOperacion.getOperaciones()) {
-                    if(op.getCuitCheque().equals(cuitSocio) && !op.vencida())
+                ArrayList<Operacion> ops = cOperacion.getOperaciones();
+
+                for (Operacion op : ops) {
+                    if(op.getCuitCheque().equals(cuitSocio) && op.esRiesgoVivo())
                         opFiltered.add(op);
                 }
 
-                //FrmDetalleSocio frame = new FrmDetalleSocio(self, opFiltered);
-                //frame.setVisible(true);
+                FrmConsultaConsolidadaDeSocio frame = new FrmConsultaConsolidadaDeSocio(self, opFiltered);
+                frame.setVisible(true);
             }
         });
     }

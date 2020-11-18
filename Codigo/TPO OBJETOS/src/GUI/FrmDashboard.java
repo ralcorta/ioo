@@ -4,12 +4,14 @@ import Clases.OperacionController;
 import Clases.SocioParticipe;
 import Clases.SocioProtector;
 import Clases.SociosController;
+import Enums.EstadosDefine;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class FrmDashboard extends JFrame{
@@ -136,6 +138,20 @@ public class FrmDashboard extends JFrame{
                 true,
                 "Usuario de ingreso");
 
+        controladorSocios.crearSocioProtector("20121231238",
+                "Usuario de prueba",
+                commonDate,
+                "Protector",
+                "ActPrincipal",
+                "Calle falsa 123",
+                "1112341234",
+                "example@gmail.com",
+                true,
+                "Documentacion del tipo",
+                commonDate,
+                true,
+                "Usuario de ingreso");
+
         SocioProtector socioAux = null;
         for(SocioProtector s : controladorSocios.getListaDeSociosProtectores()) {
             if(s.getCuit().equals("20400067385")){
@@ -152,16 +168,30 @@ public class FrmDashboard extends JFrame{
 
         controladorOperacion.crearLineaDeCredito(1, "200000", new Date(), true, socioAux2);
 
-        controladorOperacion.crearOperacion(1, "Tipo 1", "Ingresado", null, "2000",new Date(), new Date(), 0,
+        controladorOperacion.crearOperacion(1, "Tipo 1", EstadosDefine.INGRESADO, null, "2000",new Date(), new Date(), 0,
                 0.0f, "ICBC", "123456", new Date(), "20593456543", 0.0f, "", new Date(),
                 "", 0.0f, new Date(), 0, "");
 
-        controladorOperacion.crearOperacion(1, "Tipo 2", "Ingresado", null, "2000",new Date(), new Date(), 0,
+        controladorOperacion.crearOperacion(1, "Tipo 2", EstadosDefine.INGRESADO, null, "2000",new Date(), new Date(), 0,
                 0.0f, "ICBC", "123456", new Date(), "20593456543", 0.0f, "", new Date(),
                 "", 0.0f, new Date(), 0, "");
 
-        controladorOperacion.crearOperacion(1, "Tipo 3", "Ingresado", null, "2000",new Date(), new Date(), 0,
+        controladorOperacion.crearOperacion(1, "Tipo 3", EstadosDefine.INGRESADO, null, "2000",new Date(), new Date(), 0,
                 0.0f, "ICBC", "123456", new Date(), "20593456543", 0.0f, "", new Date(),
+                "", 0.0f, new Date(), 0, "");
+
+
+        Calendar c = Calendar.getInstance();
+        c.setTime(new Date());
+        c.add(Calendar.YEAR, 2);
+        Date currentDatePlusOne = c.getTime();
+
+        controladorOperacion.crearOperacion(1, "Tipo 4", EstadosDefine.MONETIZADO, null, "2000",new Date(), currentDatePlusOne, 0,
+                0.0f, "ICBC", "1234568", new Date(), "20121231238", 0.0f, "", new Date(),
+                "", 0.0f, new Date(), 0, "");
+
+        controladorOperacion.crearOperacion(1, "Tipo 5", EstadosDefine.MONETIZADO, null, "2000",new Date(), currentDatePlusOne, 0,
+                0.0f, "ICBC", "12345609", new Date(), "20121231238", 0.0f, "", new Date(),
                 "", 0.0f, new Date(), 0, "");
 
         controladorSocios.crearAccionista("2058435241",5,"Razon Social Uno", "20121231238");
