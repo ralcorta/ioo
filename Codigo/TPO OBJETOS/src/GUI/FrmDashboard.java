@@ -88,6 +88,7 @@ public class FrmDashboard extends JFrame{
     public static void main(String[] args) throws ParseException {
         OperacionController controladorOperacion = new OperacionController();
         SociosController controladorSocios = new SociosController(controladorOperacion);
+        controladorOperacion.setSocioController(controladorSocios);
 
         SimpleDateFormat df = new SimpleDateFormat("dd/MM/yy");
         String dateStringCommon = "10/10/1991";

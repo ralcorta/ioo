@@ -62,15 +62,18 @@ public class FrmConsultasGenerales extends JDialog{
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 String cuit = JOptionPane.showInputDialog(self,"Ingrese el CUIT del Socio:");
-                String fechaDesde = JOptionPane.showInputDialog(self,"Ingrese el CUIT del Socio:");
-                String fechaHasta = JOptionPane.showInputDialog(self,"Ingrese el CUIT del Socio:");
+                String fechaDesde = JOptionPane.showInputDialog(self,"Ingrese la fecha desde la que desea buscar:");
+                String fechaHasta = JOptionPane.showInputDialog(self,"Ingrese la fecha hasta    la que desea buscar:");
                 ArrayList <Operacion> operaciones = new ArrayList<Operacion>();
-                OperacionController oCon = new OperacionController();
                 try {
-                    operaciones = oCon.operacionesDeSocioEnUnPeriodo(cuit, new SimpleDateFormat("dd/MM/yyyy").parse(fechaDesde), new SimpleDateFormat("dd/MM/yyyy").parse(fechaHasta));
-                    JOptionPane.showMessageDialog(self, "Entre la fecha " + fechaDesde + " y la fecha " + fechaHasta + " se encontraron las siguientes operaciones: ");
-                    for (Operacion opAux : operaciones) {
-                        JOptionPane.showMessageDialog(self,"Id operacion: " + opAux.getIdOperacion());;
+                    operaciones = cOperacion.operacionesDeSocioEnUnPeriodo(cuit, new SimpleDateFormat("dd/MM/yyyy").parse(fechaDesde), new SimpleDateFormat("dd/MM/yyyy").parse(fechaHasta));
+                    if(operaciones.size() == 0){
+                        JOptionPane.showMessageDialog(self, "No se encontraron operaciones para el cliente indicado en las fechas indicadas: ");
+                        } else {
+                        JOptionPane.showMessageDialog(self, "Entre la fecha " + fechaDesde + " y la fecha " + fechaHasta + " se encontraron las siguientes operaciones: ");
+                        for (Operacion opAux : operaciones) {
+                            JOptionPane.showMessageDialog(self, "Id operacion: " + opAux.getIdOperacion());
+                        }
                     }
                 } catch (ParseException e) {
                     e.printStackTrace();

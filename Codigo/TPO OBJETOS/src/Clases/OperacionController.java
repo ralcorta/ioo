@@ -12,6 +12,10 @@ public class OperacionController{
     ArrayList <LineaDeCredito> lineasDeCredito = new ArrayList<LineaDeCredito>();
     ArrayList <Operacion> operaciones = new ArrayList<Operacion>();
 
+    public void setSocioController(SociosController cSocios){
+        this.controlador = cSocios;
+    }
+
     public void crearLineaDeCredito(int idLineaCredito, String importeMaximo, Date fechaDeVigencia, boolean estadoAprobacion, SocioParticipe socio){
         //TODO: LA LINEA DE CREDITO SOLO PUEDE SER CREADA SI EL SOCIO ES PLENO. EVALUAR ESTO YA QUE ACTUALMENTE ESTA MAL
         LineaDeCredito lineaNueva = new LineaDeCredito(idLineaCredito, importeMaximo, fechaDeVigencia, estadoAprobacion, socio);
@@ -42,13 +46,36 @@ public class OperacionController{
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMddhhmmss");
             String dateAsString = simpleDateFormat.format(new Date());
             nuevaOperacion.emitirCertificadoGarantia(dateAsString, new Date());
+
             operaciones.add(nuevaOperacion);
+
+            for(LineaDeCredito ldc : lineasDeCredito){
+                if(ldc.getIdLineaCredito() == idLc){
+                    for(Operacion o : operaciones){
+                        if(o.getIdOperacion() == idLc){
+                            ldc.agregarOperacion(o);
+                        }
+                    }
+                }
+            }
+
             aEnviar.restarImporteATotal(importe);
 
             return "La operacion con ID " + nuevaOperacion.getIdOperacion() + " ha sido creada con exito!";
         } else {
             Operacion nuevaOperacion = new Operacion(newIdOperacion, tipoDeOperacion, "Ingresado", garantia, importe, fechaCreacionOperacion, fechaVencimiento, cuotasPagadas, importeUtilizado, nombreBancoCheque, fechaVencCheque, numeroCheque, cuitCheque, tasaDeDescuento, cuentaCorriente, fechaVencimientoCuentaCorriente, nombreBancoPrestamo, tasaDeInteres, fechaDeAcreditacionPrestamo, cantidadDeCuotas,sistemaBancario, aEnviar);
             operaciones.add(nuevaOperacion);
+
+            for(LineaDeCredito ldc : lineasDeCredito){
+                if(ldc.getIdLineaCredito() == idLc){
+                    for(Operacion o : operaciones){
+                        if(o.getIdOperacion() == idLc){
+                            ldc.agregarOperacion(o);
+                        }
+                    }
+                }
+            }
+
             return "La operacion con ID " + nuevaOperacion.getIdOperacion() + " ha sido creada con exito!";
         }
     }
@@ -134,12 +161,10 @@ public class OperacionController{
 
     public ArrayList<Operacion> operacionesDeSocioEnUnPeriodo(String cuit, Date fechaDesde, Date fechaHasta){
         ArrayList<Operacion> operacionesMonetizadas = new ArrayList<>();
-        LineaDeCredito lineaAux;
-        for (SocioParticipe sPa: controlador.listaDeSociosParticipes) {
+        for (SocioParticipe sPa : controlador.getListaDeSociosParticipes()) {
             if(sPa.getCuit().equals(cuit)){
-                lineaAux =sPa.getLinea();
-                for (Operacion auxOpe: lineaAux.operaciones ) {
-                    if (auxOpe.getTipoDeOperacion().equals("Monetizado") &&
+                for (Operacion auxOpe: operaciones ) {
+                    if (auxOpe.getEstado().equals("Monetizado") &&
                             (auxOpe.getFechaCreacionOperacion().after(fechaDesde) &&
                                     auxOpe.getFechaVencimiento().before(fechaHasta))){
                                 operacionesMonetizadas.add(auxOpe);

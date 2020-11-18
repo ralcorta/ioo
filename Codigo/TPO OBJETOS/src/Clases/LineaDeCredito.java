@@ -32,6 +32,10 @@ public class LineaDeCredito {
         return idLineaCredito;
     }
 
+    public void agregarOperacion(Operacion o){
+        operaciones.add(o);
+    }
+
     public void restarImporteATotal(String importe) {
         this.importeActual = Integer.toString(Integer.parseInt(importeActual) - Integer.parseInt(importe));
     }
