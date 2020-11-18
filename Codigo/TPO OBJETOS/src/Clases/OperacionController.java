@@ -133,20 +133,13 @@ public class OperacionController{
     public void modificarEstadoLineaDeCredito(int idLinea){
         boolean encontrado=false;
         Date todayDate = Calendar.getInstance().getTime();
-        LineaDeCredito auxLinea = null;
         for (LineaDeCredito lc : lineasDeCredito) {
             if (lc.getIdLineaCredito() == idLinea){
-                encontrado = true;
-                auxLinea = lc;
-            }
-        }
-
-        if (encontrado == true) {
-            if(auxLinea.getFechaDeVigencia().before(todayDate)) {
-                auxLinea.setEstadoAprobacion(false);
-            }
-            else{
-                auxLinea.setEstadoAprobacion(true);
+                if(lc.getFechaDeVigencia().before(todayDate)) {
+                    lc.setEstadoAprobacion(false);
+                } else {
+                    lc.setEstadoAprobacion(true);
+                }
             }
         }
     }
