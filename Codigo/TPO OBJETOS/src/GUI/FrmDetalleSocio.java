@@ -3,6 +3,7 @@ package GUI;
 import Clases.SocioParticipe;
 import Clases.SocioProtector;
 import Clases.SociosController;
+import Enums.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -73,18 +74,18 @@ public class FrmDetalleSocio extends JDialog {
         super(owner, "Detalle de Socio");
         this.setContentPane(panelTituloDetalleSocio);
         //this.setSize(300, 300);
-        comboBoxSocioPleno.addItem("No");
-        comboBoxSocioPleno.addItem("Si");
+        comboBoxSocioPleno.addItem(SocioPlenoOptionsDefine.NO);
+        comboBoxSocioPleno.addItem(SocioPlenoOptionsDefine.SI);
 
-        socioCombo.addItem("Participe");
-        socioCombo.addItem("Protector");
+        socioCombo.addItem(TipoSocioDefine.PARTICIPE);
+        socioCombo.addItem(TipoSocioDefine.PROTECTOR);
 
-        comboEstadoDocumentacion.addItem("Controlado");
-        comboEstadoDocumentacion.addItem("Rechazado");
+        comboEstadoDocumentacion.addItem(EstadoDocumentacionDefine.CONTROLADO);
+        comboEstadoDocumentacion.addItem(EstadoDocumentacionDefine.RECHAZADO);
 
-        tipoEmpresaCombo.addItem("Pequeña");
-        tipoEmpresaCombo.addItem("Mediana");
-        tipoEmpresaCombo.addItem("Grande");
+        tipoEmpresaCombo.addItem(TipoEmpresaDefine.PEQUENA);
+        tipoEmpresaCombo.addItem(TipoEmpresaDefine.MEDIANA);
+        tipoEmpresaCombo.addItem(TipoEmpresaDefine.GRANDE);
 
         socioCombo.setEnabled(false);
         textCuitSocio.setEditable(false);
@@ -100,34 +101,36 @@ public class FrmDetalleSocio extends JDialog {
 
         this.textCuitSocio.setText(socio.getCuit());
         this.textRazonSocial.setText(socio.getRazonSocial());
-        this.textFechaInicioAct.setText(new SimpleDateFormat("dd/MM/yyyy").format(socio.getFechaInicioActividades()));
+        this.textFechaInicioAct.setText(new SimpleDateFormat(CommonFormatsDefine.FULL_DATE).format(socio.getFechaInicioActividades()));
         this.textActPrincipal.setText(socio.getActividadPrincipal());
         this.textDireccion.setText(socio.getDireccion());
         this.textTelefono.setText(socio.getTelefono());
         this.textEmail.setText(socio.getCorreoElectronico());
         this.textDocumentacion.setText(socio.getDocumentacion());
-        this.textFechaDocumentacion.setText(new SimpleDateFormat("dd/MM/yyyy").format(socio.getFechaDocumentacion()));
+        this.textFechaDocumentacion.setText(new SimpleDateFormat(CommonFormatsDefine.FULL_DATE).format(socio.getFechaDocumentacion()));
         this.textUsuarioDeIngreso.setText(socio.getUsuarioDocumentacion());
         this.tipoEmpresaCombo.setSelectedItem(socio.getTipoDeEmpresa());
         this.tipoEmpresaCombo.setEnabled(false);
+
+
         if(socio.isEsPleno()){
-            this.comboBoxSocioPleno.getModel().setSelectedItem("Si");
+            this.comboBoxSocioPleno.getModel().setSelectedItem(SocioPlenoOptionsDefine.SI);
             this.comboEstadoDocumentacion.setEnabled(false);
         } else {
-            this.comboBoxSocioPleno.getModel().setSelectedItem("No");
+            this.comboBoxSocioPleno.getModel().setSelectedItem(SocioPlenoOptionsDefine.NO);
         }
 
-        if(socio.getTipo().equals("Participe")){
-            this.socioCombo.getModel().setSelectedItem("Participe");
+        if(socio.getTipo().equals(TipoSocioDefine.PARTICIPE)){
+            this.socioCombo.getModel().setSelectedItem(TipoSocioDefine.PARTICIPE);
         } else {
-            this.socioCombo.getModel().setSelectedItem("Protector");
+            this.socioCombo.getModel().setSelectedItem(TipoSocioDefine.PROTECTOR);
         }
         comboBoxSocioPleno.setEnabled(false);
 
-        if(socio.getEstadoDocumentacion() == true) {
-            this.comboEstadoDocumentacion.getModel().setSelectedItem("Controlado");
+        if(socio.getEstadoDocumentacion()) {
+            this.comboEstadoDocumentacion.getModel().setSelectedItem(EstadoDocumentacionDefine.CONTROLADO);
         } else {
-            this.comboEstadoDocumentacion.getModel().setSelectedItem("Rechazado");
+            this.comboEstadoDocumentacion.getModel().setSelectedItem(EstadoDocumentacionDefine.RECHAZADO);
         }
     }
 
@@ -135,18 +138,18 @@ public class FrmDetalleSocio extends JDialog {
         super(owner, "Detalle de Socio");
         this.setContentPane(panelTituloDetalleSocio);
         //this.setSize(300, 300);
-        comboBoxSocioPleno.addItem("No");
-        comboBoxSocioPleno.addItem("Si");
+        comboBoxSocioPleno.addItem(SocioPlenoOptionsDefine.NO);
+        comboBoxSocioPleno.addItem(SocioPlenoOptionsDefine.SI);
 
-        socioCombo.addItem("Participe");
-        socioCombo.addItem("Protector");
+        socioCombo.addItem(TipoSocioDefine.PARTICIPE);
+        socioCombo.addItem(TipoSocioDefine.PROTECTOR);
 
-        comboEstadoDocumentacion.addItem("Controlado");
-        comboEstadoDocumentacion.addItem("Rechazado");
+        comboEstadoDocumentacion.addItem(EstadoDocumentacionDefine.CONTROLADO);
+        comboEstadoDocumentacion.addItem(EstadoDocumentacionDefine.RECHAZADO);
 
-        tipoEmpresaCombo.addItem("Pequeña");
-        tipoEmpresaCombo.addItem("Mediana");
-        tipoEmpresaCombo.addItem("Grande");
+        tipoEmpresaCombo.addItem(TipoEmpresaDefine.PEQUENA);
+        tipoEmpresaCombo.addItem(TipoEmpresaDefine.MEDIANA);
+        tipoEmpresaCombo.addItem(TipoEmpresaDefine.GRANDE);
 
         socioCombo.setEnabled(false);
         textCuitSocio.setEditable(false);
@@ -162,13 +165,13 @@ public class FrmDetalleSocio extends JDialog {
 
         this.textCuitSocio.setText(socio.getCuit());
         this.textRazonSocial.setText(socio.getRazonSocial());
-        this.textFechaInicioAct.setText(new SimpleDateFormat("dd/MM/yyyy").format(socio.getFechaInicioActividades()));
+        this.textFechaInicioAct.setText(new SimpleDateFormat(CommonFormatsDefine.FULL_DATE).format(socio.getFechaInicioActividades()));
         this.textActPrincipal.setText(socio.getActividadPrincipal());
         this.textDireccion.setText(socio.getDireccion());
         this.textTelefono.setText(socio.getTelefono());
         this.textEmail.setText(socio.getCorreoElectronico());
         this.textDocumentacion.setText(socio.getDocumentacion());
-        this.textFechaDocumentacion.setText(new SimpleDateFormat("dd/MM/yyyy").format(socio.getFechaDocumentacion()));
+        this.textFechaDocumentacion.setText(new SimpleDateFormat(CommonFormatsDefine.FULL_DATE).format(socio.getFechaDocumentacion()));
         this.textUsuarioDeIngreso.setText(socio.getUsuarioDocumentacion());
         this.tipoEmpresaCombo.setSelectedItem(socio.getTipoDeEmpresa());
         this.tipoEmpresaCombo.setEnabled(false);
@@ -179,14 +182,14 @@ public class FrmDetalleSocio extends JDialog {
             this.comboBoxSocioPleno.setSelectedIndex(0);
         }
 
-        if(socio.getTipo().equals("Participe")){
+        if(socio.getTipo().equals(TipoSocioDefine.PARTICIPE)){
             this.socioCombo.setSelectedIndex(0);
         } else {
             this.socioCombo.setSelectedIndex(1);
         }
         comboBoxSocioPleno.setEnabled(false);
 
-        if(socio.getEstadoDocumentacion() == true) {
+        if(socio.getEstadoDocumentacion()) {
             this.comboEstadoDocumentacion.setSelectedIndex(0);
         } else {
             this.comboEstadoDocumentacion.setSelectedIndex(1);
@@ -216,18 +219,24 @@ public class FrmDetalleSocio extends JDialog {
                         textUsuarioDeIngreso.getText().length() == 0) {
                     JOptionPane.showMessageDialog(null,"Revisar formulario. Alguno de los campos mandatorios esta vacio.", "ERROR: Input error" ,JOptionPane.ERROR_MESSAGE);
                 } else {
-                    boolean isPleno = comboBoxSocioPleno.getSelectedItem().equals("Si");
-                    boolean isDocumentacion = comboEstadoDocumentacion.getSelectedItem().equals("Controlado");
+                    boolean isPleno = comboBoxSocioPleno.getSelectedItem().equals(SocioPlenoOptionsDefine.SI);
+                    boolean isDocumentacion = comboEstadoDocumentacion.getSelectedItem().equals(EstadoDocumentacionDefine.CONTROLADO);
 
-                    if (socioCombo.getSelectedItem().toString().equals("Participe")) {
+                    if (socioCombo.getSelectedItem().toString().equals(TipoSocioDefine.PARTICIPE)) {
                         try {
                             if (operation.equals("Create")) {
-                                String respuesta = cSocio.crearSocioParticipe(textCuitSocio.getText(), textRazonSocial.getText(),
-                                        new SimpleDateFormat("dd/MM/yyyy").parse(textFechaInicioAct.getText()), socioCombo.getSelectedItem().toString(),
-                                        textActPrincipal.getText(), textDireccion.getText(),
-                                        textTelefono.getText(), textEmail.getText(),
-                                        isPleno, textDocumentacion.getText(),
-                                        new SimpleDateFormat("dd/MM/yyyy").parse(textFechaDocumentacion.getText()), isDocumentacion,
+                                String respuesta = cSocio.crearSocioParticipe(textCuitSocio.getText(),
+                                        textRazonSocial.getText(),
+                                        new SimpleDateFormat(CommonFormatsDefine.FULL_DATE).parse(textFechaInicioAct.getText()),
+                                        socioCombo.getSelectedItem().toString(),
+                                        textActPrincipal.getText(),
+                                        textDireccion.getText(),
+                                        textTelefono.getText(),
+                                        textEmail.getText(),
+                                        isPleno,
+                                        textDocumentacion.getText(),
+                                        new SimpleDateFormat(CommonFormatsDefine.FULL_DATE).parse(textFechaDocumentacion.getText()),
+                                        isDocumentacion,
                                         textUsuarioDeIngreso.getText(),
                                         tipoEmpresaCombo.getSelectedItem().toString());
 
@@ -235,12 +244,18 @@ public class FrmDetalleSocio extends JDialog {
                                 dispose();
                             }
                             if (operation.equals("Update")) {
-                                String respuesta = cSocio.updateSocioParticipe(textCuitSocio.getText(), textRazonSocial.getText(),
-                                        new SimpleDateFormat("dd/MM/yyyy").parse(textFechaInicioAct.getText()), socioCombo.getSelectedItem().toString(),
-                                        textActPrincipal.getText(), textDireccion.getText(),
-                                        textTelefono.getText(), textEmail.getText(),
-                                        isPleno, textDocumentacion.getText(),
-                                        new SimpleDateFormat("dd/MM/yyyy").parse(textFechaDocumentacion.getText()), isDocumentacion,
+                                String respuesta = cSocio.updateSocioParticipe(textCuitSocio.getText(),
+                                        textRazonSocial.getText(),
+                                        new SimpleDateFormat(CommonFormatsDefine.FULL_DATE).parse(textFechaInicioAct.getText()),
+                                        socioCombo.getSelectedItem().toString(),
+                                        textActPrincipal.getText(),
+                                        textDireccion.getText(),
+                                        textTelefono.getText(),
+                                        textEmail.getText(),
+                                        isPleno,
+                                        textDocumentacion.getText(),
+                                        new SimpleDateFormat(CommonFormatsDefine.FULL_DATE).parse(textFechaDocumentacion.getText()),
+                                        isDocumentacion,
                                         textUsuarioDeIngreso.getText(),
                                         tipoEmpresaCombo.getSelectedItem().toString());
                                 JOptionPane.showMessageDialog(self, respuesta);
@@ -250,27 +265,38 @@ public class FrmDetalleSocio extends JDialog {
                             e.printStackTrace();
                             dispose();
                         }
-                    } else if (socioCombo.getSelectedItem().toString().equals("Protector")) {
+                    } else if (socioCombo.getSelectedItem().toString().equals(TipoSocioDefine.PROTECTOR)) {
                         try {
                             if (operation.equals("Create")) {
-                                String respuesta = cSocio.crearSocioProtector(textCuitSocio.getText(), textRazonSocial.getText(),
-                                        new SimpleDateFormat("dd/MM/yyyy").parse(textFechaInicioAct.getText()), socioCombo.getSelectedItem().toString(),
-                                        textActPrincipal.getText(), textDireccion.getText(),
-                                        textTelefono.getText(), textEmail.getText(),
-                                        isPleno, textDocumentacion.getText(),
-                                        new SimpleDateFormat("dd/MM/yyyy").parse(textFechaDocumentacion.getText()), isDocumentacion,
+                                String respuesta = cSocio.crearSocioProtector(textCuitSocio.getText(),
+                                        textRazonSocial.getText(),
+                                        new SimpleDateFormat(CommonFormatsDefine.FULL_DATE).parse(textFechaInicioAct.getText()),
+                                        socioCombo.getSelectedItem().toString(),
+                                        textActPrincipal.getText(),
+                                        textDireccion.getText(),
+                                        textTelefono.getText(),
+                                        textEmail.getText(),
+                                        isPleno,
+                                        textDocumentacion.getText(),
+                                        new SimpleDateFormat(CommonFormatsDefine.FULL_DATE).parse(textFechaDocumentacion.getText()),
+                                        isDocumentacion,
                                         textUsuarioDeIngreso.getText(),
                                         tipoEmpresaCombo.getSelectedItem().toString());
                                 JOptionPane.showMessageDialog(self, respuesta);
                                 dispose();
                             }
                             if (operation.equals("Update")) {
-                                String respuesta = cSocio.updateSocioProtector(textCuitSocio.getText(), textRazonSocial.getText(),
-                                        new SimpleDateFormat("dd/MM/yyyy").parse(textFechaInicioAct.getText()), socioCombo.getSelectedItem().toString(),
-                                        textActPrincipal.getText(), textDireccion.getText(),
-                                        textTelefono.getText(), textEmail.getText(),
+                                String respuesta = cSocio.updateSocioProtector(textCuitSocio.getText(),
+                                        textRazonSocial.getText(),
+                                        new SimpleDateFormat(CommonFormatsDefine.FULL_DATE).parse(textFechaInicioAct.getText()),
+                                        socioCombo.getSelectedItem().toString(),
+                                        textActPrincipal.getText(),
+                                        textDireccion.getText(),
+                                        textTelefono.getText(),
+                                        textEmail.getText(),
                                         isPleno, textDocumentacion.getText(),
-                                        new SimpleDateFormat("dd/MM/yyyy").parse(textFechaDocumentacion.getText()), isDocumentacion,
+                                        new SimpleDateFormat(CommonFormatsDefine.FULL_DATE).parse(textFechaDocumentacion.getText()),
+                                        isDocumentacion,
                                         textUsuarioDeIngreso.getText(),
                                         tipoEmpresaCombo.getSelectedItem().toString());
                                 JOptionPane.showMessageDialog(self, respuesta);
