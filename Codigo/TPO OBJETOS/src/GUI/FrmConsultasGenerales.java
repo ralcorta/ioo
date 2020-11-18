@@ -102,20 +102,42 @@ public class FrmConsultasGenerales extends JDialog{
                     String tipoEmpresa=JOptionPane.showInputDialog(self,"Por favor ingrese el tipo de empresa: ");
 
                     if(tipoEmpresa == null){
+                        return;
+                    }
+                    if(tipoEmpresa == "") {
                         JOptionPane.showMessageDialog(self, "el tipo de empresa no puede estar vacio", "ERROR: El campo tipo empresa esta vacio", JOptionPane.ERROR_MESSAGE);
+                        return;
                     }
 
                     String fechaDesde=JOptionPane.showInputDialog(self,"Ingrese la fecha desde la que desea buscar:");
                     Date fechaDesdeObj = new SimpleDateFormat("dd/MM/yyyy").parse(fechaDesde);
 
+<<<<<<< HEAD
+=======
+                    if(fechaDesde == null){
+                        return;
+                    }
+>>>>>>> 338d1e6797aa41a31479bbcb50e85af6f466f04c
                     if(!Validator.isDate(fechaDesde)){
-                        JOptionPane.showMessageDialog(self, "el campo fecha no puede ser vacio", "ERROR: campo fecha vacio", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(self, "El campo fecha no puede ser vacio", "ERROR: campo fecha vacio", JOptionPane.ERROR_MESSAGE);
+                        return;
                     }
 
                     String fechaHasta=JOptionPane.showInputDialog(self,"Ingrese la fecha hasta la que desea buscar:");
+
+                    if(fechaHasta == null){
+                        return;
+                    }
+
                     Date fechaHastaObj = new SimpleDateFormat("dd/MM/yyyy").parse(fechaHasta);
-                    if(!Validator.isDate(fechaHasta) || fechaHastaObj.after(fechaDesdeObj)){
-                        JOptionPane.showMessageDialog(self, "la fecha hasta no es valida", "ERROR: campo fecha incorrecto", JOptionPane.ERROR_MESSAGE);
+                    if(!Validator.isDate(fechaHasta)){
+                        JOptionPane.showMessageDialog(self, "La fecha hasta no es valida", "ERROR: campo fecha incorrecto", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+
+                    if(!fechaHastaObj.after(fechaDesdeObj)) {
+                        JOptionPane.showMessageDialog(self, "La fecha 'hasta' es menor que la de 'desde'", "ERROR: campo fecha incorrecto", JOptionPane.ERROR_MESSAGE);
+                        return;
                     }
 
                     String mensaje = cOperacion.valorPromedioTasaDescuento(tipoEmpresa, fechaDesdeObj, fechaHastaObj);
@@ -131,7 +153,22 @@ public class FrmConsultasGenerales extends JDialog{
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 String cuit = JOptionPane.showInputDialog(self,"Ingrese el CUIT del Socio:");
+                if(cuit == null){
+                    return;
+                }
+                if(!Validator.isCuit(cuit)){
+                    JOptionPane.showMessageDialog(self, "El cuit es invalido", "ERROR: cuit invalido", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
                 String tipoDeOperacion = JOptionPane.showInputDialog(self,"Ingrese el Tipo de Operación a consultar:");
+                if(tipoDeOperacion == null){
+                    return;
+                }
+                if(tipoDeOperacion == ""){
+                    JOptionPane.showMessageDialog(self, "El tipo de operacion es invalida", "ERROR: operacion invalido", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
 
                 if(cuit.length() == 0 && tipoDeOperacion.length() == 0){
                     JOptionPane.showMessageDialog(self, "Debe ingresarse un CUIT o el tipo de operacion.", "ERROR: Se ingreso un campo vacio", JOptionPane.ERROR_MESSAGE);

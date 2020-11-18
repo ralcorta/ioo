@@ -35,7 +35,8 @@ public class SociosController
                 for(Operacion o : sp.getLinea().getOperaciones()){
                     if(o.getTipoDeOperacion().equals(tipoOperacion)){
                         totalOperaciones += Float.parseFloat(o.getImporte());
-                        totalComisiones += o.getComision().getPorcentajeComision();
+                        if(o.getComision() != null)
+                            totalComisiones += o.getComision().getPorcentajeComision();
                     }
                 }
             }
