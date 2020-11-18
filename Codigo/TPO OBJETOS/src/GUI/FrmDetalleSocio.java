@@ -3,6 +3,7 @@ package GUI;
 import Clases.SocioParticipe;
 import Clases.SocioProtector;
 import Clases.SociosController;
+import Clases.Validator;
 import Enums.*;
 
 import javax.swing.*;
@@ -221,6 +222,11 @@ public class FrmDetalleSocio extends JDialog {
                 } else {
                     boolean isPleno = comboBoxSocioPleno.getSelectedItem().equals(SocioPlenoOptionsDefine.SI);
                     boolean isDocumentacion = comboEstadoDocumentacion.getSelectedItem().equals(EstadoDocumentacionDefine.CONTROLADO);
+
+                    if(!Validator.isDate(textFechaInicioAct.getText())) {
+                        JOptionPane.showMessageDialog(null, "La fecha no tiene el formato deseado (" + CommonFormatsDefine.FULL_DATE + ")", "Error de formato", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
 
                     if (socioCombo.getSelectedItem().toString().equals(TipoSocioDefine.PARTICIPE)) {
                         try {
