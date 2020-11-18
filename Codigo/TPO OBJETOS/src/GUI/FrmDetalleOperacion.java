@@ -218,13 +218,13 @@ public class FrmDetalleOperacion extends JDialog{
                             if (comboTipoOperacion.getSelectedItem().toString().equals(TipoOperacionDefine.TIPO_1)) {
                                     resultado = controladorOperacion.crearOperacion(Integer.parseInt(txtfieldIdLinea.getText()),
                                             TipoOperacionDefine.TIPO_1,
-                                            comboEstado.getSelectedItem().toString(),
+                                            EstadosDefine.EMITIDO/*comboEstado.getSelectedItem().toString()*/,
                                             null,
                                             textImporte.getText(),
                                             new Date(),
                                             new SimpleDateFormat("dd/MM/yyyy").parse(textFechaVenc.getText()),
                                             0,
-                                            0.0f,
+                                            Float.parseFloat(textImporte.toString()),
                                             //TIPO1
                                             textBancoCheque.getText(),
                                             textNumCheque.getText(),
@@ -243,13 +243,13 @@ public class FrmDetalleOperacion extends JDialog{
                             } else if (comboTipoOperacion.getSelectedItem().toString().equals(TipoOperacionDefine.TIPO_2)) {
                                     resultado = controladorOperacion.crearOperacion(Integer.parseInt(txtfieldIdLinea.getText()),
                                             TipoOperacionDefine.TIPO_2,
-                                            comboEstado.getSelectedItem().toString(),
+                                            EstadosDefine.EMITIDO /*comboEstado.getSelectedItem().toString()*/,
                                             null,
                                             textImporte.getText(),
                                             new Date(),
                                             new SimpleDateFormat("dd/MM/yyyy").parse(textFechaVenc.getText()),
                                             0,
-                                            0.0f,
+                                            Float.parseFloat(textImporte.toString()),
                                             //TIPO1
                                             "",
                                             "",
@@ -268,13 +268,13 @@ public class FrmDetalleOperacion extends JDialog{
                             } else {
                                 resultado = controladorOperacion.crearOperacion(Integer.parseInt(txtfieldIdLinea.getText()),
                                         TipoOperacionDefine.TIPO_3,
-                                        comboEstado.getSelectedItem().toString(),
+                                        EstadosDefine.EMITIDO /*comboEstado.getSelectedItem().toString()*/,
                                         null,
                                         textImporte.getText(),
                                         new Date(),
                                         new SimpleDateFormat("dd/MM/yyyy").parse(textFechaVenc.getText()),
                                         0,
-                                        0.0f,
+                                        Float.parseFloat(textImporte.toString()),
                                         //TIPO1
                                         "",
                                         "",

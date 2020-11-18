@@ -107,6 +107,8 @@ public class FrmDetalleSocio extends JDialog {
         this.textDocumentacion.setText(socio.getDocumentacion());
         this.textFechaDocumentacion.setText(new SimpleDateFormat("dd/MM/yyyy").format(socio.getFechaDocumentacion()));
         this.textUsuarioDeIngreso.setText(socio.getUsuarioDocumentacion());
+        this.tipoEmpresaCombo.setSelectedItem(socio.getTipoDeEmpresa());
+        this.tipoEmpresaCombo.setEnabled(false);
         if(socio.isEsPleno()){
             this.comboBoxSocioPleno.getModel().setSelectedItem("Si");
         } else {
@@ -166,6 +168,8 @@ public class FrmDetalleSocio extends JDialog {
         this.textDocumentacion.setText(socio.getDocumentacion());
         this.textFechaDocumentacion.setText(new SimpleDateFormat("dd/MM/yyyy").format(socio.getFechaDocumentacion()));
         this.textUsuarioDeIngreso.setText(socio.getUsuarioDocumentacion());
+        this.tipoEmpresaCombo.setSelectedItem(socio.getTipoDeEmpresa());
+        this.tipoEmpresaCombo.setEnabled(false);
         if(socio.isEsPleno()){
             this.comboBoxSocioPleno.setSelectedIndex(1);
         } else {

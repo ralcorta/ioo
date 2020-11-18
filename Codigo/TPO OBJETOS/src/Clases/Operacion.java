@@ -1,5 +1,7 @@
 package Clases;
 
+import Enums.EstadosDefine;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Currency;
@@ -257,18 +259,18 @@ public class Operacion {
         return this.certificadoGarantia;
     }
 
-    public void crearCheque(String banco, int numero, Date fechaDeVencimiento, String cuit, float tasaDeDescuento){
-        Cheque cheque = new Cheque(banco, numero, fechaDeVencimiento, cuit, tasaDeDescuento);
+    public void crearCheque(String banco, int numero, Date fechaDeVencimiento, String cuit, float tasaDeDescuentom, float importe){
+        Cheque cheque = new Cheque(banco, numero, fechaDeVencimiento, cuit, tasaDeDescuentom, importe);
         cheques.add(cheque);
     }
 
-    public void crearPrestamo(String banco, float tasa, Date fechaDeAcreditacion, int cantidadDeCuotas, String sistema){
-        Prestamo prestamo = new Prestamo(banco, tasa, fechaDeAcreditacion, cantidadDeCuotas, sistema);
+    public void crearPrestamo(String banco, float tasa, Date fechaDeAcreditacion, int cantidadDeCuotas, String sistema, float importe){
+        Prestamo prestamo = new Prestamo(banco, tasa, fechaDeAcreditacion, cantidadDeCuotas, sistema, importe);
         prestamos.add(prestamo);
     }
 
-    public void crearCuentaCorriente(String nombreEmpresa, Date fechaDeVencimiento){
-        CuentaCorriente cuentaCorriente = new CuentaCorriente(nombreEmpresa, fechaDeVencimiento);
+    public void crearCuentaCorriente(String nombreEmpresa, Date fechaDeVencimiento, float importe){
+        CuentaCorriente cuentaCorriente = new CuentaCorriente(nombreEmpresa, fechaDeVencimiento, importe);
         cuentasCorrientes.add(cuentaCorriente);
     }
 
@@ -276,5 +278,13 @@ public class Operacion {
         if(comision.getEstado().equals("Calculado")) {
             comision.setEstado("Facturada");
         }
+    }
+
+    public boolean vencida() {
+        return this.fechaVencimiento.before(new Date());
+    }
+
+    public boolean esRiesgoVivo() {
+        return !this.vencida() && this.getEstado().equals(EstadosDefine.MONETIZADO);
     }
 }

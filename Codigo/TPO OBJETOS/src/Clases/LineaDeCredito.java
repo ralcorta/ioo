@@ -28,6 +28,10 @@ public class LineaDeCredito {
         this.socio = socio;
     }
 
+    public ArrayList<Operacion> getOperaciones(){
+        return this.operaciones;
+    }
+
     public int getIdLineaCredito() {
         return idLineaCredito;
     }

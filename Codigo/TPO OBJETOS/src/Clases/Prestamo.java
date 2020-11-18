@@ -7,14 +7,16 @@ public class Prestamo {
     private Date fechaDeAcreditacion;
     private int cantidadDeCuotas;
     private String sistema;
+    private float importe;
     Operacion operacion;
 
-    public Prestamo(String banco, float tasa, Date fechaDeAcreditacion, int cantidadDeCuotas, String sistema) {
+    public Prestamo(String banco, float tasa, Date fechaDeAcreditacion, int cantidadDeCuotas, String sistema, float importe) {
         this.banco = banco;
         this.tasa = tasa;
         this.fechaDeAcreditacion = fechaDeAcreditacion;
         this.cantidadDeCuotas = cantidadDeCuotas;
         this.sistema = sistema;
+        this.importe = importe;
     }
 
     public String getBanco() {
@@ -55,5 +57,13 @@ public class Prestamo {
 
     public void setSistema(String sistema) {
         this.sistema = sistema;
+    }
+
+    public float getImporte() {
+        return importe;
+    }
+
+    public void setImporte(float importe) {
+        this.importe = importe;
     }
 }
