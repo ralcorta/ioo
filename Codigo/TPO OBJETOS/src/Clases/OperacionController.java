@@ -145,6 +145,9 @@ public class OperacionController{
             if(auxLinea.getFechaDeVigencia().before(todayDate)) {
                 auxLinea.setEstadoAprobacion(false);
             }
+            else{
+                auxLinea.setEstadoAprobacion(true);
+            }
         }
     }
 
