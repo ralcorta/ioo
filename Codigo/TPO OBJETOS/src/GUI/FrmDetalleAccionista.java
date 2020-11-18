@@ -1,6 +1,7 @@
 package GUI;
 
 import Clases.SociosController;
+import Clases.Validator;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -49,6 +50,21 @@ public class FrmDetalleAccionista extends JDialog {
         guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                if (!Validator.isCuit(textCUITAccionista.getText())){
+                    JOptionPane.showMessageDialog(null, "el CUIT ingresado es incorrecto o el campo esta vacio", "CUIT incorrecto", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                if(!Validator.isNumeric(textPorcentajeParticipacion.getText())){
+                    JOptionPane.showMessageDialog(null, "el porcentaje de participacion es incorrecto", "Porcentaje de participacion incorrecto", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                if (textRazonSocial == null){
+                    JOptionPane.showMessageDialog(null, "el campo razon social esta vacio", "Razon social vacio", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
                 String resultado = cSocios.crearAccionista(textCUITAccionista.getText(),Integer.parseInt(textPorcentajeParticipacion.getText()), textRazonSocial.getText(), cuitSocio);
                 JOptionPane.showMessageDialog(null, resultado, "Operacion creada correctamente", JOptionPane.INFORMATION_MESSAGE);
                 dispose();

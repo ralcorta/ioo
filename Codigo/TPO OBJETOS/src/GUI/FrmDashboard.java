@@ -184,19 +184,10 @@ public class FrmDashboard extends JFrame{
                 0.0f, "ICBC", "123456", new Date(), "20593456543", 0.0f, "", new Date(),
                 "", 0.0f, new Date(), 0, "");
 
-
         Calendar c = Calendar.getInstance();
         c.setTime(new Date());
         c.add(Calendar.YEAR, 2);
         Date currentDatePlusOne = c.getTime();
-
-        controladorOperacion.crearOperacion(1, "Tipo 4", EstadosDefine.MONETIZADO, null, "2000",new Date(), currentDatePlusOne, 0,
-                0.0f, "ICBC", "1234568", new Date(), "20121231238", 0.0f, "", new Date(),
-                "", 0.0f, new Date(), 0, "");
-
-        controladorOperacion.crearOperacion(1, "Tipo 5", EstadosDefine.MONETIZADO, null, "2000",new Date(), currentDatePlusOne, 0,
-                0.0f, "ICBC", "12345609", new Date(), "20121231238", 0.0f, "", new Date(),
-                "", 0.0f, new Date(), 0, "");
 
         controladorSocios.crearAccionista("2058435241",5,"Razon Social Uno", "20121231238");
         controladorSocios.crearAccionista("2058435246",50,"Razon Social Dos", "20400067385");
