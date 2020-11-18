@@ -153,7 +153,8 @@ public class FrmDashboard extends JFrame{
                 "Documentacion del tipo",
                 commonDate,
                 true,
-                "Usuario de ingreso");
+                "Usuario de ingreso",
+                "Grande");
 
         SocioProtector socioAux = null;
         for(SocioProtector s : controladorSocios.getListaDeSociosProtectores()) {
