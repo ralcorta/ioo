@@ -3,6 +3,8 @@ package GUI;
 import Clases.LineaDeCredito;
 import Clases.OperacionController;
 import Clases.SocioParticipe;
+import Clases.Validator;
+import Enums.CommonFormatsDefine;
 
 import javax.swing.*;
 import java.awt.*;
@@ -72,6 +74,11 @@ public class FrmDetalleLineaDeCredito extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int auxId = controladorOperaciones.getLineasDeCredito().size()+1;
+
+                if(!Validator.isDate(txtFechaVigencia.getText())) {
+                    JOptionPane.showMessageDialog(null, "La fecha de vigencia no tiene el formato deseado (" + CommonFormatsDefine.FULL_DATE + ")", "Error de formato", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
 
                 try {
                     boolean estadoAux;
