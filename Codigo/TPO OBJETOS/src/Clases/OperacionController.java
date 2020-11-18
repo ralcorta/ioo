@@ -37,10 +37,6 @@ public class OperacionController{
         int newIdOperacion = operaciones.size()+1;
         LineaDeCredito aEnviar = obtenerLineadeCredito(idLc);
 
-        if (aEnviar == null) {
-            return "No existe una linea de credito para este socio.";
-        }
-
         if(Integer.parseInt(importe) <= Integer.parseInt(aEnviar.getImporteActual())) {
             Operacion nuevaOperacion = new Operacion(newIdOperacion, tipoDeOperacion, "Con certificado emitido", garantia, importe, fechaCreacionOperacion, fechaVencimiento, cuotasPagadas, importeUtilizado, nombreBancoCheque, fechaVencCheque, numeroCheque, cuitCheque, tasaDeDescuento, cuentaCorriente, fechaVencimientoCuentaCorriente, nombreBancoPrestamo, tasaDeInteres, fechaDeAcreditacionPrestamo, cantidadDeCuotas, sistemaBancario, aEnviar);
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMddhhmmss");
@@ -59,9 +55,27 @@ public class OperacionController{
                 }
             }
 
+            if(tipoDeOperacion == "1"){
+                Cheque nuevoCheque = new Cheque(nombreBancoCheque, Integer.parseInt(numeroCheque), fechaVencCheque, cuitCheque, tasaDeDescuento,importeUtilizado);
+                nuevaOperacion.cheques.add(nuevoCheque);
+            }
+            else if(tipoDeOperacion == "2"){
+                CuentaCorriente nuevaCuenta = new CuentaCorriente(cuentaCorriente, fechaVencimientoCuentaCorriente, importeUtilizado);
+                nuevaOperacion.cuentasCorrientes.add(nuevaCuenta);
+            }
+            else{
+                Prestamo nuevoPrestamo = new Prestamo(nombreBancoPrestamo, tasaDeDescuento, fechaDeAcreditacionPrestamo,cantidadDeCuotas,sistemaBancario,importeUtilizado);
+                nuevaOperacion.prestamos.add(nuevoPrestamo);
+            }
+
+            if (aEnviar == null) {
+                return "No existe una linea de credito para este socio.";
+            }
+
             aEnviar.restarImporteATotal(importe);
 
             return "La operacion con ID " + nuevaOperacion.getIdOperacion() + " ha sido creada con exito!";
+
         } else {
             Operacion nuevaOperacion = new Operacion(newIdOperacion, tipoDeOperacion, "Ingresado", garantia, importe, fechaCreacionOperacion, fechaVencimiento, cuotasPagadas, importeUtilizado, nombreBancoCheque, fechaVencCheque, numeroCheque, cuitCheque, tasaDeDescuento, cuentaCorriente, fechaVencimientoCuentaCorriente, nombreBancoPrestamo, tasaDeInteres, fechaDeAcreditacionPrestamo, cantidadDeCuotas,sistemaBancario, aEnviar);
             operaciones.add(nuevaOperacion);
@@ -76,8 +90,22 @@ public class OperacionController{
                 }
             }
 
+            if(tipoDeOperacion == "1"){
+                Cheque nuevoCheque = new Cheque(nombreBancoCheque, Integer.parseInt(numeroCheque), fechaVencCheque, cuitCheque, tasaDeDescuento,importeUtilizado);
+                nuevaOperacion.cheques.add(nuevoCheque);
+            }
+            else if(tipoDeOperacion == "2"){
+                CuentaCorriente nuevaCuenta = new CuentaCorriente(cuentaCorriente, fechaVencimientoCuentaCorriente, importeUtilizado);
+                nuevaOperacion.cuentasCorrientes.add(nuevaCuenta);
+            }
+            else{
+                Prestamo nuevoPrestamo = new Prestamo(nombreBancoPrestamo, tasaDeDescuento, fechaDeAcreditacionPrestamo,cantidadDeCuotas,sistemaBancario,importeUtilizado);
+                nuevaOperacion.prestamos.add(nuevoPrestamo);
+            }
+
             return "La operacion con ID " + nuevaOperacion.getIdOperacion() + " ha sido creada con exito!";
         }
+
     }
 
     public String updateOperacion(int idOperacion, String estado, String importe){
@@ -175,9 +203,42 @@ public class OperacionController{
         return operacionesMonetizadas;
     }
 
-    public float promedioTasaDescuento(String tipoDeEmpresa, Date fechaDesde, Date fechaHasta){
-
-        return 0.0f;
+    public String valorPromedioTasaDescuento(String tipoDeEmpresa, Date fechaDesde, Date fechaHasta){
+        String mensaje = "";
+        int cont=0;
+        float promTasa =0.0f;
+        float importeTotalChques= 0.0f;
+        float importeTotalPrestamos= 0.0f;
+        float importeTotalCtaCte= 0.0f;
+        for(SocioParticipe s :controlador.listaDeSociosParticipes){
+            if(s.getTipoDeEmpresa().equals(tipoDeEmpresa)){
+                if(s.getFechaInicioActividades().after(fechaDesde) && s.getFechaInicioActividades().before(fechaHasta)){
+                    ArrayList<Operacion> operacionesAux = s.linea.operaciones;
+                    for(Operacion opAux: operacionesAux){
+                        for(Cheque chAux:opAux.cheques){
+                            promTasa= promTasa + chAux.getTasaDeDescuento();
+                            importeTotalChques = importeTotalChques + chAux.getImporte();
+                            cont++;
+                        }
+                        for(Prestamo prAux: opAux.prestamos){
+                            promTasa = promTasa + prAux.getTasa();
+                            importeTotalPrestamos = importeTotalPrestamos + prAux.getImporte();
+                            cont++;
+                        }
+                        for(CuentaCorriente ctaAux : opAux.cuentasCorrientes){
+                            importeTotalCtaCte = importeTotalCtaCte + ctaAux.getImporte();
+                        }
+                    }
+                }
+            }
+        }
+        float importePagares = importeTotalCtaCte+importeTotalPrestamos;
+        if (cont == 0){
+            return "No existen cheques o pagares para calcular lo que esta pidiendo.";
+        }
+        promTasa=promTasa/cont;
+        mensaje="El promedio total de la tasa de descuento de cheques y pagares es" + promTasa + ". El importe total de cheques es" + importeTotalChques + "; el importe total de pagares es"+importePagares+".";
+        return mensaje;
     }
 
 /*
@@ -189,7 +250,4 @@ public class OperacionController{
 
     }*/
 
-    /*public int valorPromedioTasaDescuento (String tipoDeEmpresa, Date fechaDesde, Date fechaHasta){
-
-    }*/
 }

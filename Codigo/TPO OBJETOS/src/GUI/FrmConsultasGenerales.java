@@ -93,7 +93,16 @@ public class FrmConsultasGenerales extends JDialog{
         btnPorcentajeComision.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                String fechaDesde=JOptionPane.showInputDialog(self,"Texto futuro:");
+                String tipoEmpresa=JOptionPane.showInputDialog(self,"Por favor ingrese el tipo de empresa: ");
+                String fechaDesde=JOptionPane.showInputDialog(self,"Ingrese la fecha desde la que desea buscar:");
+                String fechaHasta=JOptionPane.showInputDialog(self,"Ingrese la fecha hasta la que desea buscar:");
+                try {
+                    String mensaje = cOperacion.valorPromedioTasaDescuento(tipoEmpresa, new SimpleDateFormat("dd/MM/yyyy").parse(fechaDesde), new SimpleDateFormat("dd/MM/yyyy").parse(fechaHasta));
+                    JOptionPane.showMessageDialog(self, mensaje);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                    JOptionPane.showMessageDialog(self, "La fecha ingresada NO cumple con el formato DD/MM/YYYY", "ERROR: Fecha invalida", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
 
@@ -102,6 +111,7 @@ public class FrmConsultasGenerales extends JDialog{
             public void actionPerformed(ActionEvent actionEvent) {
                 String fechaDesde=JOptionPane.showInputDialog(self,"Texto futuro:");
             }
+
         });
     }
 }

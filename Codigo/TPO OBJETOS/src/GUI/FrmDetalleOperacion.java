@@ -224,7 +224,7 @@ public class FrmDetalleOperacion extends JDialog{
                                             new Date(),
                                             new SimpleDateFormat("dd/MM/yyyy").parse(textFechaVenc.getText()),
                                             0,
-                                            0.0f,
+                                            Float.parseFloat(textImporte.toString()),
                                             //TIPO1
                                             textBancoCheque.getText(),
                                             textNumCheque.getText(),
@@ -249,7 +249,7 @@ public class FrmDetalleOperacion extends JDialog{
                                             new Date(),
                                             new SimpleDateFormat("dd/MM/yyyy").parse(textFechaVenc.getText()),
                                             0,
-                                            0.0f,
+                                            Float.parseFloat(textImporte.toString()),
                                             //TIPO1
                                             "",
                                             "",
@@ -274,7 +274,7 @@ public class FrmDetalleOperacion extends JDialog{
                                         new Date(),
                                         new SimpleDateFormat("dd/MM/yyyy").parse(textFechaVenc.getText()),
                                         0,
-                                        0.0f,
+                                        Float.parseFloat(textImporte.toString()),
                                         //TIPO1
                                         "",
                                         "",
