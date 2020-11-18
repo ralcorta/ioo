@@ -12,6 +12,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.stream.Collectors;
 
 public class FrmConsultasGenerales extends JDialog{
     private FrmConsultasGenerales self;
@@ -100,7 +101,15 @@ public class FrmConsultasGenerales extends JDialog{
         btnConsultaConsolidada.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                String fechaDesde=JOptionPane.showInputDialog(self,"Texto futuro:");
+                String cuitSocio = JOptionPane.showInputDialog(self,"Cuit del socio:");
+                ArrayList<Operacion> opFiltered = new ArrayList<Operacion>();
+                for (Operacion op : cOperacion.getOperaciones()) {
+                    if(op.getCuitCheque().equals(cuitSocio) && !op.vencida())
+                        opFiltered.add(op);
+                }
+
+                //FrmDetalleSocio frame = new FrmDetalleSocio(self, opFiltered);
+                //frame.setVisible(true);
             }
         });
     }

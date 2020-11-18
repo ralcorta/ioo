@@ -277,4 +277,8 @@ public class Operacion {
             comision.setEstado("Facturada");
         }
     }
+
+    public boolean vencida() {
+        return this.fechaVencimiento.after(new Date());
+    }
 }
