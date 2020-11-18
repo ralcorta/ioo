@@ -1,6 +1,7 @@
 package GUI;
 
 import Clases.*;
+import Enums.CommonFormatsDefine;
 import Enums.EstadosDefine;
 import Enums.SistemaBancarioDefine;
 import Enums.TipoOperacionDefine;
@@ -212,6 +213,36 @@ public class FrmDetalleOperacion extends JDialog{
         guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                    if(!Validator.isDate(textFechaCreacOp.getText())) {
+                        JOptionPane.showMessageDialog(null, "La fecha de creacion de operacion no tiene el formato deseado (" + CommonFormatsDefine.FULL_DATE + ")", "Error de formato", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+
+                    if(!Validator.isDate(textFechaVenc.getText())) {
+                        JOptionPane.showMessageDialog(null, "La fecha de vencimiento no tiene el formato deseado (" + CommonFormatsDefine.FULL_DATE + ")", "Error de formato", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+
+                    if(!Validator.isDate(textFechaVencCheque.getText())) {
+                        JOptionPane.showMessageDialog(null, "La fecha de vencimiento de cheque no tiene el formato deseado (" + CommonFormatsDefine.FULL_DATE + ")", "Error de formato", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+
+                    if(!Validator.isDate(textFechaVencCuenta.getText())) {
+                        JOptionPane.showMessageDialog(null, "La fecha de vencimiento de cuenta no tiene el formato deseado (" + CommonFormatsDefine.FULL_DATE + ")", "Error de formato", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+
+                    if(!Validator.isDate(textFechaAcrdPrestamo.getText())) {
+                        JOptionPane.showMessageDialog(null, "La fecha de vencimiento de prestamo no tiene el formato deseado (" + CommonFormatsDefine.FULL_DATE + ")", "Error de formato", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+
+                    if(!Validator.isDate(txtFechaPrest.getText())) {
+                        JOptionPane.showMessageDialog(null, "La fecha de prestamo no tiene el formato deseado (" + CommonFormatsDefine.FULL_DATE + ")", "Error de formato", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+
                     if(auxOperation.equals("Create")) {
                         String resultado = null;
                         try{
