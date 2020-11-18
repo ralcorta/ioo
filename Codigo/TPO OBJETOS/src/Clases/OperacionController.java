@@ -42,7 +42,7 @@ public class OperacionController{
         }
 
         if(Integer.parseInt(importe) <= Integer.parseInt(aEnviar.getImporteActual())) {
-            Operacion nuevaOperacion = new Operacion(newIdOperacion, tipoDeOperacion, "Con certificado emitido", garantia, importe, fechaCreacionOperacion, fechaVencimiento, cuotasPagadas, importeUtilizado, nombreBancoCheque, fechaVencCheque, numeroCheque, cuitCheque, tasaDeDescuento, cuentaCorriente, fechaVencimientoCuentaCorriente, nombreBancoPrestamo, tasaDeInteres, fechaDeAcreditacionPrestamo, cantidadDeCuotas, sistemaBancario, aEnviar);
+            Operacion nuevaOperacion = new Operacion(newIdOperacion, tipoDeOperacion, estado /*"Con certificado emitido"*/, garantia, importe, fechaCreacionOperacion, fechaVencimiento, cuotasPagadas, importeUtilizado, nombreBancoCheque, fechaVencCheque, numeroCheque, cuitCheque, tasaDeDescuento, cuentaCorriente, fechaVencimientoCuentaCorriente, nombreBancoPrestamo, tasaDeInteres, fechaDeAcreditacionPrestamo, cantidadDeCuotas, sistemaBancario, aEnviar);
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMddhhmmss");
             String dateAsString = simpleDateFormat.format(new Date());
             nuevaOperacion.emitirCertificadoGarantia(dateAsString, new Date());
