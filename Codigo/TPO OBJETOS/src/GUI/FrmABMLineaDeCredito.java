@@ -72,14 +72,14 @@ public class FrmABMLineaDeCredito extends JDialog {
                 String hasLDC = tblSociosPartPlenos.getValueAt(filaSeleccionada,2).toString();
 
                 if(hasLDC == "No") {
-                    JOptionPane.showMessageDialog(self, "El socio no posee Linea de Credito a ser renovada.", "Operacion generada correctamente", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(self, "El socio no posee Linea de Credito a ser renovada.", "Operacion no generada", JOptionPane.ERROR_MESSAGE);
                 } else {
                     int statusCode = cOperacion.renovarLineaDeCredito(cuitSocioSel);
                     if(statusCode == 0) {
                         JOptionPane.showMessageDialog(self, "La Linea de Credito del socio con CUIT " + cuitSocioSel + " ha sido renovada por 1 año", "Operacion generada correctamente", JOptionPane.INFORMATION_MESSAGE);
                     }
                     else if (statusCode == 1){
-                        JOptionPane.showMessageDialog(self, "La Linea de Credito del socio con CUIT " + cuitSocioSel + " aun no se encuentra vencida, por lo que no se puede renovar", "Operacion generada correctamente", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(self, "La Linea de Credito del socio con CUIT " + cuitSocioSel + " aun no se encuentra vencida, por lo que no se puede renovar", "Operacion no generada", JOptionPane.WARNING_MESSAGE);
                     }
 
 
