@@ -170,24 +170,32 @@ public class FrmDashboard extends JFrame{
             }
         }
 
-        controladorOperacion.crearLineaDeCredito(1, "200000", new Date(), true, socioAux2);
-
-        controladorOperacion.crearOperacion(1, "Tipo 1", EstadosDefine.INGRESADO, null, "2000",new Date(), new Date(), 0,
-                0.0f, "ICBC", "123456", new Date(), "20593456543", 0.0f, "", new Date(),
-                "", 0.0f, new Date(), 0, "");
-
-        controladorOperacion.crearOperacion(1, "Tipo 2", EstadosDefine.INGRESADO, null, "2000",new Date(), new Date(), 0,
-                0.0f, "ICBC", "123456", new Date(), "20593456543", 0.0f, "", new Date(),
-                "", 0.0f, new Date(), 0, "");
-
-        controladorOperacion.crearOperacion(1, "Tipo 3", EstadosDefine.INGRESADO, null, "2000",new Date(), new Date(), 0,
-                0.0f, "ICBC", "123456", new Date(), "20593456543", 0.0f, "", new Date(),
-                "", 0.0f, new Date(), 0, "");
-
         Calendar c = Calendar.getInstance();
         c.setTime(new Date());
         c.add(Calendar.YEAR, 2);
         Date currentDatePlusOne = c.getTime();
+
+        controladorOperacion.crearLineaDeCredito(1, "200000", new Date(), true, socioAux2);
+
+        controladorOperacion.crearOperacion(1,
+                "Tipo 1",
+                EstadosDefine.INGRESADO,
+                null,
+                "2000",
+                new Date(),
+                currentDatePlusOne, 0,
+                0.0f, "ICBC", "123456", currentDatePlusOne, "20121231238", 0.0f, "", new Date(),
+                "", 0.0f, new Date(), 0, "");
+
+        controladorOperacion.crearOperacion(1, "Tipo 2", EstadosDefine.INGRESADO, null, "2000",new Date(), currentDatePlusOne, 0,
+                0.0f, "ICBC", "123456", currentDatePlusOne, "20121231238", 0.0f, "", new Date(),
+                "", 0.0f, new Date(), 0, "");
+
+        controladorOperacion.crearOperacion(1, "Tipo 3", EstadosDefine.INGRESADO, null, "2000",new Date(), new Date(), 0,
+                0.0f, "ICBC", "123456", new Date(), "20121231238", 0.0f, "", new Date(),
+                "", 0.0f, new Date(), 0, "");
+
+
 
         controladorSocios.crearAccionista("2058435241",5,"Razon Social Uno", "20121231238");
         controladorSocios.crearAccionista("2058435246",50,"Razon Social Dos", "20400067385");

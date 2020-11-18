@@ -36,9 +36,9 @@ public class Operacion {
     private LineaDeCredito linea;
     Comision comision;
     CertificadoDeGarantia certificadoGarantia;
-    ArrayList <Cheque> cheques = new ArrayList<Cheque>();
-    ArrayList <Prestamo> prestamos = new ArrayList<Prestamo>();
-    ArrayList <CuentaCorriente> cuentasCorrientes = new ArrayList<CuentaCorriente>();
+    ArrayList<Cheque> cheques = new ArrayList<Cheque>();
+    ArrayList<Prestamo> prestamos = new ArrayList<Prestamo>();
+    ArrayList<CuentaCorriente> cuentasCorrientes = new ArrayList<CuentaCorriente>();
 
     public Operacion(int idOperacion, String tipoDeOperacion, String estado, String garantia, String importe, Date fechaCreacionOperacion, Date fechaVencimiento, int cuotasPagadas, float importeUtilizado, String nombreBancoCheque, Date fechaVencCheque, String numeroCheque, String cuitCheque, float tasaDeDescuento, String cuentaCorriente, Date fechaVencimientoCuentaCorriente, String nombreBancoPrestamo, float tasaDeInteres, Date fechaDeAcreditacionPrestamo, int cantidadDeCuotas, String sistemaBancario, LineaDeCredito linea) {
         this.idOperacion = idOperacion;
@@ -65,9 +65,13 @@ public class Operacion {
         this.linea = linea;
     }
 
-    public Date getFechaVencCheque(){ return this.fechaVencimiento; }
+    public Date getFechaVencCheque() {
+        return this.fechaVencimiento;
+    }
 
-    public void setFechaVencCheque(Date fecha){ this.fechaVencimiento = fecha; }
+    public void setFechaVencCheque(Date fecha) {
+        this.fechaVencimiento = fecha;
+    }
 
     public int getIdOperacion() {
         return idOperacion;
@@ -113,9 +117,13 @@ public class Operacion {
         return fechaVencimiento;
     }
 
-    public String getImporte(){ return this.importe; }
+    public String getImporte() {
+        return this.importe;
+    }
 
-    public void setImporte(String importe){ this.importe = importe; }
+    public void setImporte(String importe) {
+        this.importe = importe;
+    }
 
     public void setFechaVencimiento(Date fechaVencimiento) {
         this.fechaVencimiento = fechaVencimiento;
@@ -213,7 +221,7 @@ public class Operacion {
         this.fechaDeAcreditacionPrestamo = fechaDeAcreditacionPrestamo;
     }
 
-    public Comision getComision(){
+    public Comision getComision() {
         return this.comision;
     }
 
@@ -233,49 +241,53 @@ public class Operacion {
         this.sistemaBancario = sistemaBancario;
     }
 
-    public String generarComision(String estado, Date fechaCambioEstado, String estadoAnterior, float porcentaje){
+    public String generarComision(String estado, Date fechaCambioEstado, String estadoAnterior, float porcentaje) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMddhhmmss");
-        String idComision = "COM"+simpleDateFormat.format(new Date());
+        String idComision = "COM" + simpleDateFormat.format(new Date());
 
         Comision comision = new Comision(idComision, estado, fechaCambioEstado, estadoAnterior, porcentaje);
         this.comision = comision;
         return idComision;
     }
 
-    public float getPorcentajeComision(){
+    public float getPorcentajeComision() {
         return comision.getPorcentajeComision();
     }
 
-    public String getIdComision(){ return comision.getIdComision(); }
+    public String getIdComision() {
+        return comision.getIdComision();
+    }
 
-    public String getEstadoComision(){ return comision.getEstado(); }
+    public String getEstadoComision() {
+        return comision.getEstado();
+    }
 
-    public void emitirCertificadoGarantia(String idCertificadoGarantia, Date fechaEmision){
+    public void emitirCertificadoGarantia(String idCertificadoGarantia, Date fechaEmision) {
         CertificadoDeGarantia certificadoDeGarantia = new CertificadoDeGarantia(idCertificadoGarantia, fechaEmision);
         this.certificadoGarantia = certificadoDeGarantia;
     }
 
-    public CertificadoDeGarantia getCertificadoGarantia(){
+    public CertificadoDeGarantia getCertificadoGarantia() {
         return this.certificadoGarantia;
     }
 
-    public void crearCheque(String banco, int numero, Date fechaDeVencimiento, String cuit, float tasaDeDescuentom, float importe){
+    public void crearCheque(String banco, int numero, Date fechaDeVencimiento, String cuit, float tasaDeDescuentom, float importe) {
         Cheque cheque = new Cheque(banco, numero, fechaDeVencimiento, cuit, tasaDeDescuentom, importe);
         cheques.add(cheque);
     }
 
-    public void crearPrestamo(String banco, float tasa, Date fechaDeAcreditacion, int cantidadDeCuotas, String sistema, float importe){
+    public void crearPrestamo(String banco, float tasa, Date fechaDeAcreditacion, int cantidadDeCuotas, String sistema, float importe) {
         Prestamo prestamo = new Prestamo(banco, tasa, fechaDeAcreditacion, cantidadDeCuotas, sistema, importe);
         prestamos.add(prestamo);
     }
 
-    public void crearCuentaCorriente(String nombreEmpresa, Date fechaDeVencimiento, float importe){
+    public void crearCuentaCorriente(String nombreEmpresa, Date fechaDeVencimiento, float importe) {
         CuentaCorriente cuentaCorriente = new CuentaCorriente(nombreEmpresa, fechaDeVencimiento, importe);
         cuentasCorrientes.add(cuentaCorriente);
     }
 
-    public void generarFactura(){
-        if(comision.getEstado().equals("Calculado")) {
+    public void generarFactura() {
+        if (comision.getEstado().equals("Calculado")) {
             comision.setEstado("Facturada");
         }
     }
@@ -287,4 +299,9 @@ public class Operacion {
     public boolean esRiesgoVivo() {
         return !this.vencida() && this.getEstado().equals(EstadosDefine.MONETIZADO);
     }
+
+    public boolean esMonetizadaYNoVencida() {
+        return !this.vencida() && this.getEstado().equals(EstadosDefine.EMITIDO);
+    }
+
 }

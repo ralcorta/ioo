@@ -115,7 +115,10 @@ public class FrmConsultasGenerales extends JDialog{
                     if(fechaDesde == null){
                         return;
                     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1cddf6606c0194f18d6d485f9d255a7307d83d55
                     if(!Validator.isDate(fechaDesde)){
                         JOptionPane.showMessageDialog(self, "El campo fecha no puede ser vacio", "ERROR: campo fecha vacio", JOptionPane.ERROR_MESSAGE);
                         return;
@@ -181,15 +184,29 @@ public class FrmConsultasGenerales extends JDialog{
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 String cuitSocio = JOptionPane.showInputDialog(self,"Cuit del socio:");
-                ArrayList<Operacion> opFiltered = new ArrayList<Operacion>();
+                if(cuitSocio == null){
+                    return;
+                }
+                if(cuitSocio == ""){
+                    JOptionPane.showMessageDialog(self, "El CUIT es invalido", "ERROR: cuit invalido", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                ArrayList<Operacion> opFilteredMon = new ArrayList<Operacion>();
+                ArrayList<Operacion> opFilteredEmi = new ArrayList<Operacion>();
                 ArrayList<Operacion> ops = cOperacion.getOperaciones();
 
                 for (Operacion op : ops) {
-                    if(op.getCuitCheque().equals(cuitSocio) && op.esRiesgoVivo())
-                        opFiltered.add(op);
+                    if(op.getCuitCheque().equals(cuitSocio)) {
+                        if(op.esRiesgoVivo()) {
+                            opFilteredMon.add(op);
+                        } else if (op.esMonetizadaYNoVencida()) {
+                            opFilteredEmi.add((op));
+                        }
+                    }
                 }
 
-                FrmConsultaConsolidadaDeSocio frame = new FrmConsultaConsolidadaDeSocio(self, opFiltered);
+                FrmConsultaConsolidadaDeSocio frame = new FrmConsultaConsolidadaDeSocio(self, opFilteredMon, opFilteredEmi);
                 frame.setVisible(true);
             }
 
