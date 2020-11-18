@@ -8,10 +8,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.Console;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.stream.Collectors;
 
 public class FrmConsultasGenerales extends JDialog{
     private FrmConsultasGenerales self;
@@ -93,6 +95,7 @@ public class FrmConsultasGenerales extends JDialog{
         btnPorcentajeComision.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+<<<<<<< HEAD
                 String tipoEmpresa=JOptionPane.showInputDialog(self,"Por favor ingrese el tipo de empresa: ");
                 String fechaDesde=JOptionPane.showInputDialog(self,"Ingrese la fecha desde la que desea buscar:");
                 String fechaHasta=JOptionPane.showInputDialog(self,"Ingrese la fecha hasta la que desea buscar:");
@@ -103,13 +106,34 @@ public class FrmConsultasGenerales extends JDialog{
                     e.printStackTrace();
                     JOptionPane.showMessageDialog(self, "La fecha ingresada NO cumple con el formato DD/MM/YYYY", "ERROR: Fecha invalida", JOptionPane.ERROR_MESSAGE);
                 }
+=======
+                String cuit = JOptionPane.showInputDialog(self,"Ingrese el CUIT del Socio:");
+                String tipoDeOperacion = JOptionPane.showInputDialog(self,"Ingrese el Tipo de Operación a consultar:");
+
+                if(cuit.length() == 0 && tipoDeOperacion.length() == 0){
+                    JOptionPane.showMessageDialog(self, "Debe ingresarse un CUIT o el tipo de operacion.", "ERROR: Se ingreso un campo vacio", JOptionPane.ERROR_MESSAGE);
+                }
+
+                float totalComisiones = cSocios.calcularComisionSocio(tipoDeOperacion, cuit);
+                JOptionPane.showMessageDialog(self, "El total de comisiones del socio es: " + totalComisiones + "$", "Total de comisiones", JOptionPane.INFORMATION_MESSAGE);
+>>>>>>> a67f0b88452afdb6dd92d6abe92aa741a6e3cc83
             }
         });
 
         btnConsultaConsolidada.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                String fechaDesde=JOptionPane.showInputDialog(self,"Texto futuro:");
+                String cuitSocio = JOptionPane.showInputDialog(self,"Cuit del socio:");
+                ArrayList<Operacion> opFiltered = new ArrayList<Operacion>();
+                ArrayList<Operacion> ops = cOperacion.getOperaciones();
+
+                for (Operacion op : ops) {
+                    if(op.getCuitCheque().equals(cuitSocio) && op.esRiesgoVivo())
+                        opFiltered.add(op);
+                }
+
+                FrmConsultaConsolidadaDeSocio frame = new FrmConsultaConsolidadaDeSocio(self, opFiltered);
+                frame.setVisible(true);
             }
 
         });

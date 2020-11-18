@@ -1,8 +1,6 @@
 package Clases;
 
-import javax.swing.*;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -27,11 +25,26 @@ public class SociosController
     public void registrarAporte(float monto){
 
     }
+*/
+    public float calcularComisionSocio(String tipoOperacion, String cuit){
+        float totalOperaciones = 0.0f;
+        float totalComisiones = 0.0f;
 
-    public void calcularComisionSocio(String tipoOperacion, int cuit){
+        for(SocioParticipe sp : listaDeSociosParticipes){
+            if(sp.getCuit().equals(cuit)){
+                for(Operacion o : sp.getLinea().getOperaciones()){
+                    if(o.getTipoDeOperacion().equals(tipoOperacion)){
+                        totalOperaciones += Float.parseFloat(o.getImporte());
+                        totalComisiones += o.getComision().getPorcentajeComision();
+                    }
+                }
+            }
+        }
 
-    }*/
+        return totalOperaciones * totalComisiones / 100;
+    }
 
+    /*
     public void calcularMoraSocio(int cuit) {
 
     }

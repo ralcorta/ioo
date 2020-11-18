@@ -1,5 +1,7 @@
 package Clases;
 
+import Enums.EstadosDefine;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Currency;
@@ -276,5 +278,13 @@ public class Operacion {
         if(comision.getEstado().equals("Calculado")) {
             comision.setEstado("Facturada");
         }
+    }
+
+    public boolean vencida() {
+        return this.fechaVencimiento.before(new Date());
+    }
+
+    public boolean esRiesgoVivo() {
+        return !this.vencida() && this.getEstado().equals(EstadosDefine.MONETIZADO);
     }
 }
