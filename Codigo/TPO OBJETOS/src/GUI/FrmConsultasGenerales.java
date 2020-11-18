@@ -107,7 +107,7 @@ public class FrmConsultasGenerales extends JDialog{
 
                     String fechaDesde=JOptionPane.showInputDialog(self,"Ingrese la fecha desde la que desea buscar:");
                     Date fechaDesdeObj = new SimpleDateFormat("dd/MM/yyyy").parse(fechaDesde);
-                    
+
                     if(!Validator.isDate(fechaDesde)){
                         JOptionPane.showMessageDialog(self, "el campo fecha no puede ser vacio", "ERROR: campo fecha vacio", JOptionPane.ERROR_MESSAGE);
                     }
